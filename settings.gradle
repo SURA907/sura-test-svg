@@ -1,0 +1,6 @@
+rootProject.name = 'LuYuProtocol'
+include 'src:network'
+findProject(':src:network')?.name = 'network'
+include 'src:sdk'
+findProject(':src:sdk')?.name = 'sdk'
+
