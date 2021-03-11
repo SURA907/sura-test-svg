@@ -12,11 +12,13 @@ public interface SDK {
 
     CallResponse call(CallRequest request);
 
-    Receipt getTransactionReceipt(String txHash);
+    Receipt getTransactionReceipt(String chainPath, String txHash);
 
-    Block getBlockByHash(String blockHash);
+    Block getBlockByHash(String chainPath, String blockHash);
 
-    Block getBlockByNumber(long blockNumber);
+    Block getBlockByNumber(String chainPath, long blockNumber);
+
+    long getBlockNumber(String chainPath);
 
     Resource[] listResources(String chainPath);
 }

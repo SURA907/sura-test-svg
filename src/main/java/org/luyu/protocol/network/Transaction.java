@@ -1,5 +1,7 @@
 package org.luyu.protocol.network;
 
+import java.util.Arrays;
+
 public class Transaction {
     private String path; // Path of the calling resource. eg: payment.chain0.hello
     private String method; // Method of resource function name. eg: "transfer"
@@ -58,5 +60,23 @@ public class Transaction {
 
     public void setLuyuSign(byte[] luyuSign) {
         LuyuSign = luyuSign;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{"
+                + "path='"
+                + path
+                + '\''
+                + ", method='"
+                + method
+                + '\''
+                + ", args="
+                + Arrays.toString(args)
+                + ", nonce="
+                + nonce
+                + ", LuyuSign="
+                + Arrays.toString(LuyuSign)
+                + '}';
     }
 }

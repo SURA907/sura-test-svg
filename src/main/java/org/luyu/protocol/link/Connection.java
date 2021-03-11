@@ -10,7 +10,7 @@ public interface Connection {
          * @param message The description of errorCode
          * @param responseData Response binary package data, should decode to use it
          */
-        void onResponse(long errorCode, String message, byte[] responseData);
+        void onResponse(int errorCode, String message, byte[] responseData);
     }
 
     /**
@@ -22,7 +22,7 @@ public interface Connection {
      * @param data The binary package data, encode according with different implementation
      * @param callback
      */
-    void asyncSend(String path, long type, byte[] data, Callback callback);
+    void asyncSend(String path, int type, byte[] data, Callback callback);
 
     /**
      * Subscribe callback by sending binary package data to certain block chain connection. Define
@@ -33,5 +33,31 @@ public interface Connection {
      * @param data The binary package data, encode according with different implementation
      * @param callback
      */
-    void subscribe(String path, long type, byte[] data, Callback callback);
+    void subscribe(String path, int type, byte[] data, Callback callback);
+
+    /** The description of connection events */
+    public interface Events {
+        int getEventsId();
+
+        void onBlockchainConnect(String chainPath);
+
+        void onBlockchainDisconnect(String chainPath);
+    }
+
+    /**
+     * Implement event register logic
+     *
+     * @param events The events that Driver register in.
+     */
+    void registerEvents(Events events);
+
+    /**
+     * Implement event unregister logic
+     *
+     * @param eventsId
+     */
+    void unregisterEvents(int eventsId);
+
+    /** Start connecting to blockchain and call events */
+    void start();
 }

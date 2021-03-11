@@ -1,5 +1,7 @@
 package org.luyu.protocol.network;
 
+import java.util.Arrays;
+
 public class Receipt {
     private String result; // Resource function's return output
     private long code; // Error code
@@ -81,5 +83,34 @@ public class Receipt {
 
     public void setBlockNumber(long blockNumber) {
         this.blockNumber = blockNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Receipt{"
+                + "result='"
+                + result
+                + '\''
+                + ", code="
+                + code
+                + ", message='"
+                + message
+                + '\''
+                + ", path='"
+                + path
+                + '\''
+                + ", method='"
+                + method
+                + '\''
+                + ", args="
+                + Arrays.toString(args)
+                + ", transactionHash='"
+                + transactionHash
+                + '\''
+                + ", transactionBytes="
+                + Arrays.toString(transactionBytes)
+                + ", blockNumber="
+                + blockNumber
+                + '}';
     }
 }

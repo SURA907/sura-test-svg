@@ -20,13 +20,13 @@ public interface Events {
      */
     void call(CallRequest request, RouterManager.CallResponseCallback callback);
 
-
     interface KeyCallback {
         void onResponse(byte[] key);
     }
 
     /**
      * Get Key by identity
+     *
      * @param identity The identity of original blockchain type. eg: address or public key
      * @param callback
      */

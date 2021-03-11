@@ -12,18 +12,26 @@ public interface Driver {
 
     interface ReceiptCallback {
         void onResponse(Receipt receipt);
+
+        void onFailed(Throwable e);
     }
 
     interface CallResponseCallback {
         void onResponse(CallResponse callResponse);
+
+        void onFailed(Throwable e);
     }
 
     interface BlockCallback {
         void onResponse(Block block);
+
+        void onFailed(Throwable e);
     }
 
     interface ResourcesCallback {
         void onResponse(Resource[] resources);
+
+        void onFailed(Throwable e);
     }
 
     /**
@@ -48,7 +56,7 @@ public interface Driver {
      * @param txHash
      * @param callback
      */
-    void getTransactionReceipt(String txHash, ReceiptCallback callback);
+    void getTransactionReceipt(String chainPath, String txHash, ReceiptCallback callback);
 
     /**
      * Get block by hash
@@ -56,7 +64,7 @@ public interface Driver {
      * @param blockHash
      * @param callback
      */
-    void getBlockByHash(String blockHash, BlockCallback callback);
+    void getBlockByHash(String chainPath, String blockHash, BlockCallback callback);
 
     /**
      * Get block by block number
@@ -64,7 +72,15 @@ public interface Driver {
      * @param blockNumber
      * @param callback
      */
-    void getBlockByNumber(long blockNumber, BlockCallback callback);
+    void getBlockByNumber(String chainPath, long blockNumber, BlockCallback callback);
+
+    /**
+     * Get latest blockNumber from certain chain
+     *
+     * @param chainPath
+     * @return
+     */
+    long getBlockNumber(String chainPath);
 
     /**
      * Sign message with account secret key
@@ -101,9 +117,9 @@ public interface Driver {
     void listResources(String chainPath, ResourcesCallback callback);
 
     /**
-     * Call function in events to call router logic
+     * Implement event register logic
      *
-     * @param events
+     * @param events The event that router manager register in
      */
-    void onChainEvent(Events events);
+    void registerEvents(Events events);
 }
