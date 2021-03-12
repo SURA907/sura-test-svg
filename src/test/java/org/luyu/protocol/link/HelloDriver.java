@@ -51,7 +51,6 @@ public class HelloDriver implements Driver {
                         // assume this demo always response ok
 
                         // waiting blockHeader syncing
-                        String test = new String(responseData);
                         long needBlockNumber = parseBlockNumberFromReceiptAndProof(responseData);
                         while (getBlockNumber() != needBlockNumber) {
                             try {
@@ -75,12 +74,12 @@ public class HelloDriver implements Driver {
                             receipt.setMessage("Success");
                             receipt.setTransactionBytes(responseData);
                             receipt.setTransactionHash(new String(responseData));
-                            callback.onResponse(receipt);
+                            callback.onResponse(STATUS.OK, "Success", receipt);
                         } else {
-                            callback.onFailed(
-                                    new Exception(
-                                            "Proof verify failed of tx: "
-                                                    + new String(responseData)));
+                            callback.onResponse(
+                                    STATUS.INTERNAL_ERROR,
+                                    "Proof verify failed of tx: " + new String(responseData),
+                                    null);
                         }
                     }
                 });
@@ -95,12 +94,12 @@ public class HelloDriver implements Driver {
     @Override
     public void getBlockByHash(String blockHash, BlockCallback callback) {
         long blockNumber = Long.parseLong(blockHash);
-        callback.onResponse(blockchain.getBlock(blockNumber));
+        callback.onResponse(STATUS.OK, "Success", blockchain.getBlock(blockNumber));
     }
 
     @Override
     public void getBlockByNumber(long blockNumber, BlockCallback callback) {
-        callback.onResponse(blockchain.getBlock(blockNumber));
+        callback.onResponse(STATUS.OK, "Success", blockchain.getBlock(blockNumber));
     }
 
     @Override

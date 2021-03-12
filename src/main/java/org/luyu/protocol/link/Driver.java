@@ -10,28 +10,54 @@ import org.luyu.protocol.network.Transaction;
 
 public interface Driver {
 
-    interface ReceiptCallback {
-        void onResponse(Receipt receipt);
+    public static class STATUS {
+        public static final int OK = 0;
+        public static final int INTERNAL_ERROR = 100; // driver internal error
+        public static final int CONNECTION_EXCEPTION = 200; // query connection exception
+    }
 
-        void onFailed(Throwable e);
+    interface ReceiptCallback {
+        /**
+         * Callback to response receipt
+         *
+         * @param status Driver.STATUS defined above
+         * @param message error message
+         * @param receipt
+         */
+        void onResponse(int status, String message, Receipt receipt);
     }
 
     interface CallResponseCallback {
-        void onResponse(CallResponse callResponse);
-
-        void onFailed(Throwable e);
+        /**
+         * Callback to response CallResponse
+         *
+         * @param status Driver.STATUS defined above
+         * @param message error message
+         * @param callResponse
+         */
+        void onResponse(int status, String message, CallResponse callResponse);
     }
 
     interface BlockCallback {
-        void onResponse(Block block);
-
-        void onFailed(Throwable e);
+        /**
+         * Callback to response block
+         *
+         * @param status Driver.STATUS defined above
+         * @param message error message
+         * @param block
+         */
+        void onResponse(int status, String message, Block block);
     }
 
     interface ResourcesCallback {
-        void onResponse(Resource[] resources);
-
-        void onFailed(Throwable e);
+        /**
+         * Callback to response resource list
+         *
+         * @param status Driver.STATUS defined above
+         * @param message error message
+         * @param resources
+         */
+        void onResponse(int status, String message, Resource[] resources);
     }
 
     /**

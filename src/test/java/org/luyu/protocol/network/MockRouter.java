@@ -37,14 +37,15 @@ public class MockRouter implements RouterManager {
                     tx,
                     new Driver.ReceiptCallback() {
                         @Override
-                        public void onResponse(Receipt receipt) {
-                            System.out.println("==> Receipt: " + receipt.toString());
-                            callback.onResponse(receipt);
-                        }
+                        public void onResponse(int status, String message, Receipt receipt) {
 
-                        @Override
-                        public void onFailed(Throwable e) {
-                            System.out.println(e.getMessage());
+                            if (status == Driver.STATUS.OK) {
+
+                                System.out.println("==> Receipt: " + receipt.toString());
+                                callback.onResponse(receipt);
+                            } else {
+                                System.out.println(message);
+                            }
                         }
                     });
         }
