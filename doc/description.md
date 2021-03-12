@@ -313,20 +313,54 @@ Driver 向网络层提供的接口协议
 ``` java
 public interface Driver {
 
+    public static class STATUS {
+        public static final int OK = 0;
+        public static final int INTERNAL_ERROR = 100; // driver internal error
+        public static final int CONNECTION_EXCEPTION = 200; // query connection exception
+    }
+
     interface ReceiptCallback {
-        void onResponse(Receipt receipt);
+        /**
+         * Callback to response receipt
+         *
+         * @param status Driver.STATUS defined above
+         * @param message error message
+         * @param receipt
+         */
+        void onResponse(int status, String message, Receipt receipt);
     }
 
     interface CallResponseCallback {
-        void onResponse(CallResponse callResponse);
+        /**
+         * Callback to response CallResponse
+         *
+         * @param status Driver.STATUS defined above
+         * @param message error message
+         * @param callResponse
+         */
+        void onResponse(int status, String message, CallResponse callResponse);
     }
 
     interface BlockCallback {
-        void onResponse(Block block);
+        /**
+         * Callback to response block
+         *
+         * @param status Driver.STATUS defined above
+         * @param message error message
+         * @param block
+         */
+        void onResponse(int status, String message, Block block);
     }
 
     interface ResourcesCallback {
-        void onResponse(Resource[] resources);
+        /**
+         * Callback to response resource list
+         *
+         * @param status Driver.STATUS defined above
+         * @param message error message
+         * @param resources
+         */
+        void onResponse(int status, String message, Resource[] resources);
     }
 
     /**
@@ -370,6 +404,13 @@ public interface Driver {
     void getBlockByNumber(long blockNumber, BlockCallback callback);
 
     /**
+     * Get latest blockNumber from certain chain
+     *
+     * @return
+     */
+    long getBlockNumber();
+
+    /**
      * Sign message with account secret key
      *
      * @param key The secret key of an account
@@ -398,17 +439,16 @@ public interface Driver {
     /**
      * Get resource list belongs to a chain
      *
-     * @param chainPath Eg: payment.chain0
      * @param callback Return the array of resources
      */
-    void listResources(String chainPath, ResourcesCallback callback);
+    void listResources(ResourcesCallback callback);
 
     /**
-     * Call function in events to call router logic
+     * Implement event register logic
      *
-     * @param events
+     * @param events The event that router manager register in
      */
-    void onChainEvent(Events events);
+    void registerEvents(Events events);
 }
 ```
 
@@ -417,6 +457,7 @@ public interface Driver {
 Connection向Driver层提供的接口协议
 
 ``` java
+
 public interface Connection {
     /** Callback of asyncSend() function */
     interface Callback {
@@ -427,7 +468,7 @@ public interface Connection {
          * @param message The description of errorCode
          * @param responseData Response binary package data, should decode to use it
          */
-        void onResponse(long errorCode, String message, byte[] responseData);
+        void onResponse(int errorCode, String message, byte[] responseData);
     }
 
     /**
@@ -439,7 +480,7 @@ public interface Connection {
      * @param data The binary package data, encode according with different implementation
      * @param callback
      */
-    void asyncSend(String path, long type, byte[] data, Callback callback);
+    void asyncSend(String path, int type, byte[] data, Callback callback);
 
     /**
      * Subscribe callback by sending binary package data to certain block chain connection. Define
@@ -449,6 +490,6 @@ public interface Connection {
      * @param data The binary package data, encode according with different implementation
      * @param callback
      */
-    void subscribe(long type, byte[] data, Callback callback);
+    void subscribe(int type, byte[] data, Callback callback);
 }
 ```
