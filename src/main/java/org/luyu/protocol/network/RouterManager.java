@@ -1,7 +1,5 @@
 package org.luyu.protocol.network;
 
-import org.luyu.protocol.link.Driver;
-
 public interface RouterManager {
 
     interface ReceiptCallback {
@@ -24,11 +22,13 @@ public interface RouterManager {
 
     void call(CallRequest request, CallResponseCallback callback);
 
-    void getTransactionReceipt(String txHash, ReceiptCallback callback);
+    void getTransactionReceipt(String chainPath, String txHash, ReceiptCallback callback);
 
-    void getBlockByHash(String blockHash, BlockCallback callback);
+    void getBlockByHash(String chainPath, String blockHash, BlockCallback callback);
 
-    void getBlockByNumber(long blockNumber, BlockCallback callback);
+    void getBlockByNumber(String chainPath, long blockNumber, BlockCallback callback);
 
-    void listResources(String chainPath, Driver.ResourcesCallback callback);
+    long getBlockNumber(String chainPath);
+
+    void listResources(String chainPath, ResourcesCallback callback);
 }

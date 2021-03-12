@@ -2,6 +2,7 @@ package org.luyu.protocol.link;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Set;
 import org.luyu.protocol.blockchain.MockBlockchain;
 import org.luyu.protocol.utils.Utils;
 
@@ -27,11 +28,11 @@ public class HelloConnection implements Connection {
 
     @Override
     public void asyncSend(String path, int type, byte[] data, Callback callback) {
-        String resourceName = Utils.getResourceName(path);
 
         switch (type) {
             case SEND_TRANSACTION:
                 {
+                    String resourceName = Utils.getResourceName(path);
                     String contractAddress = getContractAddress(resourceName);
                     blockchain.sendTransaction(
                             contractAddress,
@@ -51,6 +52,7 @@ public class HelloConnection implements Connection {
 
             case CALL_TRANSACTION:
                 {
+                    String resourceName = Utils.getResourceName(path);
                     String contractAddress = getContractAddress(resourceName);
                     byte[] result = blockchain.call(contractAddress, data);
                     callback.onResponse(SUCCESS, "Call success", result);
@@ -90,15 +92,33 @@ public class HelloConnection implements Connection {
                                     callback.onResponse(SUCCESS, "New block", blockBytes);
                                 }
                             });
+                    break;
                 }
 
             case EVENT_RESOURCES_CHANGED:
+                {
+                    blockchain.registerContractEvent(
+                            new MockBlockchain.ContractEvent() {
+                                @Override
+                                public void onContractDeployed(Set<String> allContractName) {
+                                    String encodedStr = "";
+                                    for (String name : allContractName) {
+                                        encodedStr += name + ",";
+                                    }
+                                    callback.onResponse(
+                                            SUCCESS,
+                                            "New resource",
+                                            encodedStr.getBytes(StandardCharsets.UTF_8));
+                                }
+                            });
+                    break;
+                }
             default:
         }
     }
 
     private String getContractAddress(String contractName) {
-        // Use CNS for something else to get real address of contract
+        // Use CNS or something else to get real address of contract
         return "address-" + contractName;
     }
 }

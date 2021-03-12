@@ -1,5 +1,7 @@
 package org.luyu.protocol.network;
 
+import java.util.Arrays;
+
 public class CallResponse {
     private String result; // Resource function's return output
     private long code; // Error code
@@ -54,5 +56,27 @@ public class CallResponse {
 
     public void setArgs(String[] args) {
         this.args = args;
+    }
+
+    @Override
+    public String toString() {
+        return "CallResponse{"
+                + "result='"
+                + result
+                + '\''
+                + ", code="
+                + code
+                + ", message='"
+                + message
+                + '\''
+                + ", path='"
+                + path
+                + '\''
+                + ", method='"
+                + method
+                + '\''
+                + ", args="
+                + Arrays.toString(args)
+                + '}';
     }
 }

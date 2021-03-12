@@ -6,25 +6,30 @@ import java.util.Map;
 import org.luyu.protocol.blockchain.MockBlockchain;
 import org.luyu.protocol.network.Block;
 import org.luyu.protocol.network.CallRequest;
+import org.luyu.protocol.network.CallResponse;
 import org.luyu.protocol.network.Events;
 import org.luyu.protocol.network.Receipt;
+import org.luyu.protocol.network.Resource;
 import org.luyu.protocol.network.Transaction;
 import org.luyu.protocol.utils.Utils;
 
 public class HelloDriver implements Driver {
 
     private BlockChainCache blockchain = new BlockChainCache();
+    private Map<String, Resource> resources = new HashMap<>();
     private Connection connection;
+    private String chainPath;
 
     public HelloDriver(Connection connection, Map<String, Object> properties) {
         // Parse config info from properties
-        // xxx = propterties.get("aaa")
+        this.chainPath = (String) properties.get("chainPath");
 
         // set connection
         this.connection = connection;
 
         // subscribe event
         subscribeNewBlockEvent(this.connection);
+        subscribeNewResourceEvent(this.connection);
     }
 
     @Override
@@ -59,10 +64,10 @@ public class HelloDriver implements Driver {
                             } catch (Exception e) {
                             }
                         }
+                        byte[] blockHeaderBytes = blockchain.getHeaderBytes(needBlockNumber);
 
                         // verify transaction on-chain proof
-                        if (verifyTransactionAndOnChainProof(
-                                blockchain.getHeaderBytes(needBlockNumber), responseData)) {
+                        if (verifyTransactionAndOnChainProof(blockHeaderBytes, responseData)) {
                             // response receipt
                             Receipt receipt = new Receipt();
                             receipt.setResult(new String(responseData));
@@ -86,10 +91,80 @@ public class HelloDriver implements Driver {
     }
 
     @Override
-    public void call(CallRequest request, CallResponseCallback callback) {}
+    public void call(CallRequest request, CallResponseCallback callback) {
+        // Encode call payload
+        String callPayloadStr = request.getMethod() + "(";
+        for (String arg : request.getArgs()) {
+            callPayloadStr += arg;
+        }
+        callPayloadStr += ")";
+        byte[] callPayload = callPayloadStr.getBytes(StandardCharsets.UTF_8);
+
+        connection.asyncSend(
+                request.getPath(),
+                HelloConnection.SEND_TRANSACTION,
+                callPayload,
+                new Connection.Callback() {
+                    @Override
+                    public void onResponse(int errorCode, String message, byte[] responseData) {
+                        // assume this demo always response ok
+                        CallResponse callResponse = new CallResponse();
+                        callResponse.setResult(new String(responseData));
+                        callResponse.setCode(0); // original receipt status
+                        callResponse.setMessage("Success");
+                        callResponse.setMethod(request.getMethod());
+                        callResponse.setArgs(request.getArgs());
+                        callResponse.setPath(request.getPath());
+                        callback.onResponse(STATUS.OK, "Success", callResponse);
+                    }
+                });
+    }
 
     @Override
-    public void getTransactionReceipt(String txHash, ReceiptCallback callback) {}
+    public void getTransactionReceipt(String txHash, ReceiptCallback callback) {
+        connection.asyncSend(
+                null,
+                HelloConnection.GET_TRANSACTION_RECEIPT,
+                txHash.getBytes(StandardCharsets.UTF_8),
+                new Connection.Callback() {
+                    @Override
+                    public void onResponse(int errorCode, String message, byte[] responseData) {
+                        // assume this demo always response ok
+
+                        // waiting blockHeader syncing
+                        long needBlockNumber = parseBlockNumberFromReceiptAndProof(responseData);
+                        while (getBlockNumber() != needBlockNumber) {
+                            try {
+                                System.out.println("Waiting for block-" + needBlockNumber);
+                                Thread.sleep(1000); // You can use Future<> to optimize here
+                            } catch (Exception e) {
+                            }
+                        }
+                        byte[] blockHeaderBytes = blockchain.getHeaderBytes(needBlockNumber);
+
+                        // verify transaction on-chain proof
+                        if (verifyTransactionAndOnChainProof(blockHeaderBytes, responseData)) {
+                            // response receipt
+                            Receipt receipt = new Receipt();
+                            receipt.setResult(new String(responseData));
+                            receipt.setBlockNumber(needBlockNumber);
+                            // receipt.setMethod(request.getMethod());
+                            // receipt.setArgs(request.getArgs());
+                            // receipt.setPath(request.getPath());
+                            receipt.setCode(0); // SUCCESS
+                            receipt.setMessage("Success");
+                            receipt.setTransactionBytes(responseData);
+                            receipt.setTransactionHash(new String(responseData));
+                            callback.onResponse(STATUS.OK, "Success", receipt);
+                        } else {
+                            callback.onResponse(
+                                    STATUS.INTERNAL_ERROR,
+                                    "Proof verify failed of tx: " + new String(responseData),
+                                    null);
+                        }
+                    }
+                });
+    }
 
     @Override
     public void getBlockByHash(String blockHash, BlockCallback callback) {
@@ -123,7 +198,9 @@ public class HelloDriver implements Driver {
     }
 
     @Override
-    public void listResources(String chainPath, ResourcesCallback callback) {}
+    public void listResources(ResourcesCallback callback) {
+        callback.onResponse(STATUS.OK, "Success", resources.values().toArray(new Resource[0]));
+    }
 
     @Override
     public void registerEvents(Events events) {}
@@ -172,6 +249,36 @@ public class HelloDriver implements Driver {
                             blockchain.setBlock(block);
                             System.out.println(
                                     "Update blockchain cache, blockNumber: " + blockNumber);
+                        }
+                    }
+                });
+    }
+
+    private void subscribeNewResourceEvent(Connection connection) {
+        connection.subscribe(
+                HelloConnection.EVENT_RESOURCES_CHANGED,
+                null,
+                new Connection.Callback() {
+                    @Override
+                    public void onResponse(int errorCode, String message, byte[] responseData) {
+                        String encodedStr = new String(responseData);
+                        String[] resourceNames = encodedStr.split(",");
+                        for (String resourceName : resourceNames) {
+                            if (resourceName == null || resourceName.isEmpty()) {
+                                continue;
+                            }
+
+                            if (!resources.containsKey(resourceName)) {
+                                System.out.println("Detect new resource: " + resourceName);
+                            }
+
+                            Resource resource = new Resource();
+                            resource.setPath(chainPath + "." + resourceName);
+                            resource.setType(getType());
+                            resource.setMethods(null);
+                            resource.setProperties(null);
+
+                            resources.put(resourceName, resource);
                         }
                     }
                 });

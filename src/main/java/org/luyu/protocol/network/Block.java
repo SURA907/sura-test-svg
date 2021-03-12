@@ -1,5 +1,8 @@
 package org.luyu.protocol.network;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Block {
     private String chainPath; // Path of the blockchain. eg: payment.chain0
     private long number; // Block number
@@ -54,5 +57,47 @@ public class Block {
 
     public void setBytes(byte[] bytes) {
         this.bytes = bytes;
+    }
+
+    @Override
+    public String toString() {
+        return "Block{"
+                + "chainPath='"
+                + chainPath
+                + '\''
+                + ", number="
+                + number
+                + ", hash='"
+                + hash
+                + '\''
+                + ", parentHash='"
+                + parentHash
+                + '\''
+                + ", roots="
+                + Arrays.toString(roots)
+                + ", bytes="
+                + Arrays.toString(bytes)
+                + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Block)) return false;
+        Block block = (Block) o;
+        return getNumber() == block.getNumber()
+                && Objects.equals(getChainPath(), block.getChainPath())
+                && Objects.equals(getHash(), block.getHash())
+                && Objects.equals(getParentHash(), block.getParentHash())
+                && Arrays.equals(getRoots(), block.getRoots())
+                && Arrays.equals(getBytes(), block.getBytes());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(getChainPath(), getNumber(), getHash(), getParentHash());
+        result = 31 * result + Arrays.hashCode(getRoots());
+        result = 31 * result + Arrays.hashCode(getBytes());
+        return result;
     }
 }

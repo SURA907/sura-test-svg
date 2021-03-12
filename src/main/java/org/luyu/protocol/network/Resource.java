@@ -1,5 +1,6 @@
 package org.luyu.protocol.network;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class Resource {
@@ -39,5 +40,21 @@ public class Resource {
 
     public void setProperties(Map<String, Object> properties) {
         this.properties = properties;
+    }
+
+    @Override
+    public String toString() {
+        return "Resource{"
+                + "path='"
+                + path
+                + '\''
+                + ", type='"
+                + type
+                + '\''
+                + ", methods="
+                + Arrays.toString(methods)
+                + ", properties="
+                + properties
+                + '}';
     }
 }

@@ -33,12 +33,20 @@ public class MockBlockchain {
         public TxCallback callback;
     }
 
+    class Contract {
+        public String name;
+    }
+
     public interface TxCallback {
         void onResponse(byte[] receipt, byte[] onChainProof);
     }
 
     public interface BlockEvent {
         void onNewBlock(byte[] blockBytes);
+    }
+
+    public interface ContractEvent {
+        void onContractDeployed(Set<String> allContractName);
     }
 
     public MockBlockchain(String name) {
@@ -56,8 +64,10 @@ public class MockBlockchain {
     private String name;
     private ArrayList<Block> blocks = new ArrayList<>();
     private Set<Transaction> txPool = new HashSet<>();
+    private Set<Contract> contracts = new HashSet<>();
     private Thread consensus;
     private Set<BlockEvent> blockEvent = new HashSet<>();
+    private Set<ContractEvent> contractEvent = new HashSet<>();
     ExecutorService executor = Executors.newFixedThreadPool(20);
 
     public void sendTransaction(String contractAddress, byte[] txBytes, TxCallback callback) {
@@ -98,6 +108,14 @@ public class MockBlockchain {
         event.onNewBlock(blockBytes);
     }
 
+    public void registerContractEvent(ContractEvent event) {
+        contractEvent.add(event);
+
+        // Push latest contracts
+        Set<String> allContractName = getAllContractName();
+        event.onContractDeployed(allContractName);
+    }
+
     public void connect() {
         System.out.println("Blockchain connected: " + name);
     }
@@ -111,6 +129,7 @@ public class MockBlockchain {
                                     try {
                                         Thread.sleep(1000);
                                         consensusLoop();
+                                        deployContract();
                                     } catch (Exception e) {
                                         System.out.println("Exception: " + e);
                                     }
@@ -159,5 +178,26 @@ public class MockBlockchain {
                 (event) -> {
                     event.onNewBlock(block.getBytes());
                 });
+    }
+
+    private void deployContract() {
+        Contract contract = new Contract();
+        contract.name = "contract-" + System.currentTimeMillis();
+        contracts.add(contract);
+        System.out.println("==> Contract[" + contract.name + "] is deployed");
+
+        Set<String> allContractName = getAllContractName();
+        contractEvent.forEach(
+                (event) -> {
+                    event.onContractDeployed(allContractName);
+                });
+    }
+
+    private Set<String> getAllContractName() {
+        Set<String> allContractName = new HashSet<>();
+        for (Contract contract : contracts) {
+            allContractName.add(contract.name);
+        }
+        return allContractName;
     }
 }

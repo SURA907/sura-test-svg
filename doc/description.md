@@ -445,11 +445,10 @@ public interface Connection {
      * Subscribe callback by sending binary package data to certain block chain connection. Define
      * type in your implementation to separate different kinds of data
      *
-     * @param path The luyu path to original blockchain
      * @param type The type defined by implementation to separate different kinds of data
      * @param data The binary package data, encode according with different implementation
      * @param callback
      */
-    void subscribe(String path, long type, byte[] data, Callback callback);
+    void subscribe(long type, byte[] data, Callback callback);
 }
 ```

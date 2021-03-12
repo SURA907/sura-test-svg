@@ -136,10 +136,9 @@ public interface Driver {
     /**
      * Get resource list belongs to a chain
      *
-     * @param chainPath Eg: payment.chain0
      * @param callback Return the array of resources
      */
-    void listResources(String chainPath, ResourcesCallback callback);
+    void listResources(ResourcesCallback callback);
 
     /**
      * Implement event register logic
