@@ -1,7 +1,6 @@
 package org.luyu.protocol.link;
 
 import java.nio.charset.StandardCharsets;
-import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 import org.luyu.protocol.blockchain.MockBlockchain;
@@ -14,9 +13,8 @@ import org.luyu.protocol.utils.Utils;
 
 public class HelloDriver implements Driver {
 
-    private Map<String, BlockChainCache> chainCache = new HashMap<>();
+    private BlockChainCache blockchain = new BlockChainCache();
     private Connection connection;
-    private int eventId;
 
     public HelloDriver(Connection connection, Map<String, Object> properties) {
         // Parse config info from properties
@@ -25,9 +23,8 @@ public class HelloDriver implements Driver {
         // set connection
         this.connection = connection;
 
-        // set connection events
-        this.eventId = (new SecureRandom()).nextInt();
-        registerConnectionEvents(this.connection, this.eventId);
+        // subscribe event
+        subscribeNewBlockEvent(this.connection);
     }
 
     @Override
@@ -56,8 +53,7 @@ public class HelloDriver implements Driver {
                         // waiting blockHeader syncing
                         String test = new String(responseData);
                         long needBlockNumber = parseBlockNumberFromReceiptAndProof(responseData);
-                        String chainPath = Utils.getChainPath(request.getPath());
-                        while (getBlockNumber(chainPath) != needBlockNumber) {
+                        while (getBlockNumber() != needBlockNumber) {
                             try {
                                 System.out.println("Waiting for block-" + needBlockNumber);
                                 Thread.sleep(1000); // You can use Future<> to optimize here
@@ -67,8 +63,7 @@ public class HelloDriver implements Driver {
 
                         // verify transaction on-chain proof
                         if (verifyTransactionAndOnChainProof(
-                                chainCache.get(chainPath).getHeaderBytes(needBlockNumber),
-                                responseData)) {
+                                blockchain.getHeaderBytes(needBlockNumber), responseData)) {
                             // response receipt
                             Receipt receipt = new Receipt();
                             receipt.setResult(new String(responseData));
@@ -95,22 +90,22 @@ public class HelloDriver implements Driver {
     public void call(CallRequest request, CallResponseCallback callback) {}
 
     @Override
-    public void getTransactionReceipt(String chainPath, String txHash, ReceiptCallback callback) {}
+    public void getTransactionReceipt(String txHash, ReceiptCallback callback) {}
 
     @Override
-    public void getBlockByHash(String chainPath, String blockHash, BlockCallback callback) {
+    public void getBlockByHash(String blockHash, BlockCallback callback) {
         long blockNumber = Long.parseLong(blockHash);
-        callback.onResponse(chainCache.get(chainPath).getBlock(blockNumber));
+        callback.onResponse(blockchain.getBlock(blockNumber));
     }
 
     @Override
-    public void getBlockByNumber(String chainPath, long blockNumber, BlockCallback callback) {
-        callback.onResponse(chainCache.get(chainPath).getBlock(blockNumber));
+    public void getBlockByNumber(long blockNumber, BlockCallback callback) {
+        callback.onResponse(blockchain.getBlock(blockNumber));
     }
 
     @Override
-    public long getBlockNumber(String chainPath) {
-        return chainCache.get(chainPath).getBlockNumber();
+    public long getBlockNumber() {
+        return blockchain.getBlockNumber();
     }
 
     @Override
@@ -156,32 +151,8 @@ public class HelloDriver implements Driver {
         }
     }
 
-    private void registerConnectionEvents(Connection connection, int eventId) {
-        connection.registerEvents(
-                new Connection.Events() {
-                    @Override
-                    public int getEventsId() {
-                        return eventId;
-                    }
-
-                    @Override
-                    public void onBlockchainConnect(String chainPath) {
-                        System.out.println("onBlockchainConnect: " + chainPath);
-                        chainCache.put(chainPath, new BlockChainCache());
-                        subscribeNewBlockEvent(chainPath);
-                    }
-
-                    @Override
-                    public void onBlockchainDisconnect(String chainPath) {
-                        System.out.println("onBlockchainDisconnect: " + chainPath);
-                        chainCache.remove(chainPath);
-                    }
-                });
-    }
-
-    private void subscribeNewBlockEvent(String chainPath) {
+    private void subscribeNewBlockEvent(Connection connection) {
         connection.subscribe(
-                chainPath,
                 HelloConnection.EVENT_NEW_BLOCK,
                 null,
                 new Connection.Callback() {
@@ -199,12 +170,9 @@ public class HelloDriver implements Driver {
                         // verify continuity of receive chain
                         String lastBlockHash = "aabbccdd";
                         if (block.getParentHash().equals(lastBlockHash)) {
-                            chainCache.get(chainPath).setBlock(block);
+                            blockchain.setBlock(block);
                             System.out.println(
-                                    "Update chain cache, chainPath: "
-                                            + chainPath
-                                            + ", blockNumber: "
-                                            + blockNumber);
+                                    "Update blockchain cache, blockNumber: " + blockNumber);
                         }
                     }
                 });

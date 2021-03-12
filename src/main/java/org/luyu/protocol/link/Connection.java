@@ -28,36 +28,9 @@ public interface Connection {
      * Subscribe callback by sending binary package data to certain block chain connection. Define
      * type in your implementation to separate different kinds of data
      *
-     * @param path The luyu path to original blockchain
      * @param type The type defined by implementation to separate different kinds of data
      * @param data The binary package data, encode according with different implementation
      * @param callback
      */
-    void subscribe(String path, int type, byte[] data, Callback callback);
-
-    /** The description of connection events */
-    public interface Events {
-        int getEventsId();
-
-        void onBlockchainConnect(String chainPath);
-
-        void onBlockchainDisconnect(String chainPath);
-    }
-
-    /**
-     * Implement event register logic
-     *
-     * @param events The events that Driver register in.
-     */
-    void registerEvents(Events events);
-
-    /**
-     * Implement event unregister logic
-     *
-     * @param eventsId
-     */
-    void unregisterEvents(int eventsId);
-
-    /** Start connecting to blockchain and call events */
-    void start();
+    void subscribe(int type, byte[] data, Callback callback);
 }

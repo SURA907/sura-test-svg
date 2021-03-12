@@ -11,6 +11,6 @@ public class HelloPluginBuilder implements PluginBuilder {
 
     @Override
     public Driver newDriver(Connection connection, Map<String, Object> properties) {
-        return new HelloDriver(connection, properties) ;
+        return new HelloDriver(connection, properties);
     }
 }

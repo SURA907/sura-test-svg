@@ -43,6 +43,13 @@ public class MockBlockchain {
 
     public MockBlockchain(String name) {
         this.name = name;
+
+        // Generate genesis block
+        Block genesisBlock = new Block();
+        genesisBlock.number = 0;
+        blocks.add(genesisBlock);
+
+        // start blockchain
         start();
     }
 
@@ -75,7 +82,7 @@ public class MockBlockchain {
     }
 
     public byte[] getBlockByNumber(long number) {
-        if (blocks.size() >= number) {
+        if (blocks.size() <= number) {
             return null;
         }
 
@@ -84,6 +91,11 @@ public class MockBlockchain {
 
     public void registerBlockEvent(BlockEvent event) {
         blockEvent.add(event);
+
+        // Push latest block
+        long number = getBlockNumber();
+        byte[] blockBytes = getBlockByNumber(number);
+        event.onNewBlock(blockBytes);
     }
 
     public void connect() {
@@ -124,14 +136,15 @@ public class MockBlockchain {
         long number = blocks.size() - 1;
         block.number = number;
 
-
         // tx callback
         block.transactions.forEach(
                 (tx) -> {
-                    executor.submit(() -> {
-                        tx.callback.onResponse(
-                                getTransactionReceipt(new byte[]{}), block.getBlockHeaderBytes());
-                    });
+                    executor.submit(
+                            () -> {
+                                tx.callback.onResponse(
+                                        getTransactionReceipt(new byte[] {}),
+                                        block.getBlockHeaderBytes());
+                            });
                 });
 
         // Simulate block sync time
@@ -146,7 +159,5 @@ public class MockBlockchain {
                 (event) -> {
                     event.onNewBlock(block.getBytes());
                 });
-
-
     }
 }

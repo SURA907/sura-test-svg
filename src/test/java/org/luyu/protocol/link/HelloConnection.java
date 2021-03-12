@@ -1,7 +1,6 @@
 package org.luyu.protocol.link;
 
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.Map;
 import org.luyu.protocol.blockchain.MockBlockchain;
 import org.luyu.protocol.utils.Utils;
@@ -18,24 +17,18 @@ public class HelloConnection implements Connection {
     public static final int EVENT_NEW_BLOCK = 201;
     public static final int EVENT_RESOURCES_CHANGED = 202;
 
-    private Map<String, MockBlockchain> blockchains = new HashMap<>(); // chainPath to blockchain
-    private Map<Integer, Events> registeredEvents = new HashMap<>();
+    private MockBlockchain blockchain;
 
     public HelloConnection(Map<String, Object> properties) {
-        String[] chains = (String[]) properties.get("chains");
-        for (String chainPath : chains) {
-            // for each blockchain config
-            MockBlockchain blockchain = new MockBlockchain(chainPath);
-            blockchains.put(chainPath, blockchain);
-        }
+        String chainPath = (String) properties.get("chainPath");
+
+        this.blockchain = new MockBlockchain(chainPath);
     }
 
     @Override
     public void asyncSend(String path, int type, byte[] data, Callback callback) {
-        String chainPath = Utils.getChainPath(path);
         String resourceName = Utils.getResourceName(path);
 
-        MockBlockchain blockchain = blockchains.get(chainPath);
         switch (type) {
             case SEND_TRANSACTION:
                 {
@@ -85,10 +78,7 @@ public class HelloConnection implements Connection {
     }
 
     @Override
-    public void subscribe(String path, int type, byte[] data, Callback callback) {
-        String chainPath = Utils.getChainPath(path);
-
-        MockBlockchain blockchain = blockchains.get(chainPath);
+    public void subscribe(int type, byte[] data, Callback callback) {
 
         switch (type) {
             case EVENT_NEW_BLOCK:
@@ -105,37 +95,6 @@ public class HelloConnection implements Connection {
             case EVENT_RESOURCES_CHANGED:
             default:
         }
-    }
-
-    @Override
-    public void registerEvents(Events events) {
-        registeredEvents.put(events.getEventsId(), events);
-    }
-
-    @Override
-    public void unregisterEvents(int eventsId) {
-        if (registeredEvents.containsKey(eventsId)) {
-            registeredEvents.remove(eventsId);
-        }
-    }
-
-    @Override
-    public void start() {
-        blockchains.forEach(
-                (chainPath, chain) -> {
-                    chain.connect();
-                    registeredEvents.forEach(
-                            (eventsId, events) -> {
-                                events.onBlockchainConnect(chainPath);
-                            });
-                });
-    }
-
-    private void handleChainDisconnect(String chainPath) {
-        registeredEvents.forEach(
-                (eventsId, events) -> {
-                    events.onBlockchainDisconnect(chainPath);
-                });
     }
 
     private String getContractAddress(String contractName) {

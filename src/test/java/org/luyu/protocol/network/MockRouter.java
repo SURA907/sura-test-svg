@@ -24,9 +24,6 @@ public class MockRouter implements RouterManager {
         // Build driver
         Map<String, Object> driverConfig = new HashMap<>();
         this.driver = builder.newDriver(this.connection, driverConfig);
-
-        // start connection
-        this.connection.start();
     }
 
     @Override
