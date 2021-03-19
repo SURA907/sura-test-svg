@@ -22,19 +22,17 @@ dependencies { implementation 'xxx.xxxx:luyu-protocol:1.x.x'}
 bash gradlew assemble
 ```
 
-生成`dist/apps`目录下生成
+生成的目录`dist/apps`下
 
 ``` 
 luyu-protocol-xxxxxx.jar
 ```
 
-此jar包内包含了陆羽协议的接口定义，将其拷贝至对应项目的classpath下，并引用此jar包即可。如`gradle`配置如下。
+将其拷贝至对应项目的classpath下，并引用此jar包即可，以`gradle`为例
 
 ``` gradle
 dependencies { compile files('lib/luyu-protocol-xxxxxx.jar')}
 ```
-
-
 
 ## License
 
