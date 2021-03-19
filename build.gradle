@@ -14,7 +14,7 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 
 group 'org.luyu.protocol'
-version '1.0-SNAPSHOT'
+version '1.0-0318-SNAPSHOT'
 
 repositories {
     jcenter()
@@ -104,6 +104,79 @@ jar {
     }
 }
 
+
+ext {
+    if (!project.hasProperty("NEXUS_USERNAME")) {
+        NEXUS_USERNAME="xxx"
+    }
+
+    if (!project.hasProperty("NEXUS_PASSWORD")) {
+        NEXUS_PASSWORD="xxx"
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    classifier = 'javadoc'
+}
+
+javadoc {
+    options {
+        encoding 'UTF-8'
+        charSet 'UTF-8'
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = group
+            artifactId = project.name
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            // https://docs.gradle.org/current/dsl/org.gradle.api.publish.maven.MavenPublication.html
+            pom {
+                name = "LuyuProtocol"
+                description = "Luyu Protocol"
+                url = "https://gitee.com/luyu-community/luyu-protocol"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git@://gitee.com:luyu-community/luyu-protocol.git"
+                    developerConnection = "scm:git:ssh://gitee.com:luyu-community/luyu-protocol.git"
+                    url = "https://gitee.com/luyu-community/luyu-protocol"
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+            credentials {
+                username = NEXUS_USERNAME
+                password = NEXUS_PASSWORD
+            }
+        }
+    }
+
+    signing {
+        sign publishing.publications.mavenJava
+    }
+}
 
 test {
     useJUnitPlatform()

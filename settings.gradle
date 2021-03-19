@@ -1,4 +1,4 @@
-rootProject.name = 'LuYuProtocol'
+rootProject.name = 'luyu-protocol'
 include 'src:network'
 findProject(':src:network')?.name = 'network'
 include 'src:sdk'
