@@ -241,7 +241,7 @@ public class HelloDriver implements Driver {
                         Block block = new Block();
                         block.setNumber(blockNumber);
                         block.setBytes(responseData);
-                        block.setParentHash("aabbccdd");
+                        block.setParentHash(new String[] {"aabbccdd"});
 
                         // verify continuity of receive chain
                         String lastBlockHash = "aabbccdd";

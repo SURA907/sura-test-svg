@@ -73,8 +73,9 @@ public class Block {
     private String chainPath; // Path of the blockchain. eg: payment.chain0
     private long number; // Block number
     private String hash; // Block Hash
-    private String parentHash; // Block parent hash
+    private String[] parentHash; // Block parent hash, support DAG
     private String[] roots; // Block roots array. eg: transaction root, state root or receipt root
+    private long timestamp; // Block timestamp
     private byte[] bytes; // Original block bytes of a certain blockchain
     
     // --snip--
