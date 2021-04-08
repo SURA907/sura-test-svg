@@ -3,7 +3,7 @@ package org.luyu.protocol.network;
 import java.util.Arrays;
 
 public class Receipt {
-    private String result; // Resource function's return output
+    private String[] result; // Resource function's return output
     private long code; // Error code of blockchain
     private String message; // Error message of blockchain
     private String path; // Transaction path of the calling resource. eg: payment.chain0.hello
@@ -13,11 +13,11 @@ public class Receipt {
     private byte[] transactionBytes; // The original transaction bytes of a certain blockchain
     private long blockNumber; // Block number of this transaction belongs to
 
-    public String getResult() {
+    public String[] getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(String[] result) {
         this.result = result;
     }
 

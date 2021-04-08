@@ -13,8 +13,8 @@ apply plugin: 'java'
 //apply plugin: 'war'
 apply plugin: 'jacoco'
 
-group 'org.luyu.protocol'
-version '1.0-0318-SNAPSHOT'
+group 'com.gitee.luyu-community'
+version '1.0.0-0408-SNAPSHOT'
 
 repositories {
     jcenter()
@@ -152,6 +152,13 @@ publishing {
                         url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
                     }
                 }
+                developers {
+                    developer {
+                        id = "Luyu"
+                        name = "Luyu"
+                        email = "luyu_protocol@163.com"
+                    }
+                }
                 scm {
                     connection = "scm:git:git@://gitee.com:luyu-community/luyu-protocol.git"
                     developerConnection = "scm:git:ssh://gitee.com:luyu-community/luyu-protocol.git"
@@ -162,8 +169,8 @@ publishing {
     }
     repositories {
         maven {
-            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
 
             credentials {

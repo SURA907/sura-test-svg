@@ -70,7 +70,7 @@ public class HelloDriver implements Driver {
                         if (verifyTransactionAndOnChainProof(blockHeaderBytes, responseData)) {
                             // response receipt
                             Receipt receipt = new Receipt();
-                            receipt.setResult(new String(responseData));
+                            receipt.setResult(new String[] {responseData.toString()});
                             receipt.setBlockNumber(needBlockNumber);
                             receipt.setMethod(request.getMethod());
                             receipt.setArgs(request.getArgs());
@@ -146,7 +146,7 @@ public class HelloDriver implements Driver {
                         if (verifyTransactionAndOnChainProof(blockHeaderBytes, responseData)) {
                             // response receipt
                             Receipt receipt = new Receipt();
-                            receipt.setResult(new String(responseData));
+                            receipt.setResult(new String[] {responseData.toString()});
                             receipt.setBlockNumber(needBlockNumber);
                             // receipt.setMethod(request.getMethod());
                             // receipt.setArgs(request.getArgs());
