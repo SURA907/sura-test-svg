@@ -118,13 +118,13 @@ public class Transaction {
 
 ``` java
 public class Receipt {
-    private String result; // Resource function's return output
-    private long code; // Error code
-    private String message; // Error message
+    private String[] result; // Resource function's return output
+    private int code; // Error code of blockchain
+    private String message; // Error message of blockchain
     private String path; // Transaction path of the calling resource. eg: payment.chain0.hello
     private String method; // Transaction method of resource function name. eg: "transfer"
     private String[] args; // Transaction arguments of function. eg: ["Tom", "100"]
-    private String transactionHash; // Transaction hash
+    private String transactionHash; // Original transaction hash
     private byte[] transactionBytes; // The original transaction bytes of a certain blockchain
     private long blockNumber; // Block number of this transaction belongs to
     
@@ -148,7 +148,7 @@ public class CallRequest {
 
 ``` java
 public class CallResponse {
-    private String result; // Resource function's return output
+    private String[] result; // Resource function's return output
     private long code; // Error code
     private String message; // Error message
     private String path; // Transaction path of the calling resource. eg: payment.chain0.hello
