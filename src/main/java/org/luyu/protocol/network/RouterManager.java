@@ -1,34 +1,20 @@
 package org.luyu.protocol.network;
 
+import org.luyu.protocol.link.Driver;
+
 public interface RouterManager {
 
-    interface ReceiptCallback {
-        void onResponse(Receipt receipt);
-    }
+    void sendTransaction(Transaction tx, Driver.ReceiptCallback callback);
 
-    interface CallResponseCallback {
-        void onResponse(CallResponse response);
-    }
+    void call(CallRequest request, Driver.CallResponseCallback callback);
 
-    interface BlockCallback {
-        void onResponse(Block block);
-    }
+    void getTransactionReceipt(String chainPath, String txHash, Driver.ReceiptCallback callback);
 
-    interface ResourcesCallback {
-        void onResponse(Resource[] resources);
-    }
+    void getBlockByHash(String chainPath, String blockHash, Driver.BlockCallback callback);
 
-    void sendTransaction(Transaction tx, ReceiptCallback callback);
-
-    void call(CallRequest request, CallResponseCallback callback);
-
-    void getTransactionReceipt(String chainPath, String txHash, ReceiptCallback callback);
-
-    void getBlockByHash(String chainPath, String blockHash, BlockCallback callback);
-
-    void getBlockByNumber(String chainPath, long blockNumber, BlockCallback callback);
+    void getBlockByNumber(String chainPath, long blockNumber, Driver.BlockCallback callback);
 
     long getBlockNumber(String chainPath);
 
-    void listResources(String chainPath, ResourcesCallback callback);
+    void listResources(String chainPath, Driver.ResourcesCallback callback);
 }

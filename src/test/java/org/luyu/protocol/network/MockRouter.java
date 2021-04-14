@@ -32,7 +32,7 @@ public class MockRouter implements RouterManager {
     }
 
     @Override
-    public void sendTransaction(Transaction tx, ReceiptCallback callback) {
+    public void sendTransaction(Transaction tx, Driver.ReceiptCallback callback) {
         ChainAccount chainAccount = accountManager.verifyAndGetChainAccount(tx);
         if (chainAccount != null) {
             tx.setKey(chainAccount.getSecKey());
@@ -47,10 +47,10 @@ public class MockRouter implements RouterManager {
                         public void onResponse(int status, String message, Receipt receipt) {
                             if (status == Driver.STATUS.OK) {
                                 System.out.println("==> Receipt: " + receipt.toString());
-                                callback.onResponse(receipt);
+                                callback.onResponse(status, message, receipt);
                             } else {
                                 System.out.println(message);
-                                callback.onResponse(null);
+                                callback.onResponse(status, message, receipt);
                             }
                         }
                     });
@@ -58,7 +58,7 @@ public class MockRouter implements RouterManager {
     }
 
     @Override
-    public void call(CallRequest request, CallResponseCallback callback) {
+    public void call(CallRequest request, Driver.CallResponseCallback callback) {
         System.out.println("==> Call: " + request.toString());
         String chainPath = Utils.getChainPath(request.getPath());
         Driver driver = drivers.get(chainPath);
@@ -69,17 +69,18 @@ public class MockRouter implements RouterManager {
                     public void onResponse(int status, String message, CallResponse response) {
                         if (status == Driver.STATUS.OK) {
                             System.out.println("==> CallResponse: " + response.toString());
-                            callback.onResponse(response);
+                            callback.onResponse(status, message, response);
                         } else {
                             System.out.println(message);
-                            callback.onResponse(null);
+                            callback.onResponse(status, message, response);
                         }
                     }
                 });
     }
 
     @Override
-    public void getTransactionReceipt(String chainPath, String txHash, ReceiptCallback callback) {
+    public void getTransactionReceipt(
+            String chainPath, String txHash, Driver.ReceiptCallback callback) {
         System.out.println("==> GetTransactionReceipt: " + txHash);
         Driver driver = drivers.get(Utils.getChainPath(chainPath));
         driver.getTransactionReceipt(
@@ -89,17 +90,17 @@ public class MockRouter implements RouterManager {
                     public void onResponse(int status, String message, Receipt receipt) {
                         if (status == Driver.STATUS.OK) {
                             System.out.println("==> Receipt: " + receipt.toString());
-                            callback.onResponse(receipt);
+                            callback.onResponse(status, message, receipt);
                         } else {
                             System.out.println(message);
-                            callback.onResponse(null);
+                            callback.onResponse(status, message, receipt);
                         }
                     }
                 });
     }
 
     @Override
-    public void getBlockByHash(String chainPath, String blockHash, BlockCallback callback) {
+    public void getBlockByHash(String chainPath, String blockHash, Driver.BlockCallback callback) {
         Driver driver = drivers.get(Utils.getChainPath(chainPath));
         driver.getBlockByHash(
                 blockHash,
@@ -108,17 +109,18 @@ public class MockRouter implements RouterManager {
                     public void onResponse(int status, String message, Block block) {
                         if (status == Driver.STATUS.OK) {
                             System.out.println("==> Block: " + block.toString());
-                            callback.onResponse(block);
+                            callback.onResponse(status, message, block);
                         } else {
                             System.out.println(message);
-                            callback.onResponse(null);
+                            callback.onResponse(status, message, block);
                         }
                     }
                 });
     }
 
     @Override
-    public void getBlockByNumber(String chainPath, long blockNumber, BlockCallback callback) {
+    public void getBlockByNumber(
+            String chainPath, long blockNumber, Driver.BlockCallback callback) {
         Driver driver = drivers.get(Utils.getChainPath(chainPath));
         driver.getBlockByNumber(
                 blockNumber,
@@ -127,10 +129,10 @@ public class MockRouter implements RouterManager {
                     public void onResponse(int status, String message, Block block) {
                         if (status == Driver.STATUS.OK) {
                             System.out.println("==> Block: " + block.toString());
-                            callback.onResponse(block);
+                            callback.onResponse(status, message, block);
                         } else {
                             System.out.println(message);
-                            callback.onResponse(null);
+                            callback.onResponse(status, message, block);
                         }
                     }
                 });
@@ -143,7 +145,7 @@ public class MockRouter implements RouterManager {
     }
 
     @Override
-    public void listResources(String chainPath, ResourcesCallback callback) {
+    public void listResources(String chainPath, Driver.ResourcesCallback callback) {
         Driver driver = drivers.get(Utils.getChainPath(chainPath));
         driver.listResources(
                 new Driver.ResourcesCallback() {
@@ -151,10 +153,10 @@ public class MockRouter implements RouterManager {
                     public void onResponse(int status, String message, Resource[] resources) {
                         if (status == Driver.STATUS.OK) {
                             System.out.println("==> Resources: size " + resources.length);
-                            callback.onResponse(resources);
+                            callback.onResponse(status, message, resources);
                         } else {
                             System.out.println(message);
-                            callback.onResponse(null);
+                            callback.onResponse(status, message, resources);
                         }
                     }
                 });

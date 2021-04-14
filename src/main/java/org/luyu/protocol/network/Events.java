@@ -1,5 +1,7 @@
 package org.luyu.protocol.network;
 
+import org.luyu.protocol.link.Driver;
+
 /** The events call from link layer */
 public interface Events {
 
@@ -10,7 +12,7 @@ public interface Events {
      * @param tx The transaction to destination blockchain (remain 'key' and 'LuyuSign' empty)
      * @param callback
      */
-    void sendTransaction(byte[] identity, Transaction tx, RouterManager.ReceiptCallback callback);
+    void sendTransaction(byte[] identity, Transaction tx, Driver.ReceiptCallback callback);
 
     /**
      * Call to another resource through router
@@ -18,7 +20,7 @@ public interface Events {
      * @param request The callRequest to destination blockchain
      * @param callback
      */
-    void call(CallRequest request, RouterManager.CallResponseCallback callback);
+    void call(CallRequest request, Driver.CallResponseCallback callback);
 
     interface KeyCallback {
         void onResponse(byte[] key);

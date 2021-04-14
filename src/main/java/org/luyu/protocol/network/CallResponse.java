@@ -3,18 +3,18 @@ package org.luyu.protocol.network;
 import java.util.Arrays;
 
 public class CallResponse {
-    private String result; // Resource function's return output
+    private String[] result; // Resource function's return output
     private long code; // Error code
     private String message; // Error message
     private String path; // Transaction path of the calling resource. eg: payment.chain0.hello
     private String method; // Transaction method of resource function name. eg: "transfer"
     private String[] args; // Transaction arguments of function. eg: ["Tom", "100"]
 
-    public String getResult() {
+    public String[] getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(String[] result) {
         this.result = result;
     }
 

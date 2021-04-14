@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Receipt {
     private String[] result; // Resource function's return output
-    private long code; // Error code of blockchain
+    private int code; // Error code of blockchain
     private String message; // Error message of blockchain
     private String path; // Transaction path of the calling resource. eg: payment.chain0.hello
     private String method; // Transaction method of resource function name. eg: "transfer"
@@ -21,11 +21,11 @@ public class Receipt {
         this.result = result;
     }
 
-    public long getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(long code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
