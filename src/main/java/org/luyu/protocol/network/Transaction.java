@@ -1,6 +1,8 @@
 package org.luyu.protocol.network;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Transaction {
     private String path; // Path of the calling resource. eg: payment.chain0.hello
@@ -13,6 +15,9 @@ public class Transaction {
 
     // Either key or LuyuSign, if key not set, use this sign to query AccountManager
     private byte[] LuyuSign; // Signature by luyu account
+
+    // Ext params
+    private Map<String, Object> properties = new HashMap<>();
 
     public String getPath() {
         return path;
@@ -62,6 +67,14 @@ public class Transaction {
         LuyuSign = luyuSign;
     }
 
+    public Map<String, Object> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, Object> properties) {
+        this.properties = properties;
+    }
+
     @Override
     public String toString() {
         return "Transaction{"
@@ -75,8 +88,12 @@ public class Transaction {
                 + Arrays.toString(args)
                 + ", nonce="
                 + nonce
+                + ", key="
+                + Arrays.toString(key)
                 + ", LuyuSign="
                 + Arrays.toString(LuyuSign)
+                + ", properties="
+                + properties
                 + '}';
     }
 }
