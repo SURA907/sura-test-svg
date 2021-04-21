@@ -109,7 +109,7 @@ public class HelloDriver implements Driver {
                     public void onResponse(int errorCode, String message, byte[] responseData) {
                         // assume this demo always response ok
                         CallResponse callResponse = new CallResponse();
-                        callResponse.setResult(new String(responseData));
+                        callResponse.setResult(new String[]{new String(responseData)});
                         callResponse.setCode(0); // original receipt status
                         callResponse.setMessage("Success");
                         callResponse.setMethod(request.getMethod());
