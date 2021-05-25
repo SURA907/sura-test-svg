@@ -102,10 +102,11 @@ public class MockBlockchain {
     public void registerBlockEvent(BlockEvent event) {
         blockEvent.add(event);
 
-        // Push latest block
-        long number = getBlockNumber();
-        byte[] blockBytes = getBlockByNumber(number);
-        event.onNewBlock(blockBytes);
+        // Push all block
+        for (long number = 0; number <= getBlockNumber(); number++) {
+            byte[] blockBytes = getBlockByNumber(number);
+            event.onNewBlock(blockBytes);
+        }
     }
 
     public void registerContractEvent(ContractEvent event) {

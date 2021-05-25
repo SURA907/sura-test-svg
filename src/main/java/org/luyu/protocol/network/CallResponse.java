@@ -62,7 +62,7 @@ public class CallResponse {
     public String toString() {
         return "CallResponse{"
                 + "result='"
-                + result
+                + Arrays.toString(result)
                 + '\''
                 + ", code="
                 + code

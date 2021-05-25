@@ -89,7 +89,7 @@ public class Receipt {
     public String toString() {
         return "Receipt{"
                 + "result='"
-                + result
+                + Arrays.toString(result)
                 + '\''
                 + ", code="
                 + code

@@ -33,14 +33,15 @@ public class MockRouter implements RouterManager {
 
     @Override
     public void sendTransaction(Transaction tx, Driver.ReceiptCallback callback) {
-        ChainAccount chainAccount = accountManager.verifyAndGetChainAccount(tx);
-        if (chainAccount != null) {
-            tx.setKey(chainAccount.getSecKey());
+        System.out.println("==> SendTransaction: " + tx.toString());
+        String chainPath = Utils.getChainPath(tx.getPath());
+        Driver driver = drivers.get(chainPath);
+        Account account =
+                accountManager.getAccountBySignature(driver.getSignatureType(), tx.getLuyuSign());
+        if (account != null) {
 
-            System.out.println("==> SendTransaction: " + tx.toString());
-            String chainPath = Utils.getChainPath(tx.getPath());
-            Driver driver = drivers.get(chainPath);
             driver.sendTransaction(
+                    account,
                     tx,
                     new Driver.ReceiptCallback() {
                         @Override
@@ -62,20 +63,26 @@ public class MockRouter implements RouterManager {
         System.out.println("==> Call: " + request.toString());
         String chainPath = Utils.getChainPath(request.getPath());
         Driver driver = drivers.get(chainPath);
-        driver.call(
-                request,
-                new Driver.CallResponseCallback() {
-                    @Override
-                    public void onResponse(int status, String message, CallResponse response) {
-                        if (status == Driver.STATUS.OK) {
-                            System.out.println("==> CallResponse: " + response.toString());
-                            callback.onResponse(status, message, response);
-                        } else {
-                            System.out.println(message);
-                            callback.onResponse(status, message, response);
+        Account account =
+                accountManager.getAccountBySignature(
+                        driver.getSignatureType(), request.getLuyuSign());
+        if (account != null) {
+            driver.call(
+                    account,
+                    request,
+                    new Driver.CallResponseCallback() {
+                        @Override
+                        public void onResponse(int status, String message, CallResponse response) {
+                            if (status == Driver.STATUS.OK) {
+                                System.out.println("==> CallResponse: " + response.toString());
+                                callback.onResponse(status, message, response);
+                            } else {
+                                System.out.println(message);
+                                callback.onResponse(status, message, response);
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     @Override

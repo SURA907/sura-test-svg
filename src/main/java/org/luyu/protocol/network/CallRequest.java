@@ -8,6 +8,9 @@ public class CallRequest {
     private String path; // Path of the calling resource. eg: payment.chain0.hello
     private String method; // Method of resource function name. eg: "transfer"
     private String[] args; // Arguments of function. eg: ["Tom", "100"]
+    private long nonce; // Nonce for unique
+
+    private byte[] LuyuSign; // Signature by luyu account
 
     private Map<String, Object> properties = new HashMap<>(); // Ext params
 
@@ -35,6 +38,22 @@ public class CallRequest {
         this.args = args;
     }
 
+    public long getNonce() {
+        return nonce;
+    }
+
+    public void setNonce(long nonce) {
+        this.nonce = nonce;
+    }
+
+    public byte[] getLuyuSign() {
+        return LuyuSign;
+    }
+
+    public void setLuyuSign(byte[] luyuSign) {
+        LuyuSign = luyuSign;
+    }
+
     public Map<String, Object> getProperties() {
         return properties;
     }
@@ -54,6 +73,10 @@ public class CallRequest {
                 + '\''
                 + ", args="
                 + Arrays.toString(args)
+                + ", nonce="
+                + nonce
+                + ", LuyuSign="
+                + Arrays.toString(LuyuSign)
                 + ", properties="
                 + properties
                 + '}';

@@ -3,7 +3,9 @@ package org.luyu.protocol.link;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import org.luyu.protocol.algorithm.MockSignatureAlgorithm;
 import org.luyu.protocol.blockchain.MockBlockchain;
+import org.luyu.protocol.network.Account;
 import org.luyu.protocol.network.Block;
 import org.luyu.protocol.network.CallRequest;
 import org.luyu.protocol.network.CallResponse;
@@ -11,7 +13,6 @@ import org.luyu.protocol.network.Events;
 import org.luyu.protocol.network.Receipt;
 import org.luyu.protocol.network.Resource;
 import org.luyu.protocol.network.Transaction;
-import org.luyu.protocol.utils.Utils;
 
 public class HelloDriver implements Driver {
 
@@ -33,7 +34,7 @@ public class HelloDriver implements Driver {
     }
 
     @Override
-    public void sendTransaction(Transaction request, ReceiptCallback callback) {
+    public void sendTransaction(Account account, Transaction request, ReceiptCallback callback) {
         // Encode transaction
         String txBytesStr = request.getMethod() + "(";
         for (String arg : request.getArgs()) {
@@ -43,7 +44,7 @@ public class HelloDriver implements Driver {
         byte[] txBytes = txBytesStr.getBytes(StandardCharsets.UTF_8);
 
         // Sign transaction
-        byte[] signedTx = accountSign(request.getKey(), txBytes);
+        byte[] signedTx = account.sign(txBytes);
 
         // Send
         connection.asyncSend(
@@ -91,7 +92,7 @@ public class HelloDriver implements Driver {
     }
 
     @Override
-    public void call(CallRequest request, CallResponseCallback callback) {
+    public void call(Account account, CallRequest request, CallResponseCallback callback) {
         // Encode call payload
         String callPayloadStr = request.getMethod() + "(";
         for (String arg : request.getArgs()) {
@@ -100,16 +101,19 @@ public class HelloDriver implements Driver {
         callPayloadStr += ")";
         byte[] callPayload = callPayloadStr.getBytes(StandardCharsets.UTF_8);
 
+        // Sign payload if your blockchain needed
+        byte[] signedPayload = account.sign(callPayload);
+
         connection.asyncSend(
                 request.getPath(),
                 HelloConnection.SEND_TRANSACTION,
-                callPayload,
+                signedPayload,
                 new Connection.Callback() {
                     @Override
                     public void onResponse(int errorCode, String message, byte[] responseData) {
                         // assume this demo always response ok
                         CallResponse callResponse = new CallResponse();
-                        callResponse.setResult(new String[]{new String(responseData)});
+                        callResponse.setResult(new String[] {new String(responseData)});
                         callResponse.setCode(0); // original receipt status
                         callResponse.setMessage("Success");
                         callResponse.setMethod(request.getMethod());
@@ -169,12 +173,18 @@ public class HelloDriver implements Driver {
     @Override
     public void getBlockByHash(String blockHash, BlockCallback callback) {
         long blockNumber = Long.parseLong(blockHash);
-        callback.onResponse(STATUS.OK, "Success", blockchain.getBlock(blockNumber));
+        getBlockByNumber(blockNumber, callback);
     }
 
     @Override
     public void getBlockByNumber(long blockNumber, BlockCallback callback) {
-        callback.onResponse(STATUS.OK, "Success", blockchain.getBlock(blockNumber));
+        Block block = blockchain.getBlock(blockNumber);
+        if (block != null) {
+            callback.onResponse(STATUS.OK, "Success", block);
+        } else {
+            callback.onResponse(
+                    STATUS.INTERNAL_ERROR, "Block-" + blockNumber + " has not been synced", null);
+        }
     }
 
     @Override
@@ -183,18 +193,13 @@ public class HelloDriver implements Driver {
     }
 
     @Override
-    public byte[] accountSign(byte[] key, byte[] message) {
-        return Utils.bytesConcat(message, key);
-    }
-
-    @Override
-    public boolean accountVerify(byte[] identity, byte[] signBytes, byte[] message) {
-        return true;
-    }
-
-    @Override
     public String getType() {
         return "Hello1.0";
+    }
+
+    @Override
+    public String getSignatureType() {
+        return MockSignatureAlgorithm.TYPE;
     }
 
     @Override
@@ -245,10 +250,12 @@ public class HelloDriver implements Driver {
 
                         // verify continuity of receive chain
                         String lastBlockHash = "aabbccdd";
-                        if (block.getParentHash().equals(lastBlockHash)) {
+                        if (blockNumber == 0 || block.getParentHash()[0].equals(lastBlockHash)) {
                             blockchain.setBlock(block);
                             System.out.println(
                                     "Update blockchain cache, blockNumber: " + blockNumber);
+                        } else {
+                            System.out.println("Recieve illegal block");
                         }
                     }
                 });

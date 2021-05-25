@@ -6,8 +6,8 @@ import java.util.Map;
 public class Resource {
     private String path; // Path of the resource. eg: payment.chain0.hello
     private String type; // Blockchain type that the resource belongs to
-    private String[]
-            methods; // Method list of resource function name. eg: ["transfer(2)", "balanceOf(1)"]
+    private String[] methods; // Method list of resource function name. eg: ["transfer(2,1)",
+    // "balanceOf(1,1)"]
     private Map<String, Object> properties; // Other property if needed
 
     public String getPath() {

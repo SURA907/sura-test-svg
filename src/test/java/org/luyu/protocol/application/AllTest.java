@@ -98,6 +98,10 @@ public class AllTest {
             Thread.sleep(1700);
             Block blockX = sdk.getBlockByNumber(RESOURCE_PATH, testBlockNumber);
             Block blockY = sdk.getBlockByHash(RESOURCE_PATH, String.valueOf(testBlockNumber));
+            if (blockX == null || blockY == null) {
+                continue;
+            }
+
             Assert.assertEquals(blockX, blockY);
             testBlockNumber = blockX.getNumber() + 1;
         }

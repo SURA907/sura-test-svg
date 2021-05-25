@@ -1,5 +1,6 @@
 package org.luyu.protocol.link;
 
+import org.luyu.protocol.network.Account;
 import org.luyu.protocol.network.Block;
 import org.luyu.protocol.network.CallRequest;
 import org.luyu.protocol.network.CallResponse;
@@ -67,7 +68,7 @@ public interface Driver {
      * @param request
      * @param callback
      */
-    void sendTransaction(Transaction request, ReceiptCallback callback);
+    void sendTransaction(Account account, Transaction request, ReceiptCallback callback);
 
     /**
      * Query a contract api of blockchain without verifying on-chain proof (no block generated)
@@ -75,7 +76,7 @@ public interface Driver {
      * @param request
      * @param callback
      */
-    void call(CallRequest request, CallResponseCallback callback);
+    void call(Account account, CallRequest request, CallResponseCallback callback);
 
     /**
      * Get a transaction receipt by transaction hash with verifying on-chain proof
@@ -109,30 +110,18 @@ public interface Driver {
     long getBlockNumber();
 
     /**
-     * Sign message with account secret key
-     *
-     * @param key The secret key of an account
-     * @param message The message for signing
-     * @return signBytes
-     */
-    byte[] accountSign(byte[] key, byte[] message);
-
-    /**
-     * Verify signature of an account
-     *
-     * @param identity Account's identity, eg: address or public key
-     * @param signBytes Signature with binary encoded
-     * @param message The message for signing
-     * @return
-     */
-    boolean accountVerify(byte[] identity, byte[] signBytes, byte[] message);
-
-    /**
      * Get block chain driver type
      *
      * @return
      */
     String getType();
+
+    /**
+     * Get signature type defined in SignatureAlgorithm.getType() (eg: SM2.TYPE)
+     *
+     * @return
+     */
+    String getSignatureType();
 
     /**
      * Get resource list belongs to a chain

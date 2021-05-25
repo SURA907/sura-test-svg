@@ -10,10 +10,6 @@ public class Transaction {
     private String[] args; // Arguments of function. eg: ["Tom", "100"]
     private long nonce; // Nonce for unique
 
-    // Either key or LuyuSign
-    private byte[] key; // Secret key of a certain blockchain
-
-    // Either key or LuyuSign, if key not set, use this sign to query AccountManager
     private byte[] LuyuSign; // Signature by luyu account
 
     // Ext params
@@ -51,14 +47,6 @@ public class Transaction {
         this.nonce = nonce;
     }
 
-    public byte[] getKey() {
-        return key;
-    }
-
-    public void setKey(byte[] key) {
-        this.key = key;
-    }
-
     public byte[] getLuyuSign() {
         return LuyuSign;
     }
@@ -88,8 +76,6 @@ public class Transaction {
                 + Arrays.toString(args)
                 + ", nonce="
                 + nonce
-                + ", key="
-                + Arrays.toString(key)
                 + ", LuyuSign="
                 + Arrays.toString(LuyuSign)
                 + ", properties="

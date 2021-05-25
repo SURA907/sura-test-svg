@@ -1,8 +1,21 @@
 package org.luyu.protocol.network;
 
 public interface AccountManager {
-    ChainAccount verifyAndGetChainAccount(Transaction tx);
+    /**
+     * Get account by luyu signature
+     *
+     * @param signatureType
+     * @param LuyuSign
+     * @return
+     */
+    Account getAccountBySignature(String signatureType, byte[] LuyuSign);
 
-    ChainAccount getChainAccountByIdentity(
-            byte[] identity, String fromChainType, String toChainType);
+    /**
+     * Get account by account's identity
+     *
+     * @param signatureType
+     * @param identity
+     * @return
+     */
+    Account getAccountByIdentity(String signatureType, byte[] identity);
 }
