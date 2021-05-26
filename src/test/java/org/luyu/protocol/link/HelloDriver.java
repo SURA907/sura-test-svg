@@ -13,10 +13,11 @@ import org.luyu.protocol.network.Events;
 import org.luyu.protocol.network.Receipt;
 import org.luyu.protocol.network.Resource;
 import org.luyu.protocol.network.Transaction;
+import org.luyu.protocol.utils.Utils;
 
 public class HelloDriver implements Driver {
 
-    private BlockChainCache blockchain = new BlockChainCache();
+    private BlockChainCache blockChainCache = new BlockChainCache();
     private Map<String, Resource> resources = new HashMap<>();
     private Connection connection;
     private String chainPath;
@@ -44,48 +45,70 @@ public class HelloDriver implements Driver {
         byte[] txBytes = txBytesStr.getBytes(StandardCharsets.UTF_8);
 
         // Sign transaction
-        byte[] signedTx = account.sign(txBytes);
-
-        // Send
-        connection.asyncSend(
-                request.getPath(),
-                HelloConnection.SEND_TRANSACTION,
-                signedTx,
-                new Connection.Callback() {
+        account.sign(
+                txBytes,
+                new Account.SignCallback() {
                     @Override
-                    public void onResponse(int errorCode, String message, byte[] responseData) {
-                        // assume this demo always response ok
-
-                        // waiting blockHeader syncing
-                        long needBlockNumber = parseBlockNumberFromReceiptAndProof(responseData);
-                        while (getBlockNumber() != needBlockNumber) {
-                            try {
-                                System.out.println("Waiting for block-" + needBlockNumber);
-                                Thread.sleep(1000); // You can use Future<> to optimize here
-                            } catch (Exception e) {
-                            }
-                        }
-                        byte[] blockHeaderBytes = blockchain.getHeaderBytes(needBlockNumber);
-
-                        // verify transaction on-chain proof
-                        if (verifyTransactionAndOnChainProof(blockHeaderBytes, responseData)) {
-                            // response receipt
-                            Receipt receipt = new Receipt();
-                            receipt.setResult(new String[] {responseData.toString()});
-                            receipt.setBlockNumber(needBlockNumber);
-                            receipt.setMethod(request.getMethod());
-                            receipt.setArgs(request.getArgs());
-                            receipt.setPath(request.getPath());
-                            receipt.setCode(0); // SUCCESS
-                            receipt.setMessage("Success");
-                            receipt.setTransactionBytes(responseData);
-                            receipt.setTransactionHash(new String(responseData));
-                            callback.onResponse(STATUS.OK, "Success", receipt);
+                    public void onResponse(int status, String message, byte[] signBytes) {
+                        if (status != Account.STATUS.OK) {
+                            System.out.println("Account sign error(" + status + "): " + message);
                         } else {
-                            callback.onResponse(
-                                    STATUS.INTERNAL_ERROR,
-                                    "Proof verify failed of tx: " + new String(responseData),
-                                    null);
+                            // Send
+                            connection.asyncSend(
+                                    request.getPath(),
+                                    HelloConnection.SEND_TRANSACTION,
+                                    signBytes,
+                                    new Connection.Callback() {
+                                        @Override
+                                        public void onResponse(
+                                                int errorCode,
+                                                String message,
+                                                byte[] responseData) {
+                                            // assume this demo always response ok
+
+                                            // waiting blockHeader syncing
+                                            long needBlockNumber =
+                                                    parseBlockNumberFromReceiptAndProof(
+                                                            responseData);
+                                            while (getBlockNumber() != needBlockNumber) {
+                                                try {
+                                                    System.out.println(
+                                                            "Waiting for block-" + needBlockNumber);
+                                                    Thread.sleep(
+                                                            1000); // You can use Future<> to
+                                                                   // optimize here
+                                                } catch (Exception e) {
+                                                }
+                                            }
+                                            byte[] blockHeaderBytes =
+                                                    blockChainCache.getHeaderBytes(needBlockNumber);
+
+                                            // verify transaction on-chain proof
+                                            if (verifyTransactionAndOnChainProof(
+                                                    blockHeaderBytes, responseData)) {
+                                                // response receipt
+                                                Receipt receipt = new Receipt();
+                                                receipt.setResult(
+                                                        new String[] {new String(responseData)});
+                                                receipt.setBlockNumber(needBlockNumber);
+                                                receipt.setMethod(request.getMethod());
+                                                receipt.setArgs(request.getArgs());
+                                                receipt.setPath(request.getPath());
+                                                receipt.setCode(0); // SUCCESS
+                                                receipt.setMessage("Success");
+                                                receipt.setTransactionBytes(responseData);
+                                                receipt.setTransactionHash(
+                                                        new String(responseData));
+                                                callback.onResponse(STATUS.OK, "Success", receipt);
+                                            } else {
+                                                callback.onResponse(
+                                                        STATUS.INTERNAL_ERROR,
+                                                        "Proof verify failed of tx: "
+                                                                + new String(responseData),
+                                                        null);
+                                            }
+                                        }
+                                    });
                         }
                     }
                 });
@@ -102,24 +125,37 @@ public class HelloDriver implements Driver {
         byte[] callPayload = callPayloadStr.getBytes(StandardCharsets.UTF_8);
 
         // Sign payload if your blockchain needed
-        byte[] signedPayload = account.sign(callPayload);
-
-        connection.asyncSend(
-                request.getPath(),
-                HelloConnection.SEND_TRANSACTION,
-                signedPayload,
-                new Connection.Callback() {
+        account.sign(
+                callPayload,
+                new Account.SignCallback() {
                     @Override
-                    public void onResponse(int errorCode, String message, byte[] responseData) {
-                        // assume this demo always response ok
-                        CallResponse callResponse = new CallResponse();
-                        callResponse.setResult(new String[] {new String(responseData)});
-                        callResponse.setCode(0); // original receipt status
-                        callResponse.setMessage("Success");
-                        callResponse.setMethod(request.getMethod());
-                        callResponse.setArgs(request.getArgs());
-                        callResponse.setPath(request.getPath());
-                        callback.onResponse(STATUS.OK, "Success", callResponse);
+                    public void onResponse(int status, String message, byte[] signBytes) {
+                        if (status != Account.STATUS.OK) {
+                            System.out.println("Account sign error(" + status + "): " + message);
+                        } else {
+                            connection.asyncSend(
+                                    request.getPath(),
+                                    HelloConnection.SEND_TRANSACTION,
+                                    signBytes,
+                                    new Connection.Callback() {
+                                        @Override
+                                        public void onResponse(
+                                                int errorCode,
+                                                String message,
+                                                byte[] responseData) {
+                                            // assume this demo always response ok
+                                            CallResponse callResponse = new CallResponse();
+                                            callResponse.setResult(
+                                                    new String[] {new String(responseData)});
+                                            callResponse.setCode(0); // original receipt status
+                                            callResponse.setMessage("Success");
+                                            callResponse.setMethod(request.getMethod());
+                                            callResponse.setArgs(request.getArgs());
+                                            callResponse.setPath(request.getPath());
+                                            callback.onResponse(STATUS.OK, "Success", callResponse);
+                                        }
+                                    });
+                        }
                     }
                 });
     }
@@ -137,14 +173,14 @@ public class HelloDriver implements Driver {
 
                         // waiting blockHeader syncing
                         long needBlockNumber = parseBlockNumberFromReceiptAndProof(responseData);
-                        while (getBlockNumber() != needBlockNumber) {
+                        while (getBlockNumber() < needBlockNumber) {
                             try {
                                 System.out.println("Waiting for block-" + needBlockNumber);
                                 Thread.sleep(1000); // You can use Future<> to optimize here
                             } catch (Exception e) {
                             }
                         }
-                        byte[] blockHeaderBytes = blockchain.getHeaderBytes(needBlockNumber);
+                        byte[] blockHeaderBytes = blockChainCache.getHeaderBytes(needBlockNumber);
 
                         // verify transaction on-chain proof
                         if (verifyTransactionAndOnChainProof(blockHeaderBytes, responseData)) {
@@ -178,18 +214,37 @@ public class HelloDriver implements Driver {
 
     @Override
     public void getBlockByNumber(long blockNumber, BlockCallback callback) {
-        Block block = blockchain.getBlock(blockNumber);
-        if (block != null) {
-            callback.onResponse(STATUS.OK, "Success", block);
+        Block block = blockChainCache.getBlock(blockNumber);
+        if (block == null) {
+            byte[] numberBytes = Utils.longToBytes(blockNumber);
+            connection.asyncSend(
+                    chainPath,
+                    HelloConnection.GET_BLOCK_BY_NUMBER,
+                    numberBytes,
+                    new Connection.Callback() {
+                        @Override
+                        public void onResponse(int errorCode, String message, byte[] responseData) {
+                            // responseData is block bytes
+                            long blockNumber = MockBlockchain.Block.parseBlockNumber(responseData);
+
+                            // Add block in blockchain cache
+                            Block block = new Block();
+                            block.setNumber(blockNumber);
+                            block.setBytes(responseData);
+                            block.setParentHash(new String[] {"aabbccdd"});
+                            blockChainCache.setBlock(block);
+
+                            callback.onResponse(errorCode, message, block);
+                        }
+                    });
         } else {
-            callback.onResponse(
-                    STATUS.INTERNAL_ERROR, "Block-" + blockNumber + " has not been synced", null);
+            callback.onResponse(STATUS.OK, "Success", blockChainCache.getBlock(blockNumber));
         }
     }
 
     @Override
     public long getBlockNumber() {
-        return blockchain.getBlockNumber();
+        return blockChainCache.getBlockNumber();
     }
 
     @Override
@@ -250,8 +305,8 @@ public class HelloDriver implements Driver {
 
                         // verify continuity of receive chain
                         String lastBlockHash = "aabbccdd";
-                        if (blockNumber == 0 || block.getParentHash()[0].equals(lastBlockHash)) {
-                            blockchain.setBlock(block);
+                        if (block.getParentHash()[0].equals(lastBlockHash)) {
+                            blockChainCache.setBlock(block);
                             System.out.println(
                                     "Update blockchain cache, blockNumber: " + blockNumber);
                         } else {

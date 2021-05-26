@@ -14,6 +14,7 @@ public class HelloConnection implements Connection {
     public static final int SEND_TRANSACTION = 101;
     public static final int CALL_TRANSACTION = 102;
     public static final int GET_TRANSACTION_RECEIPT = 103;
+    public static final int GET_BLOCK_BY_NUMBER = 104;
 
     public static final int EVENT_NEW_BLOCK = 201;
     public static final int EVENT_RESOURCES_CHANGED = 202;
@@ -70,7 +71,13 @@ public class HelloConnection implements Connection {
                     callback.onResponse(SUCCESS, "Get receipt success", responseData);
                     break;
                 }
-
+            case GET_BLOCK_BY_NUMBER:
+                {
+                    long blockNumber = Utils.bytesToLong(data);
+                    byte[] blockBytes = blockchain.getBlockByNumber(blockNumber);
+                    callback.onResponse(SUCCESS, "Get block by number success", blockBytes);
+                    break;
+                }
             default:
                 {
                     callback.onResponse(ERROR, "Unrecognized type of " + type, null);
