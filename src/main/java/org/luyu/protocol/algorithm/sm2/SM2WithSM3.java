@@ -1,6 +1,8 @@
-package org.luyu.protocol.algorithm;
+package org.luyu.protocol.algorithm.sm2;
 
-public class SM2 implements SignatureAlgorithm {
+import org.luyu.protocol.algorithm.SignatureAlgorithm;
+
+public class SM2WithSM3 implements SignatureAlgorithm {
     public static final String TYPE = "SM2";
 
     @Override

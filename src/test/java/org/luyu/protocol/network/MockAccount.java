@@ -6,7 +6,7 @@ import org.luyu.protocol.algorithm.SignatureAlgorithm;
 
 public class MockAccount implements Account {
     @Override
-    public byte[] getIdentity() {
+    public byte[] getPubKey() {
         return (new String("MockAccount")).getBytes(StandardCharsets.UTF_8);
     }
 
@@ -27,6 +27,6 @@ public class MockAccount implements Account {
 
     private boolean queryAccountManagerToVerify(byte[] signBytes, byte[] message) {
         SignatureAlgorithm algorithm = new MockSignatureAlgorithm();
-        return algorithm.verify(getIdentity(), signBytes, message);
+        return algorithm.verify(getPubKey(), signBytes, message);
     }
 }

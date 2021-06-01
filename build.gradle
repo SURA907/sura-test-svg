@@ -14,7 +14,7 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 
 group 'com.gitee.luyu-community'
-version '1.0.0-05271-SNAPSHOT'
+version '1.0.0-06011-SNAPSHOT'
 
 repositories {
     jcenter()
@@ -24,6 +24,9 @@ repositories {
 }
 
 dependencies {
+
+    compile 'org.bouncycastle:bcprov-jdk15on:1.60'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
 
     // Use JUnit test framework
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'

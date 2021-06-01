@@ -1,7 +1,9 @@
-package org.luyu.protocol.algorithm;
+package org.luyu.protocol.algorithm.ecdsa.secp256r1;
 
-public class EcdsaSecp256k1 implements SignatureAlgorithm {
-    public static final String TYPE = "ECDSA_WITH_SECP256K1";
+import org.luyu.protocol.algorithm.SignatureAlgorithm;
+
+public class EcdsaSecp256r1 implements SignatureAlgorithm {
+    public static final String TYPE = "ECDSA_WITH_SECP256R1";
 
     @Override
     public String getType() {

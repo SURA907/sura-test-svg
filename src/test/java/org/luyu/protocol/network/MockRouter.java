@@ -37,7 +37,8 @@ public class MockRouter implements RouterManager {
         String chainPath = Utils.getChainPath(tx.getPath());
         Driver driver = drivers.get(chainPath);
         Account account =
-                accountManager.getAccountBySignature(driver.getSignatureType(), tx.getLuyuSign());
+                accountManager.getAccountBySignature(
+                        driver.getSignatureType(), tx.getLuyuSign(), new LuyuSignData(tx));
         if (account != null) {
 
             driver.sendTransaction(
@@ -65,7 +66,9 @@ public class MockRouter implements RouterManager {
         Driver driver = drivers.get(chainPath);
         Account account =
                 accountManager.getAccountBySignature(
-                        driver.getSignatureType(), request.getLuyuSign());
+                        driver.getSignatureType(),
+                        request.getLuyuSign(),
+                        new LuyuSignData(request));
         if (account != null) {
             driver.call(
                     account,

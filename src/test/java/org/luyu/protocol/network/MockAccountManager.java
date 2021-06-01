@@ -1,11 +1,13 @@
 package org.luyu.protocol.network;
 
 import org.luyu.protocol.algorithm.*;
+import org.luyu.protocol.algorithm.ecdsa.secp256k1.EcdsaSecp256k1WithSHA256;
+import org.luyu.protocol.algorithm.sm2.SM2WithSM3;
 
 public class MockAccountManager implements AccountManager {
 
     @Override
-    public Account getAccountBySignature(String signatureType, byte[] LuyuSign) {
+    public Account getAccountBySignature(String signatureType, byte[] LuyuSign, LuyuSignData data) {
         return getAccountByIdentity(signatureType, new byte[] {});
     }
 
@@ -14,8 +16,8 @@ public class MockAccountManager implements AccountManager {
         switch (signatureType) {
             case MockSignatureAlgorithm.TYPE:
                 return new MockAccount();
-            case SM2.TYPE:
-            case EcdsaSecp256k1.TYPE:
+            case SM2WithSM3.TYPE:
+            case EcdsaSecp256k1WithSHA256.TYPE:
             default:
                 return null; // unsupported
         }

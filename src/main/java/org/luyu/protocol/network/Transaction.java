@@ -9,6 +9,7 @@ public class Transaction {
     private String method; // Method of resource function name. eg: "transfer"
     private String[] args; // Arguments of function. eg: ["Tom", "100"]
     private long nonce; // Nonce for unique
+    private String sender; // sender of this transaction
 
     private byte[] LuyuSign; // Signature by luyu account
 
@@ -63,6 +64,14 @@ public class Transaction {
         this.properties = properties;
     }
 
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
     @Override
     public String toString() {
         return "Transaction{"
@@ -76,6 +85,9 @@ public class Transaction {
                 + Arrays.toString(args)
                 + ", nonce="
                 + nonce
+                + ", sender='"
+                + sender
+                + '\''
                 + ", LuyuSign="
                 + Arrays.toString(LuyuSign)
                 + ", properties="

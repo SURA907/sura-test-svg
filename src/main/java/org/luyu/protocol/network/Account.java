@@ -26,11 +26,11 @@ public interface Account {
     }
 
     /**
-     * Get identity of this account. eg: address or public key
+     * Get public key of this account
      *
      * @return
      */
-    byte[] getIdentity();
+    byte[] getPubKey();
 
     /**
      * Sign message with this account secret key

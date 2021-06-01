@@ -9,6 +9,7 @@ public class CallRequest {
     private String method; // Method of resource function name. eg: "transfer"
     private String[] args; // Arguments of function. eg: ["Tom", "100"]
     private long nonce; // Nonce for unique
+    private String sender; // sender of this callRequest
 
     private byte[] LuyuSign; // Signature by luyu account
 
@@ -62,6 +63,14 @@ public class CallRequest {
         this.properties = properties;
     }
 
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
     @Override
     public String toString() {
         return "CallRequest{"
@@ -75,6 +84,9 @@ public class CallRequest {
                 + Arrays.toString(args)
                 + ", nonce="
                 + nonce
+                + ", sender='"
+                + sender
+                + '\''
                 + ", LuyuSign="
                 + Arrays.toString(LuyuSign)
                 + ", properties="
