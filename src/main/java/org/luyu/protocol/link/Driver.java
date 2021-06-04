@@ -10,19 +10,11 @@ import org.luyu.protocol.network.Resource;
 import org.luyu.protocol.network.Transaction;
 
 public interface Driver {
-
-    public static class STATUS {
-        public static final int OK = 0;
-        public static final int INTERNAL_ERROR = 100; // driver internal error
-        public static final int CONNECTION_EXCEPTION = 200; // query connection exception
-        public static final int ROUTER_EXCEPTION = 300; // router exception
-    }
-
     interface ReceiptCallback {
         /**
          * Callback to response receipt
          *
-         * @param status Driver.STATUS defined above
+         * @param status common.STATUS defined above
          * @param message error message
          * @param receipt
          */
@@ -33,7 +25,7 @@ public interface Driver {
         /**
          * Callback to response CallResponse
          *
-         * @param status Driver.STATUS defined above
+         * @param status common.STATUS defined above
          * @param message error message
          * @param callResponse
          */
@@ -44,7 +36,7 @@ public interface Driver {
         /**
          * Callback to response block
          *
-         * @param status Driver.STATUS defined above
+         * @param status common.STATUS defined above
          * @param message error message
          * @param block
          */
@@ -55,7 +47,7 @@ public interface Driver {
         /**
          * Callback to response resource list
          *
-         * @param status Driver.STATUS defined above
+         * @param status common.STATUS defined above
          * @param message error message
          * @param resources
          */

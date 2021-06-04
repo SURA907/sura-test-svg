@@ -43,7 +43,7 @@ public class AllTest {
                             tx.setArgs(new String[] {"aaaaa"});
                             tx.setNonce(rand.nextLong());
                             tx.setLuyuSign(new byte[] {});
-                            Receipt receipt = sdk.sendTransaction(tx);
+                            Receipt receipt = sdk.sendTransaction(tx).send();
                             Assert.assertNotNull(receipt);
                         });
             }
@@ -64,7 +64,7 @@ public class AllTest {
                             callRequest.setPath(RESOURCE_PATH);
                             callRequest.setMethod("set");
                             callRequest.setArgs(new String[] {"aaaaa"});
-                            CallResponse response = sdk.call(callRequest);
+                            CallResponse response = sdk.call(callRequest).send();
                             Assert.assertNotNull(response);
                         });
             }
@@ -82,7 +82,8 @@ public class AllTest {
                 final String txHash = "0xhash--" + i + "--" + j;
                 executor.submit(
                         () -> {
-                            Receipt receipt = sdk.getTransactionReceipt(RESOURCE_PATH, txHash);
+                            Receipt receipt =
+                                    sdk.getTransactionReceipt(RESOURCE_PATH, txHash).send();
                             Assert.assertNotNull(receipt);
                         });
             }
@@ -94,10 +95,11 @@ public class AllTest {
     public void getBlockAndNumberTest() throws Exception {
         Thread.sleep(5000);
         long testBlockNumber = 0;
-        while (testBlockNumber <= sdk.getBlockNumber(RESOURCE_PATH)) {
+        while (testBlockNumber <= sdk.getBlockNumber(RESOURCE_PATH).send()) {
             Thread.sleep(1700);
-            Block blockX = sdk.getBlockByNumber(RESOURCE_PATH, testBlockNumber);
-            Block blockY = sdk.getBlockByHash(RESOURCE_PATH, String.valueOf(testBlockNumber));
+            Block blockX = sdk.getBlockByNumber(RESOURCE_PATH, testBlockNumber).send();
+            Block blockY =
+                    sdk.getBlockByHash(RESOURCE_PATH, String.valueOf(testBlockNumber)).send();
             if (blockX == null || blockY == null) {
                 continue;
             }
@@ -112,7 +114,7 @@ public class AllTest {
         Thread.sleep(5000);
         for (int i = 0; i < 10; i++) {
             Thread.sleep(1700);
-            Resource[] resources = sdk.listResources(RESOURCE_PATH);
+            Resource[] resources = sdk.listResources(RESOURCE_PATH).send();
             Assert.assertNotNull(resources);
             System.out.println(Arrays.toString(resources));
         }

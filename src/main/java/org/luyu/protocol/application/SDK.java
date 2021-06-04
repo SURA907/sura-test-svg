@@ -8,17 +8,17 @@ import org.luyu.protocol.network.Resource;
 import org.luyu.protocol.network.Transaction;
 
 public interface SDK {
-    Receipt sendTransaction(Transaction tx);
+    RemoteCall<Receipt> sendTransaction(Transaction tx);
 
-    CallResponse call(CallRequest request);
+    RemoteCall<CallResponse> call(CallRequest request);
 
-    Receipt getTransactionReceipt(String chainPath, String txHash);
+    RemoteCall<Receipt> getTransactionReceipt(String chainPath, String txHash);
 
-    Block getBlockByHash(String chainPath, String blockHash);
+    RemoteCall<Block> getBlockByHash(String chainPath, String blockHash);
 
-    Block getBlockByNumber(String chainPath, long blockNumber);
+    RemoteCall<Block> getBlockByNumber(String chainPath, long blockNumber);
 
-    long getBlockNumber(String chainPath);
+    RemoteCall<Long> getBlockNumber(String chainPath);
 
-    Resource[] listResources(String chainPath);
+    RemoteCall<Resource[]> listResources(String chainPath);
 }

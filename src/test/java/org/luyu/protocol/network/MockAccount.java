@@ -3,6 +3,7 @@ package org.luyu.protocol.network;
 import java.nio.charset.StandardCharsets;
 import org.luyu.protocol.algorithm.MockSignatureAlgorithm;
 import org.luyu.protocol.algorithm.SignatureAlgorithm;
+import org.luyu.protocol.common.STATUS;
 
 public class MockAccount implements Account {
     @Override

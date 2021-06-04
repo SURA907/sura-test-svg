@@ -10,6 +10,8 @@ public class CallResponse {
     private String method; // Transaction method of resource function name. eg: "transfer"
     private String[] args; // Transaction arguments of function. eg: ["Tom", "100"]
 
+    private String version; // version of luyu protocol
+
     public String[] getResult() {
         return result;
     }
@@ -58,12 +60,19 @@ public class CallResponse {
         this.args = args;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     @Override
     public String toString() {
         return "CallResponse{"
-                + "result='"
+                + "result="
                 + Arrays.toString(result)
-                + '\''
                 + ", code="
                 + code
                 + ", message='"
@@ -77,6 +86,9 @@ public class CallResponse {
                 + '\''
                 + ", args="
                 + Arrays.toString(args)
+                + ", version='"
+                + version
+                + '\''
                 + '}';
     }
 }

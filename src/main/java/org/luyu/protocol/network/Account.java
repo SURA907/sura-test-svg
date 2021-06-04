@@ -1,14 +1,10 @@
 package org.luyu.protocol.network;
 
 public interface Account {
-    public static class STATUS {
-        public static final int OK = 0;
-        public static final int ACCOUNT_MANAGER_EXCEPTION = 1000; // router exception
-    }
 
     interface SignCallback {
         /**
-         * @param status Account.STATUS defined above
+         * @param status STATUS defined above
          * @param message Error message
          * @param signBytes Signature bytes
          */
@@ -18,7 +14,7 @@ public interface Account {
     interface VerifyCallback {
 
         /**
-         * @param status Account.STATUS defined above
+         * @param status STATUS defined above
          * @param message Error message
          * @param verifyResult verify result
          */

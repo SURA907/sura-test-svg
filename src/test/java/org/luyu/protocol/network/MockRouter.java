@@ -2,6 +2,7 @@ package org.luyu.protocol.network;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.luyu.protocol.common.STATUS;
 import org.luyu.protocol.link.Connection;
 import org.luyu.protocol.link.Driver;
 import org.luyu.protocol.link.HelloPluginBuilder;
@@ -47,7 +48,7 @@ public class MockRouter implements RouterManager {
                     new Driver.ReceiptCallback() {
                         @Override
                         public void onResponse(int status, String message, Receipt receipt) {
-                            if (status == Driver.STATUS.OK) {
+                            if (status == STATUS.OK) {
                                 System.out.println("==> Receipt: " + receipt.toString());
                                 callback.onResponse(status, message, receipt);
                             } else {
@@ -76,7 +77,7 @@ public class MockRouter implements RouterManager {
                     new Driver.CallResponseCallback() {
                         @Override
                         public void onResponse(int status, String message, CallResponse response) {
-                            if (status == Driver.STATUS.OK) {
+                            if (status == STATUS.OK) {
                                 System.out.println("==> CallResponse: " + response.toString());
                                 callback.onResponse(status, message, response);
                             } else {
@@ -98,7 +99,7 @@ public class MockRouter implements RouterManager {
                 new Driver.ReceiptCallback() {
                     @Override
                     public void onResponse(int status, String message, Receipt receipt) {
-                        if (status == Driver.STATUS.OK) {
+                        if (status == STATUS.OK) {
                             System.out.println("==> Receipt: " + receipt.toString());
                             callback.onResponse(status, message, receipt);
                         } else {
@@ -117,7 +118,7 @@ public class MockRouter implements RouterManager {
                 new Driver.BlockCallback() {
                     @Override
                     public void onResponse(int status, String message, Block block) {
-                        if (status == Driver.STATUS.OK) {
+                        if (status == STATUS.OK) {
                             System.out.println("==> Block: " + block.toString());
                             callback.onResponse(status, message, block);
                         } else {
@@ -137,7 +138,7 @@ public class MockRouter implements RouterManager {
                 new Driver.BlockCallback() {
                     @Override
                     public void onResponse(int status, String message, Block block) {
-                        if (status == Driver.STATUS.OK) {
+                        if (status == STATUS.OK) {
                             System.out.println("==> Block: " + block.toString());
                             callback.onResponse(status, message, block);
                         } else {
@@ -161,7 +162,7 @@ public class MockRouter implements RouterManager {
                 new Driver.ResourcesCallback() {
                     @Override
                     public void onResponse(int status, String message, Resource[] resources) {
-                        if (status == Driver.STATUS.OK) {
+                        if (status == STATUS.OK) {
                             System.out.println("==> Resources: size " + resources.length);
                             callback.onResponse(status, message, resources);
                         } else {

@@ -10,6 +10,7 @@ public class Transaction {
     private String[] args; // Arguments of function. eg: ["Tom", "100"]
     private long nonce; // Nonce for unique
     private String sender; // sender of this transaction
+    private String version; // version of luyu protocol
 
     private byte[] LuyuSign; // Signature by luyu account
 
@@ -72,6 +73,14 @@ public class Transaction {
         this.sender = sender;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     @Override
     public String toString() {
         return "Transaction{"
@@ -87,6 +96,9 @@ public class Transaction {
                 + nonce
                 + ", sender='"
                 + sender
+                + '\''
+                + ", version='"
+                + version
                 + '\''
                 + ", LuyuSign="
                 + Arrays.toString(LuyuSign)

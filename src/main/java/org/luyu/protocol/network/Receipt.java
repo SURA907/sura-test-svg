@@ -13,6 +13,8 @@ public class Receipt {
     private byte[] transactionBytes; // The original transaction bytes of a certain blockchain
     private long blockNumber; // Block number of this transaction belongs to
 
+    private String version; // version of luyu protocol
+
     public String[] getResult() {
         return result;
     }
@@ -85,12 +87,19 @@ public class Receipt {
         this.blockNumber = blockNumber;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     @Override
     public String toString() {
         return "Receipt{"
-                + "result='"
+                + "result="
                 + Arrays.toString(result)
-                + '\''
                 + ", code="
                 + code
                 + ", message='"
@@ -111,6 +120,9 @@ public class Receipt {
                 + Arrays.toString(transactionBytes)
                 + ", blockNumber="
                 + blockNumber
+                + ", version='"
+                + version
+                + '\''
                 + '}';
     }
 }

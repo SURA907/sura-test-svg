@@ -11,6 +11,8 @@ public class CallRequest {
     private long nonce; // Nonce for unique
     private String sender; // sender of this callRequest
 
+    private String version; // version of luyu protocol
+
     private byte[] LuyuSign; // Signature by luyu account
 
     private Map<String, Object> properties = new HashMap<>(); // Ext params
@@ -71,6 +73,14 @@ public class CallRequest {
         this.sender = sender;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     @Override
     public String toString() {
         return "CallRequest{"
@@ -86,6 +96,9 @@ public class CallRequest {
                 + nonce
                 + ", sender='"
                 + sender
+                + '\''
+                + ", version='"
+                + version
                 + '\''
                 + ", LuyuSign="
                 + Arrays.toString(LuyuSign)

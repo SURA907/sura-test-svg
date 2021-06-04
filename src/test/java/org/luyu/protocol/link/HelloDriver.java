@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.luyu.protocol.algorithm.MockSignatureAlgorithm;
 import org.luyu.protocol.blockchain.MockBlockchain;
+import org.luyu.protocol.common.STATUS;
 import org.luyu.protocol.network.Account;
 import org.luyu.protocol.network.Block;
 import org.luyu.protocol.network.CallRequest;
@@ -74,9 +75,8 @@ public class HelloDriver implements Driver {
                                                 try {
                                                     System.out.println(
                                                             "Waiting for block-" + needBlockNumber);
-                                                    Thread.sleep(
-                                                            1000); // You can use Future<> to
-                                                                   // optimize here
+                                                    Thread.sleep(1000); // You can use Future<> to
+                                                    // optimize here
                                                 } catch (Exception e) {
                                                 }
                                             }

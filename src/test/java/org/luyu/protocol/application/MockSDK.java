@@ -2,6 +2,7 @@ package org.luyu.protocol.application;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import org.luyu.protocol.common.STATUS;
 import org.luyu.protocol.link.Driver;
 import org.luyu.protocol.network.Block;
 import org.luyu.protocol.network.CallRequest;
@@ -20,122 +21,260 @@ public class MockSDK implements SDK {
     }
 
     @Override
-    public Receipt sendTransaction(Transaction tx) {
-        CompletableFuture<Receipt> future = new CompletableFuture<>();
-        router.sendTransaction(
-                tx,
-                new Driver.ReceiptCallback() {
+    public RemoteCall<Receipt> sendTransaction(Transaction tx) {
+        RemoteCall<Receipt> caller =
+                new RemoteCall<Receipt>() {
                     @Override
-                    public void onResponse(int status, String message, Receipt receipt) {
-                        future.complete(receipt);
+                    public Receipt send() {
+                        CompletableFuture<Receipt> future = new CompletableFuture<>();
+                        router.sendTransaction(
+                                tx,
+                                new Driver.ReceiptCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Receipt receipt) {
+                                        future.complete(receipt);
+                                    }
+                                });
+                        try {
+                            return future.get(10, TimeUnit.SECONDS);
+                        } catch (Exception e) {
+                            return null;
+                        }
                     }
-                });
-        try {
-            return future.get(10, TimeUnit.SECONDS);
-        } catch (Exception e) {
-            return null;
-        }
+
+                    @Override
+                    public void asyncSend(Callback<Receipt> callback) {
+                        router.sendTransaction(
+                                tx,
+                                new Driver.ReceiptCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Receipt receipt) {
+                                        callback.onResponse(status, message, receipt);
+                                    }
+                                });
+                    }
+                };
+        return caller;
     }
 
     @Override
-    public CallResponse call(CallRequest request) {
-
-        CompletableFuture<CallResponse> future = new CompletableFuture<>();
-        router.call(
-                request,
-                new Driver.CallResponseCallback() {
+    public RemoteCall<CallResponse> call(CallRequest request) {
+        RemoteCall<CallResponse> caller =
+                new RemoteCall<CallResponse>() {
                     @Override
-                    public void onResponse(int status, String message, CallResponse response) {
-                        future.complete(response);
+                    public CallResponse send() {
+                        CompletableFuture<CallResponse> future = new CompletableFuture<>();
+                        router.call(
+                                request,
+                                new Driver.CallResponseCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, CallResponse response) {
+                                        future.complete(response);
+                                    }
+                                });
+                        try {
+                            return future.get(10, TimeUnit.SECONDS);
+                        } catch (Exception e) {
+                            return null;
+                        }
                     }
-                });
-        try {
-            return future.get(10, TimeUnit.SECONDS);
-        } catch (Exception e) {
-            return null;
-        }
+
+                    @Override
+                    public void asyncSend(Callback<CallResponse> callback) {
+                        router.call(
+                                request,
+                                new Driver.CallResponseCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, CallResponse response) {
+                                        callback.onResponse(status, message, response);
+                                    }
+                                });
+                    }
+                };
+
+        return caller;
     }
 
     @Override
-    public Receipt getTransactionReceipt(String chainPath, String txHash) {
-        CompletableFuture<Receipt> future = new CompletableFuture<>();
-        router.getTransactionReceipt(
-                chainPath,
-                txHash,
-                new Driver.ReceiptCallback() {
+    public RemoteCall<Receipt> getTransactionReceipt(String chainPath, String txHash) {
+        RemoteCall<Receipt> caller =
+                new RemoteCall<Receipt>() {
                     @Override
-                    public void onResponse(int status, String message, Receipt receipt) {
-                        future.complete(receipt);
+                    public Receipt send() {
+                        CompletableFuture<Receipt> future = new CompletableFuture<>();
+                        router.getTransactionReceipt(
+                                chainPath,
+                                txHash,
+                                new Driver.ReceiptCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Receipt receipt) {
+                                        future.complete(receipt);
+                                    }
+                                });
+                        try {
+                            return future.get(10, TimeUnit.SECONDS);
+                        } catch (Exception e) {
+                            return null;
+                        }
                     }
-                });
-        try {
-            return future.get(10, TimeUnit.SECONDS);
-        } catch (Exception e) {
-            return null;
-        }
+
+                    @Override
+                    public void asyncSend(Callback<Receipt> callback) {
+                        router.getTransactionReceipt(
+                                chainPath,
+                                txHash,
+                                new Driver.ReceiptCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Receipt receipt) {
+                                        callback.onResponse(status, message, receipt);
+                                    }
+                                });
+                    }
+                };
+        return caller;
     }
 
     @Override
-    public Block getBlockByHash(String chainPath, String blockHash) {
-
-        CompletableFuture<Block> future = new CompletableFuture<>();
-        router.getBlockByHash(
-                chainPath,
-                blockHash,
-                new Driver.BlockCallback() {
+    public RemoteCall<Block> getBlockByHash(String chainPath, String blockHash) {
+        RemoteCall<Block> caller =
+                new RemoteCall<Block>() {
                     @Override
-                    public void onResponse(int status, String message, Block block) {
-                        future.complete(block);
+                    public Block send() {
+                        CompletableFuture<Block> future = new CompletableFuture<>();
+                        router.getBlockByHash(
+                                chainPath,
+                                blockHash,
+                                new Driver.BlockCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Block block) {
+                                        future.complete(block);
+                                    }
+                                });
+                        try {
+                            return future.get(10, TimeUnit.SECONDS);
+                        } catch (Exception e) {
+                            return null;
+                        }
                     }
-                });
-        try {
-            return future.get(10, TimeUnit.SECONDS);
-        } catch (Exception e) {
-            return null;
-        }
+
+                    @Override
+                    public void asyncSend(Callback<Block> callback) {
+                        router.getBlockByHash(
+                                chainPath,
+                                blockHash,
+                                new Driver.BlockCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Block block) {
+                                        callback.onResponse(status, message, block);
+                                    }
+                                });
+                    }
+                };
+        return caller;
     }
 
     @Override
-    public Block getBlockByNumber(String chainPath, long blockNumber) {
-
-        CompletableFuture<Block> future = new CompletableFuture<>();
-        router.getBlockByNumber(
-                chainPath,
-                blockNumber,
-                new Driver.BlockCallback() {
+    public RemoteCall<Block> getBlockByNumber(String chainPath, long blockNumber) {
+        RemoteCall<Block> caller =
+                new RemoteCall<Block>() {
                     @Override
-                    public void onResponse(int status, String message, Block block) {
-                        future.complete(block);
+                    public Block send() {
+                        CompletableFuture<Block> future = new CompletableFuture<>();
+                        router.getBlockByNumber(
+                                chainPath,
+                                blockNumber,
+                                new Driver.BlockCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Block block) {
+                                        future.complete(block);
+                                    }
+                                });
+                        try {
+                            return future.get(10, TimeUnit.SECONDS);
+                        } catch (Exception e) {
+                            return null;
+                        }
                     }
-                });
-        try {
-            return future.get(10, TimeUnit.SECONDS);
-        } catch (Exception e) {
-            return null;
-        }
+
+                    @Override
+                    public void asyncSend(Callback<Block> callback) {
+                        router.getBlockByNumber(
+                                chainPath,
+                                blockNumber,
+                                new Driver.BlockCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Block block) {
+                                        callback.onResponse(status, message, block);
+                                    }
+                                });
+                    }
+                };
+        return caller;
     }
 
     @Override
-    public long getBlockNumber(String chainPath) {
-        return router.getBlockNumber(chainPath);
+    public RemoteCall<Long> getBlockNumber(String chainPath) {
+        RemoteCall<Long> caller =
+                new RemoteCall<Long>() {
+                    @Override
+                    public Long send() {
+                        return router.getBlockNumber(chainPath);
+                    }
+
+                    @Override
+                    public void asyncSend(Callback<Long> callback) {
+                        callback.onResponse(STATUS.OK, "Success", router.getBlockNumber(chainPath));
+                    }
+                };
+        return caller;
     }
 
     @Override
-    public Resource[] listResources(String chainPath) {
-
-        CompletableFuture<Resource[]> future = new CompletableFuture<>();
-        router.listResources(
-                chainPath,
-                new Driver.ResourcesCallback() {
+    public RemoteCall<Resource[]> listResources(String chainPath) {
+        RemoteCall<Resource[]> caller =
+                new RemoteCall<Resource[]>() {
                     @Override
-                    public void onResponse(int status, String message, Resource[] resources) {
-                        future.complete(resources);
+                    public Resource[] send() {
+                        CompletableFuture<Resource[]> future = new CompletableFuture<>();
+                        router.listResources(
+                                chainPath,
+                                new Driver.ResourcesCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Resource[] resources) {
+                                        future.complete(resources);
+                                    }
+                                });
+                        try {
+                            return future.get(10, TimeUnit.SECONDS);
+                        } catch (Exception e) {
+                            return null;
+                        }
                     }
-                });
-        try {
-            return future.get(10, TimeUnit.SECONDS);
-        } catch (Exception e) {
-            return null;
-        }
+
+                    @Override
+                    public void asyncSend(Callback<Resource[]> callback) {
+                        router.listResources(
+                                chainPath,
+                                new Driver.ResourcesCallback() {
+                                    @Override
+                                    public void onResponse(
+                                            int status, String message, Resource[] resources) {
+                                        callback.onResponse(status, message, resources);
+                                    }
+                                });
+                    }
+                };
+        return caller;
     }
 }

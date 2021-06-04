@@ -11,6 +11,8 @@ public class LuyuSignData {
     private long nonce; // Nonce for unique
     private String sender; // sender of this transaction
 
+    private String version; // version of luyu protocol
+
     public LuyuSignData() {}
 
     public LuyuSignData(Transaction tx) {
@@ -78,5 +80,13 @@ public class LuyuSignData {
 
     public void setSender(String sender) {
         this.sender = sender;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 }
