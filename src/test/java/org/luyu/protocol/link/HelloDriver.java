@@ -51,7 +51,7 @@ public class HelloDriver implements Driver {
                 new Account.SignCallback() {
                     @Override
                     public void onResponse(int status, String message, byte[] signBytes) {
-                        if (status != Account.STATUS.OK) {
+                        if (status != STATUS.OK) {
                             System.out.println("Account sign error(" + status + "): " + message);
                         } else {
                             // Send
@@ -130,7 +130,7 @@ public class HelloDriver implements Driver {
                 new Account.SignCallback() {
                     @Override
                     public void onResponse(int status, String message, byte[] signBytes) {
-                        if (status != Account.STATUS.OK) {
+                        if (status != STATUS.OK) {
                             System.out.println("Account sign error(" + status + "): " + message);
                         } else {
                             connection.asyncSend(

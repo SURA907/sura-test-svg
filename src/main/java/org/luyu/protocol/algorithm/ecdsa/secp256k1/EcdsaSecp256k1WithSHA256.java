@@ -1,6 +1,15 @@
 package org.luyu.protocol.algorithm.ecdsa.secp256k1;
 
 import java.math.BigInteger;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.SecureRandom;
+import java.security.Security;
+import java.security.spec.ECGenParameterSpec;
+import java.util.AbstractMap;
 import java.util.Arrays;
 import java.util.Map;
 import org.bouncycastle.asn1.x9.X9ECParameters;
@@ -10,7 +19,10 @@ import org.bouncycastle.crypto.ec.CustomNamedCurves;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.crypto.signers.HMacDSAKCalculator;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPrivateKey;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.bouncycastle.jcajce.provider.digest.Keccak;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.FixedPointCombMultiplier;
@@ -22,12 +34,18 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
     public static final String TYPE = "ECDSA_SECP256K1_WITH_SHA256";
 
     public static final X9ECParameters CURVE_PARAMS = CustomNamedCurves.getByName("secp256k1");
-    static final ECDomainParameters CURVE =
+    public static final ECDomainParameters CURVE =
             new ECDomainParameters(
                     CURVE_PARAMS.getCurve(),
                     CURVE_PARAMS.getG(),
                     CURVE_PARAMS.getN(),
                     CURVE_PARAMS.getH());
+
+    public static final SecureRandom SECURE_RANDOM = new SecureRandom();
+
+    {
+        Security.addProvider(new BouncyCastleProvider());
+    }
 
     @Override
     public String getType() {
@@ -60,8 +78,29 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
 
     @Override
     public Map.Entry<byte[], byte[]> generateKeyPair() {
-        // TODO: add this
-        return null;
+        try {
+            KeyPair keyPair = createSecp256k1KeyPair(SECURE_RANDOM);
+
+            BCECPrivateKey privateKey = (BCECPrivateKey) keyPair.getPrivate();
+            BCECPublicKey publicKey = (BCECPublicKey) keyPair.getPublic();
+
+            BigInteger privateKeyValue = privateKey.getD();
+
+            // Ethereum does not use encoded public keys like bitcoin - see
+            // https://en.bitcoin.it/wiki/Elliptic_Curve_Digital_Signature_Algorithm for details
+            // Additionally, as the first bit is a constant prefix (0x04) we ignore this value
+            byte[] publicKeyBytes = publicKey.getQ().getEncoded(false);
+            BigInteger publicKeyValue =
+                    new BigInteger(1, Arrays.copyOfRange(publicKeyBytes, 1, publicKeyBytes.length));
+
+            Map.Entry<byte[], byte[]> keyPairBytes =
+                    new AbstractMap.SimpleEntry<>(
+                            publicKeyValue.toByteArray(), privateKeyValue.toByteArray());
+            return keyPairBytes;
+
+        } catch (Exception e) {
+            throw new RuntimeException("generate " + TYPE + " key pair failed, " + e);
+        }
     }
 
     public static byte[] recover(byte[] message, byte[] signBytes) {
@@ -174,5 +213,19 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
             secKey = secKey.mod(CURVE.getN());
         }
         return new FixedPointCombMultiplier().multiply(CURVE.getG(), secKey);
+    }
+
+    private static KeyPair createSecp256k1KeyPair(SecureRandom random)
+            throws NoSuchProviderException, NoSuchAlgorithmException,
+                    InvalidAlgorithmParameterException {
+
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("ECDSA", "BC");
+        ECGenParameterSpec ecGenParameterSpec = new ECGenParameterSpec("secp256k1");
+        if (random != null) {
+            keyPairGenerator.initialize(ecGenParameterSpec, random);
+        } else {
+            keyPairGenerator.initialize(ecGenParameterSpec);
+        }
+        return keyPairGenerator.generateKeyPair();
     }
 }
