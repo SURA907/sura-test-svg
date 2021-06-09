@@ -14,7 +14,7 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 
 group 'com.gitee.luyu-community'
-version '1.0.0-06040-SNAPSHOT'
+version '1.0.0-06090-SNAPSHOT'
 
 repositories {
     jcenter()

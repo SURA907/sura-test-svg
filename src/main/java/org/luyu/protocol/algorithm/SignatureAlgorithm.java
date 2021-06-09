@@ -1,5 +1,7 @@
 package org.luyu.protocol.algorithm;
 
+import java.util.Map;
+
 public interface SignatureAlgorithm {
     /**
      * Get signature type defined in SignatureType.java
@@ -26,4 +28,11 @@ public interface SignatureAlgorithm {
      * @return
      */
     boolean verify(byte[] pubKey, byte[] signBytes, byte[] message);
+
+    /**
+     * Generate key pair
+     *
+     * @return (pubKey bytes, secKey bytes)
+     */
+    Map.Entry<byte[], byte[]> generateKeyPair();
 }

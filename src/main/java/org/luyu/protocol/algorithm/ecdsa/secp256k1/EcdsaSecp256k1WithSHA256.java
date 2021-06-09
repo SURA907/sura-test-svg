@@ -2,6 +2,7 @@ package org.luyu.protocol.algorithm.ecdsa.secp256k1;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Map;
 import org.bouncycastle.asn1.x9.X9ECParameters;
 import org.bouncycastle.asn1.x9.X9IntegerConverter;
 import org.bouncycastle.crypto.digests.SHA256Digest;
@@ -57,6 +58,12 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
         return Arrays.equals(recoverPubKey, pubKey);
     }
 
+    @Override
+    public Map.Entry<byte[], byte[]> generateKeyPair() {
+        // TODO: add this
+        return null;
+    }
+
     public static byte[] recover(byte[] message, byte[] signBytes) {
         // hash message
         byte[] hashedMessage = sha256(message);
@@ -72,12 +79,7 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
         BigInteger n = CURVE.getN(); // Curve order.
         BigInteger i = BigInteger.valueOf((long) recId / 2);
         BigInteger x = r.add(i.multiply(n));
-        //   1.2. Convert the integer x to an octet string X of length mlen using the conversion
-        //        routine specified in Section 2.3.7, where mlen = ⌈(log2 p)/8⌉ or mlen = ⌈m/8⌉.
-        //   1.3. Convert the octet string (16 set binary digits)||X to an elliptic curve point R
-        //        using the conversion routine specified in Section 2.3.4. If this conversion
-        //        routine outputs "invalid", then do another iteration of Step 1.
-        //
+
         // More concisely, what these points mean is to use X as a compressed public key.
         BigInteger prime = SecP256K1Curve.q;
         if (x.compareTo(prime) >= 0) {
