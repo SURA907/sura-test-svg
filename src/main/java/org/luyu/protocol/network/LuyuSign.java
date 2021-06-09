@@ -5,9 +5,11 @@ public interface LuyuSign {
 
     boolean verify(byte[] signBytes, LuyuSignData data);
 
-    String recover(byte[] signBytes, LuyuSignData data);
+    String recover(byte[] signBytes, LuyuSignData data); // recover identity from signBytes
 
-    String secKey2Address(byte[] secKey);
+    String secKey2Identity(
+            byte[] secKey); // Identity means an unique name generated from key. eg: address
 
-    String pubKey2Address(byte[] pubKey);
+    String pubKey2Identity(
+            byte[] pubKey); // Identity means an unique name generated from key. eg: address
 }

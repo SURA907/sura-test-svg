@@ -14,7 +14,7 @@ public interface Driver {
         /**
          * Callback to response receipt
          *
-         * @param status common.STATUS defined above
+         * @param status common.STATUS
          * @param message error message
          * @param receipt
          */
@@ -25,7 +25,7 @@ public interface Driver {
         /**
          * Callback to response CallResponse
          *
-         * @param status common.STATUS defined above
+         * @param status common.STATUS
          * @param message error message
          * @param callResponse
          */
@@ -36,7 +36,7 @@ public interface Driver {
         /**
          * Callback to response block
          *
-         * @param status common.STATUS defined above
+         * @param status common.STATUS
          * @param message error message
          * @param block
          */
@@ -47,7 +47,7 @@ public interface Driver {
         /**
          * Callback to response resource list
          *
-         * @param status common.STATUS defined above
+         * @param status common.STATUS
          * @param message error message
          * @param resources
          */

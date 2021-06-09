@@ -4,7 +4,7 @@ public interface Account {
 
     interface SignCallback {
         /**
-         * @param status STATUS defined above
+         * @param status common.STATUS
          * @param message Error message
          * @param signBytes Signature bytes
          */
@@ -14,7 +14,7 @@ public interface Account {
     interface VerifyCallback {
 
         /**
-         * @param status STATUS defined above
+         * @param status common.STATUS
          * @param message Error message
          * @param verifyResult verify result
          */

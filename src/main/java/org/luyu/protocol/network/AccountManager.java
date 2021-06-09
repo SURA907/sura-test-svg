@@ -5,10 +5,10 @@ public interface AccountManager {
      * Get account by luyu signature
      *
      * @param signatureType
-     * @param LuyuSign
+     * @param luyuSign
      * @return
      */
-    Account getAccountBySignature(String signatureType, byte[] LuyuSign, LuyuSignData data);
+    Account getAccountBySignature(String signatureType, byte[] luyuSign, LuyuSignData data);
 
     /**
      * Get account by account's identity

@@ -21,7 +21,7 @@ public class ECDSALuyuSignTest {
     private LuyuSignData signData;
 
     public ECDSALuyuSignTest() {
-        String sender = signer.secKey2Address(secKey);
+        String sender = signer.secKey2Identity(secKey);
 
         this.signData = new LuyuSignData();
         this.signData.setPath("a.b.c");

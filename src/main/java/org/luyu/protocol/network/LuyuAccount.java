@@ -7,32 +7,32 @@ import java.util.Map;
 // Luyu Account
 public class LuyuAccount {
     private LuyuSign signer;
-    private String address;
+    private String identity;
     private byte[] pubKey;
     private byte[] secKey;
 
-    LuyuAccount() {}
+    public LuyuAccount() {}
 
     public static LuyuAccount build(LuyuSign signer, byte[] pubKey) {
         LuyuAccount account = new LuyuAccount();
-        String address = signer.pubKey2Address(pubKey);
+        String address = signer.pubKey2Identity(pubKey);
         account.setSigner(signer);
-        account.setAddress(address);
+        account.setIdentity(address);
         account.setPubKey(pubKey);
         return account;
     }
 
     public static LuyuAccount build(LuyuSign signer, byte[] pubKey, byte[] secKey) {
         LuyuAccount account = new LuyuAccount();
-        String address = signer.pubKey2Address(pubKey);
-        String addressFromSec = signer.secKey2Address(secKey);
+        String address = signer.pubKey2Identity(pubKey);
+        String addressFromSec = signer.secKey2Identity(secKey);
         if (!address.equals(addressFromSec)) {
             throw new RuntimeException(
                     "Build LuyuAccount pubKey and secKey are not the same! pubKey:"
                             + Arrays.toString(pubKey));
         }
         account.setSigner(signer);
-        account.setAddress(address);
+        account.setIdentity(address);
         account.setPubKey(pubKey);
         account.setSecKey(secKey);
         return account;
@@ -41,11 +41,16 @@ public class LuyuAccount {
     private Map<String, Object> properties = new HashMap<>();
 
     public byte[] sign(LuyuSignData data) {
+        if (secKey == null) {
+            throw new RuntimeException(
+                    "Account " + getIdentity() + " can not be signer for empty secret key");
+        }
+
         return signer.sign(secKey, data);
     }
 
     public boolean verify(byte[] signBytes, LuyuSignData data) {
-        if (!address.equals(data.getSender())) {
+        if (!identity.equals(data.getSender())) {
             return false;
         } else {
             return signer.verify(signBytes, data);
@@ -56,8 +61,8 @@ public class LuyuAccount {
         this.signer = signer;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 
     public void setPubKey(byte[] pubKey) {
@@ -70,5 +75,25 @@ public class LuyuAccount {
 
     public void setProperties(Map<String, Object> properties) {
         this.properties = properties;
+    }
+
+    public LuyuSign getSigner() {
+        return signer;
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public byte[] getPubKey() {
+        return pubKey;
+    }
+
+    public byte[] getSecKey() {
+        return secKey;
+    }
+
+    public Map<String, Object> getProperties() {
+        return properties;
     }
 }

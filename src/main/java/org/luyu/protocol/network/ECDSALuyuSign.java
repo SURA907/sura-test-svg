@@ -35,13 +35,13 @@ public class ECDSALuyuSign implements LuyuSign {
     }
 
     @Override
-    public String secKey2Address(byte[] secKey) {
+    public String secKey2Identity(byte[] secKey) {
         byte[] pubKey = EcdsaSecp256k1WithSHA256.secKey2PubKey(secKey);
-        return pubKey2Address(pubKey);
+        return pubKey2Identity(pubKey);
     }
 
     @Override
-    public String pubKey2Address(byte[] pubKey) {
+    public String pubKey2Identity(byte[] pubKey) {
         return EcdsaSecp256k1WithSHA256.getAddress(pubKey);
     }
 }

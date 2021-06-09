@@ -2,6 +2,9 @@ package org.luyu.protocol.network;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LuyuSignData {
     private static ObjectMapper objectMapper = new ObjectMapper();
@@ -12,6 +15,8 @@ public class LuyuSignData {
     private String sender; // sender of this transaction
 
     private String version; // version of luyu protocol
+
+    private Map<String, byte[]> properties = new HashMap<>();
 
     public LuyuSignData() {}
 
@@ -88,5 +93,37 @@ public class LuyuSignData {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public Map<String, byte[]> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, byte[]> properties) {
+        this.properties = properties;
+    }
+
+    @Override
+    public String toString() {
+        return "LuyuSignData{"
+                + "path='"
+                + path
+                + '\''
+                + ", method='"
+                + method
+                + '\''
+                + ", args="
+                + Arrays.toString(args)
+                + ", nonce="
+                + nonce
+                + ", sender='"
+                + sender
+                + '\''
+                + ", version='"
+                + version
+                + '\''
+                + ", properties="
+                + properties
+                + '}';
     }
 }
