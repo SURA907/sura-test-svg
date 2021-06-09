@@ -83,8 +83,7 @@ public class SignatureData {
     }
 
     /**
-     * @return true if the S component is "low", that means it is below {@link
-     *     SM2#HALF_CURVE_ORDER}. See <a
+     * @return true if the S component is "low". See <a
      *     href="https://github.com/bitcoin/bips/blob/master/bip-0062.mediawiki#Low_S_values_in_signatures">
      *     BIP62</a>.
      */
