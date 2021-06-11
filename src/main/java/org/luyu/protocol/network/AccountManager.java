@@ -8,7 +8,8 @@ public interface AccountManager {
      * @param luyuSign
      * @return
      */
-    Account getAccountBySignature(String signatureType, byte[] luyuSign, LuyuSignData data);
+    Account getAccountBySignature(String signatureType, byte[] luyuSign, LuyuSignData data)
+            throws Exception;
 
     /**
      * Get account by account's identity
@@ -17,5 +18,5 @@ public interface AccountManager {
      * @param identity
      * @return
      */
-    Account getAccountByIdentity(String signatureType, byte[] identity);
+    Account getAccountByIdentity(String signatureType, String identity);
 }

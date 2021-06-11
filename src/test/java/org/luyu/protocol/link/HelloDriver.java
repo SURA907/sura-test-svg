@@ -132,6 +132,7 @@ public class HelloDriver implements Driver {
                     public void onResponse(int status, String message, byte[] signBytes) {
                         if (status != STATUS.OK) {
                             System.out.println("Account sign error(" + status + "): " + message);
+                            callback.onResponse(status, message, null);
                         } else {
                             connection.asyncSend(
                                     request.getPath(),

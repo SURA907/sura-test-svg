@@ -8,11 +8,11 @@ public class MockAccountManager implements AccountManager {
 
     @Override
     public Account getAccountBySignature(String signatureType, byte[] LuyuSign, LuyuSignData data) {
-        return getAccountByIdentity(signatureType, new byte[] {});
+        return getAccountByIdentity(signatureType, data.getSender());
     }
 
     @Override
-    public Account getAccountByIdentity(String signatureType, byte[] identity) {
+    public Account getAccountByIdentity(String signatureType, String identity) {
         switch (signatureType) {
             case MockSignatureAlgorithm.TYPE:
                 return new MockAccount();
