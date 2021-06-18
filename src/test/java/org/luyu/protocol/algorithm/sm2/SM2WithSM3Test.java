@@ -2,6 +2,7 @@ package org.luyu.protocol.algorithm.sm2;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 import org.bouncycastle.util.Arrays;
 import org.bouncycastle.util.encoders.Hex;
 import org.junit.Assert;
@@ -29,18 +30,6 @@ public class SM2WithSM3Test {
         Assert.assertTrue("should be true", ok);
     }
 
-    // void pp(byte[] a) {
-    //     System.out.print("[");
-    //     for (int i = 0; i < a.length; i += 1) {
-    //         if (i == 0) {
-    //             System.out.print(a[i]);
-    //             continue;
-    //         }
-    //         System.out.print(", " + a[i]);
-    //     }
-    //     System.out.println("]");
-    // }
-
     @Test
     public void SM2WithSM3Test2() {
         byte[] secKey =
@@ -55,5 +44,18 @@ public class SM2WithSM3Test {
         byte[] pubKey1 = publicKey.toByteArray();
         pubKey1 = Arrays.copyOfRange(pubKey1, 1, pubKey1.length);
         Assert.assertTrue(java.util.Arrays.equals(pubKey, pubKey1));
+    }
+
+    @Test
+    public void genrateKeysTest() {
+        SignatureAlgorithm signer = new SM2WithSM3();
+        Map.Entry<byte[], byte[]> key = signer.generateKeyPair();
+        BigInteger privateKey = new BigInteger(1, key.getKey());
+        // System.out.println("1 privateKey: " + privateKey);
+        BigInteger publicKey = SM2WithSM3.publicKeyFromPrivate(privateKey);
+        BigInteger publicKey1 = new BigInteger(1, key.getValue());
+        // System.out.println("publicKey: " + publicKey);
+        // System.out.println("publicKey1: " + publicKey1);
+        Assert.assertTrue("should be true", publicKey.equals(publicKey1));
     }
 }
