@@ -1,6 +1,8 @@
 package org.luyu.protocol.algorithm.sm2;
 
 import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Arrays;
 import java.util.Map;
 import org.bouncycastle.asn1.x9.X9ECParameters;
@@ -16,6 +18,11 @@ import org.luyu.protocol.algorithm.SignatureAlgorithm;
 
 public class SM2WithSM3 implements SignatureAlgorithm {
     public static final String TYPE = "SM2_WITH_SM3";
+
+    public static final int PRIVATE_KEY_SIZE = 32;
+    public static final int PUBLIC_KEY_SIZE = 64;
+
+    public static final SecureRandom SecureRandomInstance = new SecureRandom();
 
     public static final X9ECParameters CURVE_PARAMS = CustomNamedCurves.getByName("sm2p256v1");
 
@@ -59,8 +66,17 @@ public class SM2WithSM3 implements SignatureAlgorithm {
 
     @Override
     public Map.Entry<byte[], byte[]> generateKeyPair() {
-        // TODO: add this
-        return null;
+        byte[] privateKey = new byte[PRIVATE_KEY_SIZE];
+        SecureRandomInstance.nextBytes(privateKey);
+
+        ECPoint point = publicPointFromPrivate(new BigInteger(1, privateKey)).normalize();
+        byte[] publicKey = new byte[PUBLIC_KEY_SIZE];
+        byte[] x = point.getXCoord().getEncoded();
+        byte[] y = point.getYCoord().getEncoded();
+        System.arraycopy(x, 0, publicKey, 0, PUBLIC_KEY_SIZE / 2);
+        System.arraycopy(y, 0, publicKey, PUBLIC_KEY_SIZE / 2, PUBLIC_KEY_SIZE / 2);
+
+        return new SimpleImmutableEntry(privateKey, publicKey);
     }
 
     public boolean verify(BigInteger pubKey, byte[] signature, byte[] message, boolean hashFirst) {

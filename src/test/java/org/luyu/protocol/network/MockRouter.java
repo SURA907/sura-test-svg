@@ -37,10 +37,10 @@ public class MockRouter implements RouterManager {
         System.out.println("==> SendTransaction: " + tx.toString());
         String chainPath = Utils.getChainPath(tx.getPath());
         Driver driver = drivers.get(chainPath);
-        Account account =
-                accountManager.getAccountBySignature(
-                        driver.getSignatureType(), tx.getLuyuSign(), new LuyuSignData(tx));
-        if (account != null) {
+        try {
+            Account account =
+                    accountManager.getAccountBySignature(
+                            driver.getSignatureType(), tx.getLuyuSign(), new LuyuSignData(tx));
 
             driver.sendTransaction(
                     account,
@@ -57,6 +57,8 @@ public class MockRouter implements RouterManager {
                             }
                         }
                     });
+        } catch (Exception e) {
+            System.out.println("unexpected exception: " + e.toString());
         }
     }
 
@@ -65,12 +67,14 @@ public class MockRouter implements RouterManager {
         System.out.println("==> Call: " + request.toString());
         String chainPath = Utils.getChainPath(request.getPath());
         Driver driver = drivers.get(chainPath);
-        Account account =
-                accountManager.getAccountBySignature(
-                        driver.getSignatureType(),
-                        request.getLuyuSign(),
-                        new LuyuSignData(request));
-        if (account != null) {
+
+        try {
+            Account account =
+                    accountManager.getAccountBySignature(
+                            driver.getSignatureType(),
+                            request.getLuyuSign(),
+                            new LuyuSignData(request));
+
             driver.call(
                     account,
                     request,
@@ -86,6 +90,8 @@ public class MockRouter implements RouterManager {
                             }
                         }
                     });
+        } catch (Exception e) {
+            System.out.println("unexpected exception: " + e.toString());
         }
     }
 
