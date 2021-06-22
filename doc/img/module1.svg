@@ -117,7 +117,7 @@
 			<title>动态连接线.73</title>
 			<path d="M6.86 275.57 L7.24 310.11" class="st6"/>
 		</g>
-		<g id="shape74-33" v:mID="74" v:groupContext="shape" transform="translate(0.25,-169.389)">
+		<g id="shape74-33" v:mID="74" v:groupContext="shape" transform="translate(0.25,-106.954)">
 			<title>矩形.74</title>
 			<desc>Account Manager</desc>
 			<v:userDefs>
@@ -138,17 +138,17 @@
 			<v:textRect cx="56.6929" cy="261.392" width="113.39" height="28.3465"/>
 			<rect x="0" y="247.219" width="113.386" height="28.3465" class="st2"/>
 			<text x="16.74" y="264.99" class="st3" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Router Manager</text>		</g>
-		<g id="shape76-40" v:mID="76" v:groupContext="shape" v:layerMember="0" transform="translate(204.643,-190.649)">
+		<g id="shape76-40" v:mID="76" v:groupContext="shape" v:layerMember="0" transform="translate(204.643,-128.214)">
 			<title>动态连接线.76</title>
 			<path d="M-10.2 268.48 L-10.56 268.48 L-109.9 268.48" class="st11"/>
 		</g>
-		<g id="shape77-49" v:mID="77" v:groupContext="shape" transform="translate(62.9106,-197.735)">
+		<g id="shape77-49" v:mID="77" v:groupContext="shape" transform="translate(62.9106,-135.301)">
 			<title>工作表.77</title>
-			<desc>verifyAndGetChainAccount()</desc>
+			<desc>sign()</desc>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="76" cy="265.565" width="152" height="20"/>
 			<rect x="0" y="255.565" width="152" height="20" class="st12"/>
-			<text x="17.93" y="268.57" class="st13" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>verifyAndGetChainAccount()</text>		</g>
+			<text x="64.88" y="268.57" class="st13" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>sign()</text>		</g>
 		<g id="shape78-52" v:mID="78" v:groupContext="shape" transform="translate(227.855,-226.082)">
 			<title>工作表.78</title>
 			<desc>sendTransaction()</desc>

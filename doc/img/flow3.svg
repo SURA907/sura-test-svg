@@ -2,8 +2,8 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- 由 Microsoft Visio, SVG Export 生成 flow3.svg 页-1 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
-		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="11.0049in" height="10.6142in"
-		viewBox="0 0 792.352 764.22" xml:space="preserve" color-interpolation-filters="sRGB" class="st14">
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="11.0049in" height="11.4724in"
+		viewBox="0 0 792.352 826.012" xml:space="preserve" color-interpolation-filters="sRGB" class="st14">
 	<v:documentProperties v:langID="2052" v:metric="true" v:viewMarkup="false"/>
 
 	<style type="text/css">
@@ -44,7 +44,7 @@
 		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
 				v:shadowOffsetY="-8.50394"/>
 		<v:layer v:name="连接线" v:index="0"/>
-		<g id="group336-1" transform="translate(164.424,-734.915)" v:mID="336" v:groupContext="group">
+		<g id="group336-1" transform="translate(164.424,-785.368)" v:mID="336" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="ShowActor" v:prompt="" v:val="VT0(0):5"/>
@@ -52,43 +52,43 @@
 			</v:userDefs>
 			<title>对象生命线.336</title>
 			<desc>链A</desc>
-			<g id="shape337-2" v:mID="337" v:groupContext="shape">
+			<g id="shape337-2" v:mID="337" v:groupContext="shape" transform="translate(0,-5.66929)">
 				<title>工作表.337</title>
 				<g id="shadow337-3" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
+				<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st3"/>
 			</g>
-			<g id="shape338-7" v:mID="338" v:groupContext="shape" transform="translate(17.0079,-29.0551)">
+			<g id="shape338-7" v:mID="338" v:groupContext="shape" transform="translate(17.0079,-40.3937)">
 				<title>工作表.338</title>
 				<g id="shadow338-8" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
+					<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
 				</g>
-				<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
+				<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
 			</g>
-			<g id="shape339-12" v:mID="339" v:groupContext="shape" transform="translate(17.0079,734.915)">
+			<g id="shape339-12" v:mID="339" v:groupContext="shape" transform="translate(17.0079,778.649)">
 				<title>工作表.339</title>
 				<g id="shadow339-13" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1"/>
 			</g>
-			<g id="shape340-17" v:mID="340" v:groupContext="shape" transform="translate(789.732,764.22) rotate(90)">
+			<g id="shape340-17" v:mID="340" v:groupContext="shape" transform="translate(851.524,826.012) rotate(90)">
 				<title>工作表.340</title>
-				<path d="M0 764.22 L717.3 764.22" class="st4"/>
+				<path d="M0 826.01 L756.98 826.01" class="st4"/>
 			</g>
 			<g id="shape336-20" v:mID="336" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="25.5118" cy="751.464" width="51.03" height="25.5118"/>
+				<v:textRect cx="25.5118" cy="807.587" width="51.03" height="36.8504"/>
 				<g id="shadow336-21" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
-				<text x="15.85" y="755.46" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>链<tspan
+				<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st3"/>
+				<text x="15.85" y="811.58" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>链<tspan
 							class="st6">A</tspan></text>			</g>
 		</g>
-		<g id="group341-27" transform="translate(309.065,-734.915)" v:mID="341" v:groupContext="group">
+		<g id="group341-27" transform="translate(309.065,-785.368)" v:mID="341" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="ShowActor" v:prompt="" v:val="VT0(0):5"/>
@@ -96,42 +96,42 @@
 			</v:userDefs>
 			<title>对象生命线.341</title>
 			<desc>A Plugin</desc>
-			<g id="shape342-28" v:mID="342" v:groupContext="shape">
+			<g id="shape342-28" v:mID="342" v:groupContext="shape" transform="translate(0,-5.66929)">
 				<title>工作表.342</title>
 				<g id="shadow342-29" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
+				<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st3"/>
 			</g>
-			<g id="shape343-33" v:mID="343" v:groupContext="shape" transform="translate(17.0079,-29.0551)">
+			<g id="shape343-33" v:mID="343" v:groupContext="shape" transform="translate(17.0079,-40.3937)">
 				<title>工作表.343</title>
 				<g id="shadow343-34" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
+					<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
 				</g>
-				<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
+				<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
 			</g>
-			<g id="shape344-38" v:mID="344" v:groupContext="shape" transform="translate(17.0079,706.568)">
+			<g id="shape344-38" v:mID="344" v:groupContext="shape" transform="translate(17.0079,781.484)">
 				<title>工作表.344</title>
 				<g id="shadow344-39" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1"/>
 			</g>
-			<g id="shape345-43" v:mID="345" v:groupContext="shape" transform="translate(789.732,764.22) rotate(90)">
+			<g id="shape345-43" v:mID="345" v:groupContext="shape" transform="translate(851.524,826.012) rotate(90)">
 				<title>工作表.345</title>
-				<path d="M0 764.22 L688.95 764.22" class="st4"/>
+				<path d="M0 826.01 L759.82 826.01" class="st4"/>
 			</g>
 			<g id="shape341-46" v:mID="341" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="25.5118" cy="751.464" width="51.03" height="25.5118"/>
+				<v:textRect cx="25.5118" cy="807.587" width="51.03" height="36.8504"/>
 				<g id="shadow341-47" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
-				<text x="5.09" y="755.06" class="st7" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A Plugin</text>			</g>
+				<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st3"/>
+				<text x="5.09" y="811.19" class="st7" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>A Plugin</text>			</g>
 		</g>
-		<g id="group346-52" transform="translate(5.68378,-734.915)" v:mID="346" v:groupContext="group">
+		<g id="group346-52" transform="translate(5.68378,-785.368)" v:mID="346" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="ShowActor" v:prompt="" v:val="VT0(0):5"/>
@@ -139,42 +139,42 @@
 			</v:userDefs>
 			<title>对象生命线.346</title>
 			<desc>链A SDK</desc>
-			<g id="shape347-53" v:mID="347" v:groupContext="shape">
+			<g id="shape347-53" v:mID="347" v:groupContext="shape" transform="translate(0,-5.66929)">
 				<title>工作表.347</title>
 				<g id="shadow347-54" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
+				<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st3"/>
 			</g>
-			<g id="shape348-58" v:mID="348" v:groupContext="shape" transform="translate(17.0079,-29.0551)">
+			<g id="shape348-58" v:mID="348" v:groupContext="shape" transform="translate(17.0079,-40.3937)">
 				<title>工作表.348</title>
 				<g id="shadow348-59" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
+					<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
 				</g>
-				<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
+				<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
 			</g>
-			<g id="shape349-63" v:mID="349" v:groupContext="shape" transform="translate(17.0079,711.671)">
+			<g id="shape349-63" v:mID="349" v:groupContext="shape" transform="translate(17.0079,780.917)">
 				<title>工作表.349</title>
 				<g id="shadow349-64" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1"/>
 			</g>
-			<g id="shape350-68" v:mID="350" v:groupContext="shape" transform="translate(789.732,764.22) rotate(90)">
+			<g id="shape350-68" v:mID="350" v:groupContext="shape" transform="translate(851.524,826.012) rotate(90)">
 				<title>工作表.350</title>
-				<path d="M0 764.22 L694.06 764.22" class="st4"/>
+				<path d="M0 826.01 L759.25 826.01" class="st4"/>
 			</g>
 			<g id="shape346-71" v:mID="346" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="25.5118" cy="751.464" width="51.03" height="25.5118"/>
+				<v:textRect cx="25.5118" cy="807.587" width="51.03" height="36.8504"/>
 				<g id="shadow346-72" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
-				<text x="4.6" y="755.46" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>链<tspan class="st6">A SDK</tspan></text>			</g>
+				<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st3"/>
+				<text x="4.6" y="811.58" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>链<tspan class="st6">A SDK</tspan></text>			</g>
 		</g>
-		<g id="group351-78" transform="translate(450.798,-734.915)" v:mID="351" v:groupContext="group">
+		<g id="group351-78" transform="translate(450.798,-785.368)" v:mID="351" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="ShowActor" v:prompt="" v:val="VT0(0):5"/>
@@ -182,42 +182,42 @@
 			</v:userDefs>
 			<title>对象生命线.351</title>
 			<desc>Router</desc>
-			<g id="shape352-79" v:mID="352" v:groupContext="shape">
+			<g id="shape352-79" v:mID="352" v:groupContext="shape" transform="translate(0,-5.66929)">
 				<title>工作表.352</title>
 				<g id="shadow352-80" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
+				<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st3"/>
 			</g>
-			<g id="shape353-84" v:mID="353" v:groupContext="shape" transform="translate(17.0079,-29.0551)">
+			<g id="shape353-84" v:mID="353" v:groupContext="shape" transform="translate(17.0079,-40.3937)">
 				<title>工作表.353</title>
 				<g id="shadow353-85" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
+					<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
 				</g>
-				<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
+				<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
 			</g>
-			<g id="shape354-89" v:mID="354" v:groupContext="shape" transform="translate(17.0079,706.568)">
+			<g id="shape354-89" v:mID="354" v:groupContext="shape" transform="translate(17.0079,784.319)">
 				<title>工作表.354</title>
 				<g id="shadow354-90" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1"/>
 			</g>
-			<g id="shape355-94" v:mID="355" v:groupContext="shape" transform="translate(789.732,764.22) rotate(90)">
+			<g id="shape355-94" v:mID="355" v:groupContext="shape" transform="translate(851.524,826.012) rotate(90)">
 				<title>工作表.355</title>
-				<path d="M0 764.22 L688.95 764.22" class="st4"/>
+				<path d="M0 826.01 L762.65 826.01" class="st4"/>
 			</g>
 			<g id="shape351-97" v:mID="351" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="25.5118" cy="751.464" width="51.03" height="25.5118"/>
+				<v:textRect cx="25.5118" cy="807.587" width="51.03" height="36.8504"/>
 				<g id="shadow351-98" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279" v:shadowType="1"
 						transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
-				<text x="8.45" y="755.06" class="st7" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Router</text>			</g>
+				<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st3"/>
+				<text x="8.45" y="811.19" class="st7" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Router</text>			</g>
 		</g>
-		<g id="shape356-103" v:mID="356" v:groupContext="shape" v:layerMember="0" transform="translate(31.1956,-698.139)">
+		<g id="shape356-103" v:mID="356" v:groupContext="shape" v:layerMember="0" transform="translate(31.1956,-748.593)">
 			<title>动态连接线.356</title>
 			<desc>发送交易</desc>
 			<v:userDefs>
@@ -226,11 +226,11 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="79.3701" cy="757.133" width="50.27" height="21.3161"/>
-			<path d="M0 757.13 L150.26 757.13" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="59.3701" y="750.477" width="40.0001" height="13.3124" class="st10"/>
-			<text x="59.37" y="760.46" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送交易</text>		</g>
-		<g id="shape357-111" v:mID="357" v:groupContext="shape" v:layerMember="0" transform="translate(182.849,-683.757)">
+			<v:textRect cx="79.3701" cy="818.926" width="50.27" height="21.3161"/>
+			<path d="M0 818.93 L150.26 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="59.3701" y="812.27" width="40.0001" height="13.3124" class="st10"/>
+			<text x="59.37" y="822.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送交易</text>		</g>
+		<g id="shape357-111" v:mID="357" v:groupContext="shape" v:layerMember="0" transform="translate(182.849,-734.211)">
 			<title>动态连接线.357</title>
 			<desc>跨链调用合约 接收调用参数</desc>
 			<v:userDefs>
@@ -240,12 +240,12 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(1):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="7.08661" cy="785.48" width="70.27" height="34.6285"/>
-			<path d="M7.09 764.22 L25.09 764.22 L25.09 806.74 L15.57 806.74" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-22.9134" y="772.168" width="60.0002" height="26.6248" class="st10"/>
-			<text x="-22.91" y="782.15" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>跨链调用合约<v:newlineChar/><tspan
+			<v:textRect cx="7.08661" cy="847.272" width="70.27" height="34.6285"/>
+			<path d="M7.09 826.01 L25.09 826.01 L25.09 868.53 L15.57 868.53" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-22.9134" y="833.96" width="60.0002" height="26.6248" class="st10"/>
+			<text x="-22.91" y="843.94" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>跨链调用合约<v:newlineChar/><tspan
 						x="-22.91" dy="1.331em" class="st12">接收调用参数</tspan></text>		</g>
-		<g id="group358-119" transform="translate(734.262,-734.915)" v:mID="358" v:groupContext="group">
+		<g id="group358-119" transform="translate(734.262,-785.368)" v:mID="358" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="ShowActor" v:prompt="" v:val="VT0(0):5"/>
@@ -253,43 +253,43 @@
 			</v:userDefs>
 			<title>对象生命线.358</title>
 			<desc>链 B</desc>
-			<g id="shape359-120" v:mID="359" v:groupContext="shape">
+			<g id="shape359-120" v:mID="359" v:groupContext="shape" transform="translate(0,-5.15458)">
 				<title>工作表.359</title>
 				<g id="shadow359-121" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279"
 						v:shadowType="1" transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
+				<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st3"/>
 			</g>
-			<g id="shape360-125" v:mID="360" v:groupContext="shape" transform="translate(17.0079,-29.0551)">
+			<g id="shape360-125" v:mID="360" v:groupContext="shape" transform="translate(17.0079,-39.3643)">
 				<title>工作表.360</title>
 				<g id="shadow360-126" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279"
 						v:shadowType="1" transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
+					<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
 				</g>
-				<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
+				<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
 			</g>
-			<g id="shape361-130" v:mID="361" v:groupContext="shape" transform="translate(17.0079,698.065)">
+			<g id="shape361-130" v:mID="361" v:groupContext="shape" transform="translate(17.0079,785.368)">
 				<title>工作表.361</title>
 				<g id="shadow361-131" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279"
 						v:shadowType="1" transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1"/>
 			</g>
-			<g id="shape362-135" v:mID="362" v:groupContext="shape" transform="translate(789.732,764.22) rotate(90)">
+			<g id="shape362-135" v:mID="362" v:groupContext="shape" transform="translate(851.524,826.012) rotate(90)">
 				<title>工作表.362</title>
-				<path d="M0 764.22 L680.45 764.22" class="st4"/>
+				<path d="M0 826.01 L764.07 826.01" class="st4"/>
 			</g>
 			<g id="shape358-138" v:mID="358" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="25.5118" cy="751.464" width="51.03" height="25.5118"/>
+				<v:textRect cx="25.5118" cy="808.102" width="51.03" height="35.821"/>
 				<g id="shadow358-139" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279"
 						v:shadowType="1" transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="790.191" width="51.0236" height="35.821" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
-				<text x="14.77" y="755.46" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>链<tspan
+				<rect x="0" y="790.191" width="51.0236" height="35.821" class="st3"/>
+				<text x="14.77" y="812.1" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>链<tspan
 							class="st6"> </tspan><tspan class="st6">B</tspan></text>			</g>
 		</g>
-		<g id="shape364-146" v:mID="364" v:groupContext="shape" v:layerMember="0" transform="translate(189.936,-613.846)">
+		<g id="shape364-146" v:mID="364" v:groupContext="shape" v:layerMember="0" transform="translate(189.936,-664.299)">
 			<title>动态连接线.364</title>
 			<desc>事件通知</desc>
 			<v:userDefs>
@@ -298,11 +298,11 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="72.3208" cy="757.133" width="50.27" height="21.3161"/>
-			<path d="M0 757.13 L136.16 757.13" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="52.3208" y="750.477" width="40.0001" height="13.3124" class="st10"/>
-			<text x="52.32" y="760.46" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>事件通知</text>		</g>
-		<g id="shape365-153" v:mID="365" v:groupContext="shape" v:layerMember="0" transform="translate(327.491,-607.505)">
+			<v:textRect cx="72.3208" cy="818.926" width="50.27" height="21.3161"/>
+			<path d="M0 818.93 L136.16 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="52.3208" y="812.27" width="40.0001" height="13.3124" class="st13"/>
+			<text x="52.32" y="822.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>事件通知</text>		</g>
+		<g id="shape365-153" v:mID="365" v:groupContext="shape" v:layerMember="0" transform="translate(327.491,-657.959)">
 			<title>动态连接线.365</title>
 			<desc>解析事件 组装成Transaction + identity</desc>
 			<v:userDefs>
@@ -312,13 +312,13 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(1):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="7.08661" cy="785.853" width="128.58" height="34.6285"/>
-			<path d="M7.09 764.22 L25.09 764.22 L25.09 807.49 L15.57 807.49" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-52.0666" y="772.541" width="118.307" height="26.6248" class="st10"/>
-			<text x="-12.91" y="782.53" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>解析事件<v:newlineChar/><tspan
+			<v:textRect cx="7.08661" cy="847.645" width="128.58" height="34.6285"/>
+			<path d="M7.09 826.01 L25.09 826.01 L25.09 869.28 L15.57 869.28" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-52.0666" y="834.333" width="118.307" height="26.6248" class="st10"/>
+			<text x="-12.91" y="844.32" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>解析事件<v:newlineChar/><tspan
 						x="-52.07" dy="1.331em" class="st12">组装成</tspan><tspan class="st6">Transaction </tspan><tspan class="st6">+ </tspan><tspan
 						class="st6">identity</tspan></text>		</g>
-		<g id="shape366-164" v:mID="366" v:groupContext="shape" v:layerMember="0" transform="translate(334.577,-529.552)">
+		<g id="shape366-164" v:mID="366" v:groupContext="shape" v:layerMember="0" transform="translate(334.577,-580.006)">
 			<title>动态连接线.366</title>
 			<desc>回调onChainEvent(): Transaction + identity</desc>
 			<v:userDefs>
@@ -327,13 +327,13 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="71.2764" cy="757.133" width="98.58" height="33.3161"/>
-			<path d="M0 757.13 L134.07 757.13" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="27.1233" y="744.477" width="88.3065" height="25.3125" class="st10"/>
-			<text x="28.69" y="754.46" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>回调<tspan class="st6">onChainEvent</tspan><tspan
+			<v:textRect cx="71.2764" cy="818.926" width="98.58" height="33.3161"/>
+			<path d="M0 818.93 L134.07 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="27.1233" y="806.27" width="88.3065" height="25.3125" class="st10"/>
+			<text x="28.69" y="816.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>回调<tspan class="st6">onChainEvent</tspan><tspan
 						class="st6">():<v:newlineChar/></tspan><tspan x="27.12" dy="1.233em" class="st6">Transaction </tspan><tspan
 						class="st6">+ </tspan><tspan class="st6">identity</tspan></text>		</g>
-		<g id="shape367-176" v:mID="367" v:groupContext="shape" v:layerMember="0" transform="translate(607.076,-364.859)">
+		<g id="shape367-176" v:mID="367" v:groupContext="shape" v:layerMember="0" transform="translate(607.076,-415.313)">
 			<title>动态连接线.367</title>
 			<desc>发送签名后的 交易二进制</desc>
 			<v:userDefs>
@@ -342,12 +342,12 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="76.3489" cy="771.307" width="70.27" height="34.6285"/>
-			<path d="M0 771.31 L144.22 771.31" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="46.349" y="757.994" width="60.0002" height="26.6248" class="st10"/>
-			<text x="46.35" y="767.98" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送签名后的<v:newlineChar/><tspan
+			<v:textRect cx="76.3489" cy="833.099" width="70.27" height="34.6285"/>
+			<path d="M0 833.1 L144.22 833.1" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="46.349" y="819.787" width="60.0002" height="26.6248" class="st10"/>
+			<text x="46.35" y="829.77" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送签名后的<v:newlineChar/><tspan
 						x="51.35" dy="1.331em" class="st12">交易二进制</tspan></text>		</g>
-		<g id="shape368-184" v:mID="368" v:groupContext="shape" v:layerMember="0" transform="translate(752.688,-347.852)">
+		<g id="shape368-184" v:mID="368" v:groupContext="shape" v:layerMember="0" transform="translate(752.688,-398.305)">
 			<title>动态连接线.368</title>
 			<desc>共识上链</desc>
 			<v:userDefs>
@@ -357,11 +357,11 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(1):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="7.08661" cy="785.48" width="50.27" height="21.3161"/>
-			<path d="M7.09 764.22 L25.09 764.22 L25.09 806.74 L15.57 806.74" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-12.9133" y="778.824" width="40.0001" height="13.3124" class="st10"/>
-			<text x="-12.91" y="788.81" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>共识上链</text>		</g>
-		<g id="shape369-191" v:mID="369" v:groupContext="shape" v:layerMember="0" transform="translate(759.774,-281.237)">
+			<v:textRect cx="7.08661" cy="847.272" width="50.27" height="21.3161"/>
+			<path d="M7.09 826.01 L25.09 826.01 L25.09 868.53 L15.57 868.53" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-12.9133" y="840.616" width="40.0001" height="13.3124" class="st10"/>
+			<text x="-12.91" y="850.6" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>共识上链</text>		</g>
+		<g id="shape369-191" v:mID="369" v:groupContext="shape" v:layerMember="0" transform="translate(759.774,-331.691)">
 			<title>动态连接线.369</title>
 			<desc>交易回执 + 交易存证证明</desc>
 			<v:userDefs>
@@ -370,13 +370,13 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="-76.3489" cy="757.133" width="70.27" height="34.6285"/>
-			<path d="M0 757.13 L-144.22 757.13" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-106.349" y="743.821" width="60.0002" height="26.6248" class="st13"/>
-			<text x="-99.97" y="753.81" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>交易回执<tspan
+			<v:textRect cx="-76.3489" cy="818.926" width="70.27" height="34.6285"/>
+			<path d="M0 818.93 L-144.22 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-106.349" y="805.613" width="60.0002" height="26.6248" class="st10"/>
+			<text x="-99.97" y="815.6" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>交易回执<tspan
 						class="st6"> </tspan><tspan class="st6">+<v:newlineChar/></tspan><tspan x="-106.35" dy="1.331em"
 						class="st12">交易存证证明</tspan></text>		</g>
-		<g id="shape370-201" v:mID="370" v:groupContext="shape" v:layerMember="0" transform="translate(759.774,-247.222)">
+		<g id="shape370-201" v:mID="370" v:groupContext="shape" v:layerMember="0" transform="translate(759.774,-297.675)">
 			<title>动态连接线.370</title>
 			<desc>同步区块头异步</desc>
 			<v:userDefs>
@@ -385,11 +385,11 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="-76.3489" cy="757.133" width="100.27" height="21.3161"/>
-			<path d="M0 757.13 L-144.22 757.13" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-121.349" y="750.477" width="90.0003" height="13.3124" class="st10"/>
-			<text x="-121.35" y="760.46" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>同步区块头（异步）</text>		</g>
-		<g id="shape373-208" v:mID="373" v:groupContext="shape" v:layerMember="0" transform="translate(599.99,-230.348)">
+			<v:textRect cx="-76.3489" cy="818.926" width="100.27" height="21.3161"/>
+			<path d="M0 818.93 L-144.22 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-121.349" y="812.27" width="90.0003" height="13.3124" class="st10"/>
+			<text x="-121.35" y="822.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>同步区块头（异步）</text>		</g>
+		<g id="shape373-208" v:mID="373" v:groupContext="shape" v:layerMember="0" transform="translate(599.99,-280.801)">
 			<title>动态连接线.373</title>
 			<desc>验证区块头 验证交易存在性</desc>
 			<v:userDefs>
@@ -399,12 +399,12 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(1):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="7.08661" cy="785.48" width="80.27" height="34.6285"/>
-			<path d="M7.09 764.22 L25.09 764.22 L25.09 806.74 L15.57 806.74" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-27.9134" y="772.168" width="70.0002" height="26.6248" class="st10"/>
-			<text x="-17.91" y="782.15" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>验证区块头<v:newlineChar/><tspan
+			<v:textRect cx="7.08661" cy="847.272" width="80.27" height="34.6285"/>
+			<path d="M7.09 826.01 L25.09 826.01 L25.09 868.53 L15.57 868.53" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-27.9134" y="833.96" width="70.0002" height="26.6248" class="st10"/>
+			<text x="-17.91" y="843.94" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>验证区块头<v:newlineChar/><tspan
 						x="-27.91" dy="1.331em" class="st12">验证交易存在性</tspan></text>		</g>
-		<g id="shape374-216" v:mID="374" v:groupContext="shape" v:layerMember="0" transform="translate(607.076,-166.568)">
+		<g id="shape374-216" v:mID="374" v:groupContext="shape" v:layerMember="0" transform="translate(607.076,-202.849)">
 			<title>动态连接线.374</title>
 			<desc>发送回执 Receipt</desc>
 			<v:userDefs>
@@ -413,12 +413,12 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="-65.3833" cy="771.307" width="83.04" height="21.3161"/>
-			<path d="M0 771.31 L-122.29 771.31" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-101.768" y="764.651" width="72.7693" height="13.3124" class="st10"/>
-			<text x="-101.77" y="774.64" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送回执<tspan
+			<v:textRect cx="-65.3833" cy="818.926" width="83.04" height="21.3161"/>
+			<path d="M0 818.93 L-122.29 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-101.768" y="812.27" width="72.7693" height="13.3124" class="st10"/>
+			<text x="-101.77" y="822.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送回执<tspan
 						class="st6"> </tspan><tspan class="st6">Receipt</tspan></text>		</g>
-		<g id="shape375-225" v:mID="375" v:groupContext="shape" v:layerMember="0" transform="translate(476.31,-132.553)">
+		<g id="shape375-225" v:mID="375" v:groupContext="shape" v:layerMember="0" transform="translate(476.31,-183.006)">
 			<title>动态连接线.375</title>
 			<desc>发送回执 Receipt</desc>
 			<v:userDefs>
@@ -427,12 +427,12 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="-70.8661" cy="757.133" width="83.04" height="21.3161"/>
-			<path d="M0 757.13 L-133.25 757.13" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-107.251" y="750.477" width="72.7693" height="13.3124" class="st10"/>
-			<text x="-107.25" y="760.46" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送回执<tspan
+			<v:textRect cx="-70.8661" cy="818.926" width="83.04" height="21.3161"/>
+			<path d="M0 818.93 L-133.25 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-107.251" y="812.27" width="72.7693" height="13.3124" class="st10"/>
+			<text x="-107.25" y="822.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送回执<tspan
 						class="st6"> </tspan><tspan class="st6">Receipt</tspan></text>		</g>
-		<g id="group376-234" transform="translate(581.564,-734.915)" v:mID="376" v:groupContext="group">
+		<g id="group376-234" transform="translate(581.564,-785.368)" v:mID="376" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
 				<v:ud v:nameU="ShowActor" v:prompt="" v:val="VT0(0):5"/>
@@ -440,44 +440,44 @@
 			</v:userDefs>
 			<title>对象生命线.376</title>
 			<desc>B Plugin</desc>
-			<g id="shape377-235" v:mID="377" v:groupContext="shape">
+			<g id="shape377-235" v:mID="377" v:groupContext="shape" transform="translate(0,-5.66929)">
 				<title>工作表.377</title>
 				<g id="shadow377-236" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279"
 						v:shadowType="1" transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
+				<rect x="0" y="800.5" width="51.0236" height="25.5118" class="st3"/>
 			</g>
-			<g id="shape378-240" v:mID="378" v:groupContext="shape" transform="translate(17.0079,-29.0551)">
+			<g id="shape378-240" v:mID="378" v:groupContext="shape" transform="translate(17.0079,-40.3937)">
 				<title>工作表.378</title>
 				<g id="shadow378-241" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279"
 						v:shadowType="1" transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
+					<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st2"/>
 				</g>
-				<path d="M8.5 764.22 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
+				<path d="M8.5 826.01 a0 0 0 1 1 0 0 a0 0 0 1 1 0 0 Z" class="st3"/>
 			</g>
-			<g id="shape379-245" v:mID="379" v:groupContext="shape" transform="translate(17.0079,700.899)">
+			<g id="shape379-245" v:mID="379" v:groupContext="shape" transform="translate(17.0079,778.649)">
 				<title>工作表.379</title>
 				<g id="shadow379-246" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279"
 						v:shadowType="1" transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1"/>
 			</g>
-			<g id="shape380-250" v:mID="380" v:groupContext="shape" transform="translate(789.732,764.22) rotate(90)">
+			<g id="shape380-250" v:mID="380" v:groupContext="shape" transform="translate(851.524,826.012) rotate(90)">
 				<title>工作表.380</title>
-				<path d="M0 764.22 L683.28 764.22" class="st4"/>
+				<path d="M0 826.01 L756.98 826.01" class="st4"/>
 			</g>
 			<g id="shape376-253" v:mID="376" v:groupContext="groupContent">
 				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="25.5118" cy="751.464" width="51.03" height="25.5118"/>
+				<v:textRect cx="25.5118" cy="807.587" width="51.03" height="36.8504"/>
 				<g id="shadow376-254" v:groupContext="shadow" v:shadowOffsetX="0.345598" v:shadowOffsetY="-1.97279"
 						v:shadowType="1" transform="matrix(1,0,0,1,0.345598,1.97279)" class="st1">
-					<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st2"/>
+					<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st2"/>
 				</g>
-				<rect x="0" y="738.708" width="51.0236" height="25.5118" class="st3"/>
-				<text x="5.37" y="755.06" class="st7" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>B Plugin</text>			</g>
+				<rect x="0" y="789.162" width="51.0236" height="36.8504" class="st3"/>
+				<text x="5.37" y="811.19" class="st7" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>B Plugin</text>			</g>
 		</g>
-		<g id="shape384-259" v:mID="384" v:groupContext="shape" v:layerMember="0" transform="translate(469.223,-522.316)">
+		<g id="shape384-259" v:mID="384" v:groupContext="shape" v:layerMember="0" transform="translate(469.223,-572.77)">
 			<title>动态连接线.384</title>
-			<desc>根据identity查询到 向链B发交易的二级账户私钥</desc>
+			<desc>根据identity查询到 一级账户身份</desc>
 			<v:userDefs>
 				<v:ud v:nameU="IsReturn" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="IsAsync" v:prompt="" v:val="VT0(0):26"/>
@@ -485,15 +485,14 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(1):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="7.08661" cy="785.48" width="135.71" height="34.6285"/>
-			<path d="M7.09 764.22 L25.09 764.22 L25.09 806.74 L15.57 806.74" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-55.6333" y="772.168" width="125.44" height="26.6248" class="st10"/>
-			<text x="-33.56" y="782.15" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>根据<tspan
-						class="st6">identity</tspan>查询到<v:newlineChar/><tspan x="-55.63" dy="1.331em" class="st12">向链</tspan><tspan
-						class="st6">B</tspan>发交易的二级账户私钥</text>		</g>
-		<g id="shape385-269" v:mID="385" v:groupContext="shape" v:layerMember="0" transform="translate(599.99,-428.773)">
+			<v:textRect cx="7.08661" cy="847.272" width="91.57" height="34.6285"/>
+			<path d="M7.09 826.01 L25.09 826.01 L25.09 868.53 L15.57 868.53" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-33.5631" y="833.96" width="81.2997" height="26.6248" class="st10"/>
+			<text x="-33.56" y="843.94" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>根据<tspan
+						class="st6">identity</tspan>查询到<v:newlineChar/><tspan x="-22.91" dy="1.331em" class="st12">一级账户身份</tspan></text>		</g>
+		<g id="shape385-268" v:mID="385" v:groupContext="shape" v:layerMember="0" transform="translate(599.99,-479.227)">
 			<title>动态连接线.385</title>
-			<desc>交易二进制编码 用二级账户私钥签名</desc>
+			<desc>交易二进制编码 请求Account Manager进行签名</desc>
 			<v:userDefs>
 				<v:ud v:nameU="IsReturn" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="IsAsync" v:prompt="" v:val="VT0(0):26"/>
@@ -501,27 +500,27 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(1):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="7.08661" cy="788.315" width="100.27" height="34.6285"/>
-			<path d="M7.09 764.22 L25.09 764.22 L25.09 812.41 L15.57 812.41" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-37.9134" y="775.002" width="90.0003" height="26.6248" class="st10"/>
-			<text x="-32.91" y="784.99" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>交易二进制编码，<v:newlineChar/><tspan
-						x="-37.91" dy="1.331em" class="st12">用二级账户私钥签名</tspan></text>		</g>
-		<g id="shape388-277" v:mID="388" v:groupContext="shape" v:layerMember="0" transform="translate(476.31,-444.364)">
+			<v:textRect cx="7.08661" cy="850.107" width="142.46" height="34.6285"/>
+			<path d="M7.09 826.01 L25.09 826.01 L25.09 874.2 L15.57 874.2" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-59.0074" y="836.794" width="132.188" height="26.6248" class="st10"/>
+			<text x="-32.91" y="846.78" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>交易二进制编码，<v:newlineChar/><tspan
+						x="-59.01" dy="1.331em" class="st12">请求</tspan><tspan class="st6">Account Manager</tspan>进行签名</text>		</g>
+		<g id="shape388-277" v:mID="388" v:groupContext="shape" v:layerMember="0" transform="translate(476.31,-494.817)">
 			<title>动态连接线.388</title>
-			<desc>发送 Transaction + 二级账户私钥</desc>
+			<desc>发送 Transaction + 一级账户身份</desc>
 			<v:userDefs>
 				<v:ud v:nameU="IsReturn" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="IsAsync" v:prompt="" v:val="VT0(0):26"/>
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="65.5698" cy="757.133" width="87.28" height="34.6285"/>
-			<path d="M0 757.13 L122.66 757.13" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="27.0664" y="743.821" width="77.007" height="26.6248" class="st10"/>
-			<text x="27.07" y="753.81" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送<tspan class="st6"> </tspan><tspan
+			<v:textRect cx="65.5698" cy="818.926" width="87.28" height="34.6285"/>
+			<path d="M0 818.93 L122.66 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="27.0664" y="805.613" width="77.007" height="26.6248" class="st10"/>
+			<text x="27.07" y="815.6" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送<tspan class="st6"> </tspan><tspan
 						class="st6">Transaction </tspan><tspan class="st6">+<v:newlineChar/></tspan><tspan x="35.57" dy="1.331em"
-						class="st12">二级账户私钥</tspan> </text>		</g>
-		<g id="shape389-288" v:mID="389" v:groupContext="shape" v:layerMember="0" transform="translate(327.491,-122.631)">
+						class="st12">一级账户身份</tspan> </text>		</g>
+		<g id="shape389-288" v:mID="389" v:groupContext="shape" v:layerMember="0" transform="translate(327.491,-173.085)">
 			<title>动态连接线.389</title>
 			<desc>解析回执获取二级账户Key生成交易签名交易</desc>
 			<v:userDefs>
@@ -531,12 +530,12 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(1):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="7.08661" cy="782.645" width="234.97" height="21.3161"/>
-			<path d="M7.09 764.22 L25.09 764.22 L25.09 801.07 L15.57 801.07" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-105.262" y="775.989" width="224.698" height="13.3124" class="st10"/>
-			<text x="-105.26" y="785.97" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>解析回执，获取二级账户<tspan
+			<v:textRect cx="7.08661" cy="844.437" width="234.97" height="21.3161"/>
+			<path d="M7.09 826.01 L25.09 826.01 L25.09 862.86 L15.57 862.86" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-105.262" y="837.781" width="224.698" height="13.3124" class="st10"/>
+			<text x="-105.26" y="847.77" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>解析回执，获取二级账户<tspan
 						class="st6">Key</tspan>，生成交易，签名交易</text>		</g>
-		<g id="shape390-296" v:mID="390" v:groupContext="shape" v:layerMember="0" transform="translate(334.577,-60.3439)">
+		<g id="shape390-296" v:mID="390" v:groupContext="shape" v:layerMember="0" transform="translate(334.577,-110.797)">
 			<title>动态连接线.390</title>
 			<desc>发送交易上链 向合约写返回值</desc>
 			<v:userDefs>
@@ -545,12 +544,12 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="-72.3208" cy="757.133" width="80.27" height="34.6285"/>
-			<path d="M0 757.13 L-136.16 757.13" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-107.321" y="743.821" width="70.0002" height="26.6248" class="st10"/>
-			<text x="-107.32" y="753.81" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送交易上链，<v:newlineChar/><tspan
+			<v:textRect cx="-72.3208" cy="818.926" width="80.27" height="34.6285"/>
+			<path d="M0 818.93 L-136.16 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-107.321" y="805.613" width="70.0002" height="26.6248" class="st10"/>
+			<text x="-107.32" y="815.6" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送交易上链，<v:newlineChar/><tspan
 						x="-107.32" dy="1.331em" class="st12">向合约写返回值</tspan></text>		</g>
-		<g id="shape391-304" v:mID="391" v:groupContext="shape" v:layerMember="0" transform="translate(189.936,-44.6787)">
+		<g id="shape391-304" v:mID="391" v:groupContext="shape" v:layerMember="0" transform="translate(189.936,-95.1322)">
 			<title>动态连接线.391</title>
 			<desc>事件回调</desc>
 			<v:userDefs>
@@ -559,9 +558,9 @@
 				<v:ud v:nameU="IsSelfMessage" v:prompt="" v:val="VT0(0):5"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="-79.3701" cy="757.133" width="50.27" height="21.3161"/>
-			<path d="M0 757.13 L-150.26 757.13" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-99.37" y="750.477" width="40.0001" height="13.3124" class="st10"/>
-			<text x="-99.37" y="760.46" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>事件回调</text>		</g>
+			<v:textRect cx="-79.3701" cy="818.926" width="50.27" height="21.3161"/>
+			<path d="M0 818.93 L-150.26 818.93" class="st8"/>
+			<rect v:rectContext="textBkgnd" x="-99.37" y="812.27" width="40.0001" height="13.3124" class="st10"/>
+			<text x="-99.37" y="822.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>事件回调</text>		</g>
 	</g>
 </svg>

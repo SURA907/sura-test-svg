@@ -1,207 +1,118 @@
 # 陆羽协议
 
-陆羽协议0.1版本如下。
+陆羽协议0.9版本如下。
 
 ## 一、协议综述
 
-### 1.1 协议栈
+### 1.1 统一抽象
+
+#### 统一账户协议
+
+将各种可信源的账户进行统一抽象，以实现用统一的账户操作不同可信源。本协议分为一级账户与二级账户。
+
+**定义**
+
+* 一级账户（LuyuAccount）：陆羽协议的统一账户，是对不同签名算法的链账户的统一抽象
+  * 密钥管理：用户保管
+  * 签名算法：ECDSA 或 国密
+* 二级账户（ChainAccount）：不同签名算法的链账户，对交易进行签名，是链上的实际账户。本协议定义了一系列标准签名算法，可信源根据自身设计进行选择与实现
+  * 密钥管理：托管在机构的Account Manager中
+  * 签名算法
+    * ECDSA
+      * ECDSAWithSecp256k1
+      * ECDSAWithSecp256r1
+    * 国密
+      * SM2WithSM3
+    * ...（支持协议更新定义更多算法）
+
+#### 统一寻址协议
+
+将各种可信源的智能合约、链码等可操作对象统一抽象为”资源“，以实现统一寻址。
+
+**定义**
+
+* 资源（Resource）：将可信源的智能合约、链码等可操作对象统一抽象为”**资源**“
+* 地址（Path）：`{zone}.{chain}.{resource}`   
+  * `{zone}` 业务名
+  * `{chain}` 链名
+  * `{resource}` 资源名
+  * `{operation}` 操作
+    * sendTransaction
+    * call
+    * getTransactionReceipt
+    * getBlockByHash、getBlockByNumber
+    * listResources
+
+#### 统一调用协议
+
+将各种可信源的调用协议进行统一抽象，以实现用统一的接口与参数对资源进行调用。
+
+**定义**
+
+* 写入资源
+  * 操作：sendTransaction
+  * 参数
+    * 交易（Transaction）：修改可信源数据的请求
+    * 回执（Receipt）：修改可信源数据的结果
+* 读取资源
+  * 操作：call
+  * 参数
+    * 查询（CallRequest）：查询可信源数据的请求
+    * 返回（CallResponse）：查询可信源数据的结果
+* 查询记录
+  * 操作：getTransactionReceipt
+  * 参数
+    * 回执（Receipt）：修改可信源数据的结果记录
+
+* 查询区块
+  * 操作：getBlockByHash、getBlockByNumber
+  * 参数
+    * 区块（Block）：区块结构的统一抽象
+* 列举资源
+  * 操作：listResources
+  * 参数
+    * 资源（Resource）：各种可信源的智能合约、链码等可操作的统一抽象对象
+
+#### 统一接入协议
+
+将各种可信源的接入协议进行抽象，以实现不同可信源的统一接入适配。不同可信源基于此协议开发插件，即可完成适配接入。本协议采用分层设计，以支持本地与远程的调用。
+
+**定义**
+
+* 驱动组件（Driver）
+  * 功能：定义统一的可信源操作抽象接口，各可信源基于此定制化具体实现逻辑，实现统一调用协议与实际可信源调用协议的转化（如交易组装，回执处理，区块解析，资源查询等）。调用连接组件向可信源发送数据。
+  * 接口
+    * sendTransaction
+    * call
+    * getTransactionReceipt
+    * getBlockByHash、getBlockByNumber
+    * listResources
+
+* 连接组件（Connection）
+  * 可信源接入的抽象层，与实际可信源建立连接，将驱动组件的调用转发至可信源
+  * 借助远程接入组件 “`Connection(Remote)`” 实现远程调用
+
+### 1.2 协议栈
 
 陆羽协议分为四层
 
 * 应用层：业务定制化逻辑
-* 事务层：多条链操作的事务性
 * 网络层：区块链数据的统一抽象，操作请求寻址
 * 链路层：直接操作链，具体链的定制化逻辑，插件实现
+* 数据层：可信源（区块链，预言机等）
 
 ![](img/stack.svg)
 
-### 1.2 统一抽象
-
-#### 账户统一抽象
-
-将各种类型的链账户进行统一抽象，分为一级账户与二级账户
-
-**定义**
-
-* 一级账户（Luyu Account）：陆羽协议的统一账户，是对各种类型链账户的统一抽象
-* 二级账户（Chain Account）：不同类型链的账户，用于向特定链上发交易
-* 实现
-  * 一二级账户关联方式：一级账户与二级账户相互签名
-  * 签名算法
-    * 一级账户：ECDSA
-    * 二级账户：各链实现
-  * 密钥管理
-    * 一级账户：用户保管
-    * 二级账户：托管在机构的Account Manager中
-
-#### 资源统一抽象
-
-将链上的智能合约、链码等可操作对象统一抽象为”资源“
-
-**定义**
-
-* 描述：将链上的智能合约、链码等可操作对象统一抽象为”**资源**“
-* 格式：`lyp://{zone}.{chain}.{resource}/{operation}`   
-* 其中
-  * `{zone}` 业务名
-  * `{chain}` 链名
-  * `{resource}` 资源名
-  * `{operation}` 操作，包括 
-    * sendTransaction
-    * call
-    * getTransactionReceipt
-    * getBlockByHash
-    * getBlockByNumber
-    * listResources
-
-####  抽象定义详细描述
-
-陆羽协议对区块链上的各种抽象定义包括
-
-* Block
-* Resource
-* Transaction、Receipt
-* CallRequest、CallResponse
-* LuyuAccount、ChainAccount
-
-**陆羽协议与语言无关**，此处用`java`语言进行举例
-
-##### Block 定义
-
-``` java
-public class Block {
-    private String chainPath; // Path of the blockchain. eg: payment.chain0
-    private long number; // Block number
-    private String hash; // Block Hash
-    private String[] parentHash; // Block parent hash, support DAG
-    private String[] roots; // Block roots array. eg: transaction root, state root or receipt root
-    private long timestamp; // Block timestamp
-    private byte[] bytes; // Original block bytes of a certain blockchain
-    
-    // --snip--
-}
-```
-
-##### Resource
-
-``` java
-public class Resource {
-    private String path; // Path of the resource. eg: payment.chain0.hello
-    private String type; // Blockchain type that the resource belongs to
-    private String[] methods; // Method list of resource function name. eg: ["transfer(2)", "balanceOf(1)"]
-    private Map<String, Object> properties; // Other property if needed
-    
-    // --snip--
-}
-```
-
-##### Transaction
-
-``` java
-public class Transaction {
-    private String path; // Path of the calling resource. eg: payment.chain0.hello
-    private String method; // Method of resource function name. eg: "transfer"
-    private String[] args; // Arguments of function. eg: ["Tom", "100"]
-    private long nonce; // Nonce for unique
-
-    // Either key or LuyuSign
-    private byte[] key; // Secret key of a certain blockchain
-
-    // Either key or LuyuSign, if key not set, use this sign to query AccountManager
-    private byte[] LuyuSign; // Signature by luyu account
-    
-    // --snip--
-}
-```
-
-##### Receipt
-
-``` java
-public class Receipt {
-    private String[] result; // Resource function's return output
-    private int code; // Error code of blockchain
-    private String message; // Error message of blockchain
-    private String path; // Transaction path of the calling resource. eg: payment.chain0.hello
-    private String method; // Transaction method of resource function name. eg: "transfer"
-    private String[] args; // Transaction arguments of function. eg: ["Tom", "100"]
-    private String transactionHash; // Original transaction hash
-    private byte[] transactionBytes; // The original transaction bytes of a certain blockchain
-    private long blockNumber; // Block number of this transaction belongs to
-    
-    // --snip--
-}
-```
-
-##### CallRequest
-
-``` java
-public class CallRequest {
-    private String path; // Path of the calling resource. eg: payment.chain0.hello
-    private String method; // Method of resource function name. eg: "transfer"
-    private String[] args; // Arguments of function. eg: ["Tom", "100"]
-    
-    // --snip--
-}
-```
-
-##### CallResponse
-
-``` java
-public class CallResponse {
-    private String[] result; // Resource function's return output
-    private long code; // Error code
-    private String message; // Error message
-    private String path; // Transaction path of the calling resource. eg: payment.chain0.hello
-    private String method; // Transaction method of resource function name. eg: "transfer"
-    private String[] args; // Transaction arguments of function. eg: ["Tom", "100"]
-    
-    // --snip--
-}
-```
-
-##### LuyuAccount
-
-``` java
-public class LuyuAccount {
-    private Map<String, Object> properties = new HashMap<>();
-
-    private String name;
-    private byte[] identity;
-    private byte[] secKey;
-    private byte[] pubKey;
-    
-    // --snip--
-}
-```
-
-##### ChainAccount
-
-``` java
-public class ChainAccount {
-    private Map<String, Object> properties = new HashMap<>();
-
-    private String name;
-    private String type;
-    private byte[] identity;
-    private byte[] secKey;
-    private byte[] pubKey;
-    
-    // --snip--
-}
-```
-
-### 1.3 架构
-
-**总体架构**
+### 1.3 实现架构
 
 陆羽协议的架构如下，各组件为：
 
 * **SDK**：发送交易，操作跨链网络
-* **Account Manager**：管理统一账户信息，托管二级账户私钥
+* **Account Manager**：管理统一账户信息，托管二级账户私钥，用二级账户对交易进行签名
 * **Router**：跨链路由，管理插件，转发请求
   * **Router Manager**：路由总逻辑，调用Account Manager验签，调用插件发交易
   * **Plugin**：各种链插件的实现，与链对接
-  * **其它模块**（图中未画出）：Config、P2P、PeerManager、PluginManager、ZoneManager等
+  * **其它模块**（图中未画出）：Config、P2P、PeerManager、PluginManager、RouterManager等
 
 
 
@@ -209,9 +120,9 @@ public class ChainAccount {
 
 ![](img/frame.svg)
 
-### 1.4 流程
+### 1.4 调用流程
 
-**单Router调用举例**
+#### 单Router调用举例
 
 sendTransaction操作经过层层处理，最后调用至区块链上。
 
@@ -223,7 +134,7 @@ sendTransaction操作经过层层处理，最后调用至区块链上。
 
 ![](img/flow1.svg)
 
-**跨Router调用举例**
+#### 跨Router调用举例
 
 sendTransaction操作经过层层处理，最后调用至另一个Router连接的区块链上。其中发起方Router的链路层的Connection是Remote的，该模块是Connection的抽象映射，负责转发至相应Router的Connection，接口与一般的Connection完全相同。
 
@@ -237,7 +148,7 @@ sendTransaction操作经过层层处理，最后调用至另一个Router连接�
 
 ![](img/flow2.svg)
 
-**链发起调用举例**
+#### 链发起调用举例
 
 由区块链的SDK发起，调用至区块链A上。区块链A上部署了接收跨链调用请求的合约，合约通过事件机制回调至插件，插件将调用参数和调用者的链身份以事件的形式通知至Router Manager。Router Manager从Account Manager处查询到对应链的私钥后，调用相应的插件将跨链交易发送出去。
 
@@ -248,249 +159,3 @@ sendTransaction操作经过层层处理，最后调用至另一个Router连接�
 流程如下
 
 ![](img/flow3.svg)
-
-
-
-## 二、详细描述
-
-此部分描述陆羽协议的详细定义，**陆羽协议与语言无关**，此处用`java`语言描述。
-
-### 2.1 应用层
-
-SDK 向应用开放的接口协议
-
-``` java
-public interface SDK {
-    Receipt sendTransaction(Transaction tx);
-
-    CallResponse call(CallRequest request);
-
-    Receipt getTransactionReceipt(String txHash);
-
-    Block getBlockByHash(String blockHash);
-
-    Block getBlockByNumber(long blockNumber);
-
-    Resource[] listResources(String chainPath);
-}
-```
-
-### 2.2 事务层
-
-对于SDK发来的请求处理方式
-
-* 一般请求：直接透传
-
-* 事务请求：（待设计）
-
-### 2.3 网络层
-
-#### 实现描述
-
-Router向应用层暴露的接口实现
-
-* 网络协议：**http/https**
-
-* 接口类型：**Restful**
-
-* 编码：**json**
-
-#### 抽象定义描述
-
-网络层对区块链进行了**统一抽象**，包括，详细定义见上节
-
-* Block
-* Resource
-* Transaction、Receipt
-* CallRequest、CallResponse
-* LuyuAccount、ChainAccount
-
-### 2.4 链路层
-
-#### 链驱动 Driver
-
-Driver 向网络层提供的接口协议
-
-``` java
-public interface Driver {
-
-    public static class STATUS {
-        public static final int OK = 0;
-        public static final int INTERNAL_ERROR = 100; // driver internal error
-        public static final int CONNECTION_EXCEPTION = 200; // query connection exception
-    }
-
-    interface ReceiptCallback {
-        /**
-         * Callback to response receipt
-         *
-         * @param status Driver.STATUS defined above
-         * @param message error message
-         * @param receipt
-         */
-        void onResponse(int status, String message, Receipt receipt);
-    }
-
-    interface CallResponseCallback {
-        /**
-         * Callback to response CallResponse
-         *
-         * @param status Driver.STATUS defined above
-         * @param message error message
-         * @param callResponse
-         */
-        void onResponse(int status, String message, CallResponse callResponse);
-    }
-
-    interface BlockCallback {
-        /**
-         * Callback to response block
-         *
-         * @param status Driver.STATUS defined above
-         * @param message error message
-         * @param block
-         */
-        void onResponse(int status, String message, Block block);
-    }
-
-    interface ResourcesCallback {
-        /**
-         * Callback to response resource list
-         *
-         * @param status Driver.STATUS defined above
-         * @param message error message
-         * @param resources
-         */
-        void onResponse(int status, String message, Resource[] resources);
-    }
-
-    /**
-     * Query a contract api of blockchain with verifying on-chain proof (generate block)
-     *
-     * @param request
-     * @param callback
-     */
-    void sendTransaction(Transaction request, ReceiptCallback callback);
-
-    /**
-     * Query a contract api of blockchain without verifying on-chain proof (no block generated)
-     *
-     * @param request
-     * @param callback
-     */
-    void call(CallRequest request, CallResponseCallback callback);
-
-    /**
-     * Get a transaction receipt by transaction hash with verifying on-chain proof
-     *
-     * @param txHash
-     * @param callback
-     */
-    void getTransactionReceipt(String txHash, ReceiptCallback callback);
-
-    /**
-     * Get block by hash
-     *
-     * @param blockHash
-     * @param callback
-     */
-    void getBlockByHash(String blockHash, BlockCallback callback);
-
-    /**
-     * Get block by block number
-     *
-     * @param blockNumber
-     * @param callback
-     */
-    void getBlockByNumber(long blockNumber, BlockCallback callback);
-
-    /**
-     * Get latest blockNumber from certain chain
-     *
-     * @return
-     */
-    long getBlockNumber();
-
-    /**
-     * Sign message with account secret key
-     *
-     * @param key The secret key of an account
-     * @param message The message for signing
-     * @return signBytes
-     */
-    byte[] accountSign(byte[] key, byte[] message);
-
-    /**
-     * Verify signature of an account
-     *
-     * @param identity Account's identity, eg: address or public key
-     * @param signBytes Signature with binary encoded
-     * @param message The message for signing
-     * @return
-     */
-    boolean accountVerify(byte[] identity, byte[] signBytes, byte[] message);
-
-    /**
-     * Get block chain driver type
-     *
-     * @return
-     */
-    String getType();
-
-    /**
-     * Get resource list belongs to a chain
-     *
-     * @param callback Return the array of resources
-     */
-    void listResources(ResourcesCallback callback);
-
-    /**
-     * Implement event register logic
-     *
-     * @param events The event that router manager register in
-     */
-    void registerEvents(Events events);
-}
-```
-
-#### 链连接 Connection
-
-Connection向Driver层提供的接口协议
-
-``` java
-
-public interface Connection {
-    /** Callback of asyncSend() function */
-    interface Callback {
-        /**
-         * On response
-         *
-         * @param errorCode The errorCode according with diffrent implementation
-         * @param message The description of errorCode
-         * @param responseData Response binary package data, should decode to use it
-         */
-        void onResponse(int errorCode, String message, byte[] responseData);
-    }
-
-    /**
-     * Send binary package data to certain block chain connection. Define type in your
-     * implementation to separate different kinds of data
-     *
-     * @param path The luyu path to original blockchain
-     * @param type The type defined by implementation to separate different kinds of data
-     * @param data The binary package data, encode according with different implementation
-     * @param callback
-     */
-    void asyncSend(String path, int type, byte[] data, Callback callback);
-
-    /**
-     * Subscribe callback by sending binary package data to certain block chain connection. Define
-     * type in your implementation to separate different kinds of data
-     *
-     * @param type The type defined by implementation to separate different kinds of data
-     * @param data The binary package data, encode according with different implementation
-     * @param callback
-     */
-    void subscribe(int type, byte[] data, Callback callback);
-}
-```
