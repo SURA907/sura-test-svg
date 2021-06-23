@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 由 Microsoft Visio, SVG Export 生成 abstract.svg 页-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="10.0463in" height="4.2786in"
+		viewBox="0 0 723.335 308.059" xml:space="preserve" color-interpolation-filters="sRGB" class="st14">
+	<v:documentProperties v:langID="2052" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#f2f2f2;stroke:none;stroke-width:0.25}
+		.st2 {fill:#000000;font-family:黑体;font-size:1.5em}
+		.st3 {fill:#a8d08d;stroke:#000000;stroke-width:0.25}
+		.st4 {fill:#000000;font-family:黑体;font-size:1.00001em}
+		.st5 {fill:#ffc000;stroke:#000000;stroke-width:0.25}
+		.st6 {marker-end:url(#mrkr13-18);marker-start:url(#mrkr13-16);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st7 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.28409090909091}
+		.st8 {fill:#ffffff;stroke:#ff0000;stroke-width:0.25}
+		.st9 {fill:#ff0000;font-family:黑体;font-size:1.16666em}
+		.st10 {fill:#ff7171;stroke:#000000;stroke-width:0.25}
+		.st11 {font-family:Calibri;font-size:1em}
+		.st12 {fill:#ffffff;stroke:#000000;stroke-width:0.25}
+		.st13 {font-size:1em}
+		.st14 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend13">
+			<path d="M 3 1 L 0 0 L 3 -1 L 3 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr13-16" class="st7" v:arrowType="13" v:arrowSize="2" v:setback="10.2" refX="10.2" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend13" transform="scale(3.52) "/>
+		</marker>
+		<marker id="mrkr13-18" class="st7" v:arrowType="13" v:arrowSize="2" v:setback="10.56" refX="-10.56" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend13" transform="scale(-3.52,-3.52) "/>
+		</marker>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>页-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="连接线" v:index="0"/>
+		<g id="shape518-1" v:mID="518" v:groupContext="shape" transform="translate(0.25,-0.25)">
+			<title>矩形.518</title>
+			<desc>统一抽象协议</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="361.417" cy="154.28" width="722.84" height="307.559"/>
+			<rect x="0" y="0.500008" width="722.835" height="307.559" class="st1"/>
+			<text x="4" y="22.47" class="st2" v:langID="2052"><v:paragraph/><v:tabList/>统一抽象协议</text>		</g>
+		<g id="shape520-4" v:mID="520" v:groupContext="shape" transform="translate(10.8799,-127.809)">
+			<title>矩形.520</title>
+			<desc>账户服务</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="60.2362" cy="279.713" width="120.48" height="56.6929"/>
+			<rect x="0" y="251.366" width="120.472" height="56.6929" class="st3"/>
+			<text x="36.24" y="283.71" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>账户服务</text>		</g>
+		<g id="shape526-7" v:mID="526" v:groupContext="shape" transform="translate(584.896,-127.809)">
+			<title>矩形.526</title>
+			<desc>跨链路由</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="60.2362" cy="279.713" width="120.48" height="56.6929"/>
+			<rect x="0" y="251.366" width="120.472" height="56.6929" class="st5"/>
+			<text x="36.24" y="283.71" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>跨链路由</text>		</g>
+		<g id="shape528-10" v:mID="528" v:groupContext="shape" v:layerMember="0" transform="translate(297.888,-149.069)">
+			<title>动态连接线</title>
+			<path d="M-10.2 300.97 L-10.56 300.97 L-155.98 300.97" class="st6"/>
+		</g>
+		<g id="shape532-19" v:mID="532" v:groupContext="shape" v:layerMember="0" transform="translate(418.36,-149.069)">
+			<title>动态连接线.532</title>
+			<path d="M10.2 300.97 L10.56 300.97 L155.98 300.97" class="st6"/>
+		</g>
+		<g id="shape537-26" v:mID="537" v:groupContext="shape" transform="translate(155.162,-146.156)">
+			<title>工作表.537</title>
+			<desc>统一账户协议</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="59.4584" cy="298.059" width="118.92" height="20"/>
+			<rect x="0" y="288.059" width="118.917" height="20" class="st8"/>
+			<text x="17.46" y="302.72" class="st9" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>统一账户协议</text>		</g>
+		<g id="shape540-29" v:mID="540" v:groupContext="shape" transform="translate(442.17,-146.156)">
+			<title>工作表.540</title>
+			<desc>统一寻址协议</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="59.4584" cy="298.059" width="118.92" height="20"/>
+			<rect x="0" y="288.059" width="118.917" height="20" class="st8"/>
+			<text x="17.46" y="302.72" class="st9" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>统一寻址协议</text>		</g>
+		<g id="group545-32" transform="translate(297.888,-14.4232)" v:mID="545" v:groupContext="group">
+			<title>工作表.545</title>
+			<g id="shape530-33" v:mID="530" v:groupContext="shape" v:layerMember="0" transform="translate(53.1496,-170.079)">
+				<title>动态连接线.530</title>
+				<path d="M7.09 297.86 L7.09 297.5 L7.09 261.93" class="st6"/>
+			</g>
+			<g id="shape533-40" v:mID="533" v:groupContext="shape" v:layerMember="0" transform="translate(53.1496,-113.386)">
+				<title>动态连接线.533</title>
+				<path d="M7.09 318.26 L7.09 318.62 L7.09 354.19" class="st6"/>
+			</g>
+			<g id="shape542-47" v:mID="542" v:groupContext="shape" transform="translate(2.55795E-013,-74.2677)">
+				<title>工作表.542</title>
+				<desc>统一接入协议</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="60.2362" cy="298.059" width="120.48" height="20"/>
+				<rect x="0" y="288.059" width="120.472" height="20" class="st8"/>
+				<text x="18.24" y="302.72" class="st9" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>统一接入协议</text>			</g>
+			<g id="group543-50" v:mID="543" v:groupContext="group">
+				<title>工作表.543</title>
+				<g id="shape523-51" v:mID="523" v:groupContext="shape" transform="translate(1.27898E-013,-226.772)">
+					<title>矩形.523</title>
+					<desc>应用SDK</desc>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="60.2362" cy="279.713" width="120.48" height="56.6929"/>
+					<rect x="0" y="251.366" width="120.472" height="56.6929" class="st10"/>
+					<text x="26.67" y="283.71" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>应用（<tspan
+								class="st11">SDK</tspan>）</text>				</g>
+				<g id="shape524-55" v:mID="524" v:groupContext="shape" transform="translate(0,-113.386)">
+					<title>矩形.524</title>
+					<desc>跨链路由</desc>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="60.2362" cy="279.713" width="120.48" height="56.6929"/>
+					<rect x="0" y="251.366" width="120.472" height="56.6929" class="st5"/>
+					<text x="36.24" y="283.71" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>跨链路由</text>				</g>
+				<g id="shape525-58" v:mID="525" v:groupContext="shape">
+					<title>矩形.525</title>
+					<desc>可信源 区块链、预言机</desc>
+					<v:userDefs>
+						<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
+					</v:userDefs>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+					<v:textRect cx="60.2362" cy="279.713" width="120.48" height="56.6929"/>
+					<rect x="0" y="251.366" width="120.472" height="56.6929" class="st12"/>
+					<text x="42.24" y="275.72" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>可信源<v:newlineChar/><tspan
+								x="6.24" dy="1.331em" class="st13">（</tspan>区块链、预言机）</text>				</g>
+			</g>
+			<g id="shape544-62" v:mID="544" v:groupContext="shape" transform="translate(2.55795E-013,-188.425)">
+				<title>工作表.544</title>
+				<desc>统一调用协议</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="60.2362" cy="298.059" width="120.48" height="20"/>
+				<rect x="0" y="288.059" width="120.472" height="20" class="st8"/>
+				<text x="18.24" y="302.72" class="st9" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>统一调用协议</text>			</g>
+		</g>
+	</g>
+</svg>
