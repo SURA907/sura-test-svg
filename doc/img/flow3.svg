@@ -19,8 +19,8 @@
 		.st9 {fill:#5b9bd5;fill-opacity:1;stroke:#5b9bd5;stroke-opacity:1;stroke-width:0.23584905660377}
 		.st10 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:7.2}
 		.st11 {fill:#4f87bb;font-family:黑体;font-size:0.833336em}
-		.st12 {font-size:1em}
-		.st13 {fill:#ffffff;stroke:none;stroke-linecap:butt}
+		.st12 {fill:#ffffff;stroke:none;stroke-linecap:butt}
+		.st13 {font-size:1em}
 		.st14 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
 	]]>
 	</style>
@@ -242,9 +242,9 @@
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="7.08661" cy="847.272" width="70.27" height="34.6285"/>
 			<path d="M7.09 826.01 L25.09 826.01 L25.09 868.53 L15.57 868.53" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-22.9134" y="833.96" width="60.0002" height="26.6248" class="st10"/>
+			<rect v:rectContext="textBkgnd" x="-22.9134" y="833.96" width="60.0002" height="26.6248" class="st12"/>
 			<text x="-22.91" y="843.94" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>跨链调用合约<v:newlineChar/><tspan
-						x="-22.91" dy="1.331em" class="st12">接收调用参数</tspan></text>		</g>
+						x="-22.91" dy="1.331em" class="st13">接收调用参数</tspan></text>		</g>
 		<g id="group358-119" transform="translate(734.262,-785.368)" v:mID="358" v:groupContext="group">
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
@@ -300,7 +300,7 @@
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="72.3208" cy="818.926" width="50.27" height="21.3161"/>
 			<path d="M0 818.93 L136.16 818.93" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="52.3208" y="812.27" width="40.0001" height="13.3124" class="st13"/>
+			<rect v:rectContext="textBkgnd" x="52.3208" y="812.27" width="40.0001" height="13.3124" class="st12"/>
 			<text x="52.32" y="822.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>事件通知</text>		</g>
 		<g id="shape365-153" v:mID="365" v:groupContext="shape" v:layerMember="0" transform="translate(327.491,-657.959)">
 			<title>动态连接线.365</title>
@@ -316,11 +316,11 @@
 			<path d="M7.09 826.01 L25.09 826.01 L25.09 869.28 L15.57 869.28" class="st8"/>
 			<rect v:rectContext="textBkgnd" x="-52.0666" y="834.333" width="118.307" height="26.6248" class="st10"/>
 			<text x="-12.91" y="844.32" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>解析事件<v:newlineChar/><tspan
-						x="-52.07" dy="1.331em" class="st12">组装成</tspan><tspan class="st6">Transaction </tspan><tspan class="st6">+ </tspan><tspan
+						x="-52.07" dy="1.331em" class="st13">组装成</tspan><tspan class="st6">Transaction </tspan><tspan class="st6">+ </tspan><tspan
 						class="st6">identity</tspan></text>		</g>
 		<g id="shape366-164" v:mID="366" v:groupContext="shape" v:layerMember="0" transform="translate(334.577,-580.006)">
 			<title>动态连接线.366</title>
-			<desc>回调onChainEvent(): Transaction + identity</desc>
+			<desc>回调router: Transaction + identity</desc>
 			<v:userDefs>
 				<v:ud v:nameU="IsReturn" v:prompt="" v:val="VT0(0):5"/>
 				<v:ud v:nameU="IsAsync" v:prompt="" v:val="VT0(0):26"/>
@@ -330,8 +330,8 @@
 			<v:textRect cx="71.2764" cy="818.926" width="98.58" height="33.3161"/>
 			<path d="M0 818.93 L134.07 818.93" class="st8"/>
 			<rect v:rectContext="textBkgnd" x="27.1233" y="806.27" width="88.3065" height="25.3125" class="st10"/>
-			<text x="28.69" y="816.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>回调<tspan class="st6">onChainEvent</tspan><tspan
-						class="st6">():<v:newlineChar/></tspan><tspan x="27.12" dy="1.233em" class="st6">Transaction </tspan><tspan
+			<text x="47.03" y="816.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>回调<tspan class="st6">router</tspan><tspan
+						class="st6">:<v:newlineChar/></tspan><tspan x="27.12" dy="1.233em" class="st6">Transaction </tspan><tspan
 						class="st6">+ </tspan><tspan class="st6">identity</tspan></text>		</g>
 		<g id="shape367-176" v:mID="367" v:groupContext="shape" v:layerMember="0" transform="translate(607.076,-415.313)">
 			<title>动态连接线.367</title>
@@ -346,7 +346,7 @@
 			<path d="M0 833.1 L144.22 833.1" class="st8"/>
 			<rect v:rectContext="textBkgnd" x="46.349" y="819.787" width="60.0002" height="26.6248" class="st10"/>
 			<text x="46.35" y="829.77" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送签名后的<v:newlineChar/><tspan
-						x="51.35" dy="1.331em" class="st12">交易二进制</tspan></text>		</g>
+						x="51.35" dy="1.331em" class="st13">交易二进制</tspan></text>		</g>
 		<g id="shape368-184" v:mID="368" v:groupContext="shape" v:layerMember="0" transform="translate(752.688,-398.305)">
 			<title>动态连接线.368</title>
 			<desc>共识上链</desc>
@@ -372,10 +372,10 @@
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="-76.3489" cy="818.926" width="70.27" height="34.6285"/>
 			<path d="M0 818.93 L-144.22 818.93" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-106.349" y="805.613" width="60.0002" height="26.6248" class="st10"/>
+			<rect v:rectContext="textBkgnd" x="-106.349" y="805.613" width="60.0002" height="26.6248" class="st12"/>
 			<text x="-99.97" y="815.6" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>交易回执<tspan
 						class="st6"> </tspan><tspan class="st6">+<v:newlineChar/></tspan><tspan x="-106.35" dy="1.331em"
-						class="st12">交易存证证明</tspan></text>		</g>
+						class="st13">交易存证证明</tspan></text>		</g>
 		<g id="shape370-201" v:mID="370" v:groupContext="shape" v:layerMember="0" transform="translate(759.774,-297.675)">
 			<title>动态连接线.370</title>
 			<desc>同步区块头异步</desc>
@@ -403,7 +403,7 @@
 			<path d="M7.09 826.01 L25.09 826.01 L25.09 868.53 L15.57 868.53" class="st8"/>
 			<rect v:rectContext="textBkgnd" x="-27.9134" y="833.96" width="70.0002" height="26.6248" class="st10"/>
 			<text x="-17.91" y="843.94" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>验证区块头<v:newlineChar/><tspan
-						x="-27.91" dy="1.331em" class="st12">验证交易存在性</tspan></text>		</g>
+						x="-27.91" dy="1.331em" class="st13">验证交易存在性</tspan></text>		</g>
 		<g id="shape374-216" v:mID="374" v:groupContext="shape" v:layerMember="0" transform="translate(607.076,-202.849)">
 			<title>动态连接线.374</title>
 			<desc>发送回执 Receipt</desc>
@@ -415,7 +415,7 @@
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="-65.3833" cy="818.926" width="83.04" height="21.3161"/>
 			<path d="M0 818.93 L-122.29 818.93" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-101.768" y="812.27" width="72.7693" height="13.3124" class="st10"/>
+			<rect v:rectContext="textBkgnd" x="-101.768" y="812.27" width="72.7693" height="13.3124" class="st12"/>
 			<text x="-101.77" y="822.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送回执<tspan
 						class="st6"> </tspan><tspan class="st6">Receipt</tspan></text>		</g>
 		<g id="shape375-225" v:mID="375" v:groupContext="shape" v:layerMember="0" transform="translate(476.31,-183.006)">
@@ -489,7 +489,7 @@
 			<path d="M7.09 826.01 L25.09 826.01 L25.09 868.53 L15.57 868.53" class="st8"/>
 			<rect v:rectContext="textBkgnd" x="-33.5631" y="833.96" width="81.2997" height="26.6248" class="st10"/>
 			<text x="-33.56" y="843.94" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>根据<tspan
-						class="st6">identity</tspan>查询到<v:newlineChar/><tspan x="-22.91" dy="1.331em" class="st12">一级账户身份</tspan></text>		</g>
+						class="st6">identity</tspan>查询到<v:newlineChar/><tspan x="-22.91" dy="1.331em" class="st13">一级账户身份</tspan></text>		</g>
 		<g id="shape385-268" v:mID="385" v:groupContext="shape" v:layerMember="0" transform="translate(599.99,-479.227)">
 			<title>动态连接线.385</title>
 			<desc>交易二进制编码 请求Account Manager进行签名</desc>
@@ -504,7 +504,7 @@
 			<path d="M7.09 826.01 L25.09 826.01 L25.09 874.2 L15.57 874.2" class="st8"/>
 			<rect v:rectContext="textBkgnd" x="-59.0074" y="836.794" width="132.188" height="26.6248" class="st10"/>
 			<text x="-32.91" y="846.78" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>交易二进制编码，<v:newlineChar/><tspan
-						x="-59.01" dy="1.331em" class="st12">请求</tspan><tspan class="st6">Account Manager</tspan>进行签名</text>		</g>
+						x="-59.01" dy="1.331em" class="st13">请求</tspan><tspan class="st6">Account Manager</tspan>进行签名</text>		</g>
 		<g id="shape388-277" v:mID="388" v:groupContext="shape" v:layerMember="0" transform="translate(476.31,-494.817)">
 			<title>动态连接线.388</title>
 			<desc>发送 Transaction + 一级账户身份</desc>
@@ -516,10 +516,10 @@
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="65.5698" cy="818.926" width="87.28" height="34.6285"/>
 			<path d="M0 818.93 L122.66 818.93" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="27.0664" y="805.613" width="77.007" height="26.6248" class="st10"/>
+			<rect v:rectContext="textBkgnd" x="27.0664" y="805.613" width="77.007" height="26.6248" class="st12"/>
 			<text x="27.07" y="815.6" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送<tspan class="st6"> </tspan><tspan
 						class="st6">Transaction </tspan><tspan class="st6">+<v:newlineChar/></tspan><tspan x="35.57" dy="1.331em"
-						class="st12">一级账户身份</tspan> </text>		</g>
+						class="st13">一级账户身份</tspan> </text>		</g>
 		<g id="shape389-288" v:mID="389" v:groupContext="shape" v:layerMember="0" transform="translate(327.491,-173.085)">
 			<title>动态连接线.389</title>
 			<desc>解析回执获取二级账户Key生成交易签名交易</desc>
@@ -548,7 +548,7 @@
 			<path d="M0 818.93 L-136.16 818.93" class="st8"/>
 			<rect v:rectContext="textBkgnd" x="-107.321" y="805.613" width="70.0002" height="26.6248" class="st10"/>
 			<text x="-107.32" y="815.6" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>发送交易上链，<v:newlineChar/><tspan
-						x="-107.32" dy="1.331em" class="st12">向合约写返回值</tspan></text>		</g>
+						x="-107.32" dy="1.331em" class="st13">向合约写返回值</tspan></text>		</g>
 		<g id="shape391-304" v:mID="391" v:groupContext="shape" v:layerMember="0" transform="translate(189.936,-95.1322)">
 			<title>动态连接线.391</title>
 			<desc>事件回调</desc>
@@ -560,7 +560,7 @@
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="-79.3701" cy="818.926" width="50.27" height="21.3161"/>
 			<path d="M0 818.93 L-150.26 818.93" class="st8"/>
-			<rect v:rectContext="textBkgnd" x="-99.37" y="812.27" width="40.0001" height="13.3124" class="st10"/>
+			<rect v:rectContext="textBkgnd" x="-99.37" y="812.27" width="40.0001" height="13.3124" class="st12"/>
 			<text x="-99.37" y="822.25" class="st11" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>事件回调</text>		</g>
 	</g>
 </svg>

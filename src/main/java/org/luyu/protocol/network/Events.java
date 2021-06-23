@@ -17,20 +17,22 @@ public interface Events {
     /**
      * Call to another resource through router
      *
+     * @param identity The identity of original blockchain type (who start this transaction)
      * @param request The callRequest to destination blockchain
      * @param callback
      */
-    void call(CallRequest request, Driver.CallResponseCallback callback);
+    void call(byte[] identity, CallRequest request, Driver.CallResponseCallback callback);
 
     interface KeyCallback {
-        void onResponse(byte[] key);
+        /** @param account chain account */
+        void onResponse(Account account);
     }
 
     /**
-     * Get Key by identity
+     * Get Account by identity
      *
      * @param identity The identity of original blockchain type. eg: address or public key
      * @param callback
      */
-    void getKeyByIdentity(byte[] identity, KeyCallback callback);
+    void getAccountByIdentity(byte[] identity, KeyCallback callback);
 }
