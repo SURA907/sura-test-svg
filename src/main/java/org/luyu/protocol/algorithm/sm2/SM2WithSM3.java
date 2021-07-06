@@ -1,5 +1,6 @@
 package org.luyu.protocol.algorithm.sm2;
 
+import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.AbstractMap.SimpleImmutableEntry;
@@ -14,6 +15,7 @@ import org.bouncycastle.math.ec.ECAlgorithms;
 import org.bouncycastle.math.ec.ECConstants;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.FixedPointCombMultiplier;
+import org.bouncycastle.util.encoders.Hex;
 import org.luyu.protocol.algorithm.SignatureAlgorithm;
 
 public class SM2WithSM3 implements SignatureAlgorithm {
@@ -40,6 +42,15 @@ public class SM2WithSM3 implements SignatureAlgorithm {
         return TYPE;
     }
 
+    /**
+     * This function is the internal implementation of SM2 to sign e. If you want to use standard
+     * sm2 signature, please use prepareMessage() to calculate e first and use e as this function's
+     * sign message
+     *
+     * @param secKey
+     * @param message The message for signing(Is e of standard SM2 signature)
+     * @return
+     */
     @Override
     public byte[] sign(byte[] secKey, byte[] message) {
         return sign(secKey, message, true).toBytes();
@@ -56,6 +67,64 @@ public class SM2WithSM3 implements SignatureAlgorithm {
                 new ECPrivateKeyParameters(secKeyAsBI, SM2WithSM3.CURVE);
         signer.init(true, privateKeyParameters);
         return signer.generateSignatureData(message);
+    }
+
+    public static byte[] prepareMessage(byte[] pubKey, byte[] message) {
+        // use default userID
+        byte[] userID = Hex.decode("31323334353637383132333435363738"); // the default value
+        return prepareMessage(pubKey, message, userID);
+    }
+
+    /**
+     * The standard SM2 signature need to calculate [hash(Z) || hash(message)] as e in sign. This
+     * function caculate e: [sm3(Z) || sm3(message)] where Z = sm3(entLen || userID || a || b || xg
+     * || yg || xa || ya)
+     *
+     * @param pubKey Account.getPubkey()
+     * @param message message before concat with Z
+     * @param userID param for calculate Z
+     * @return [sm3(Z) || sm3(message)]
+     */
+    public static byte[] prepareMessage(byte[] pubKey, byte[] message, byte[] userID) {
+        try {
+            // Z = sm3( entLen || userID || a || b || xg || yg || xa || ya )
+            // return sm3(Z) || sm3(message)
+
+            // entLen
+            byte[] entLen = new byte[2];
+            int len = userID.length * 8;
+            entLen[0] = (byte) (len >> 8 & 0xFF);
+            entLen[1] = (byte) (len & 0xFF);
+
+            // a b xg yg
+            byte[] a = SM2WithSM3.CURVE.getCurve().getA().getEncoded();
+            byte[] b = SM2WithSM3.CURVE.getCurve().getB().getEncoded();
+            byte[] xg = SM2WithSM3.CURVE.getG().getAffineXCoord().getEncoded();
+            byte[] yg = SM2WithSM3.CURVE.getG().getAffineYCoord().getEncoded();
+
+            // xa || ya
+            byte[] xaya = pubKey;
+
+            ByteArrayOutputStream encode = new ByteArrayOutputStream();
+            encode.write(entLen);
+            encode.write(userID);
+            encode.write(a);
+            encode.write(b);
+            encode.write(xg);
+            encode.write(yg);
+            encode.write(xaya);
+
+            byte[] zHash = HashUtil.sm3(encode.toByteArray());
+            byte[] messageHash = HashUtil.sm3(message);
+
+            ByteArrayOutputStream result = new ByteArrayOutputStream();
+            result.write(zHash);
+            result.write(messageHash);
+            return result.toByteArray();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -76,7 +145,7 @@ public class SM2WithSM3 implements SignatureAlgorithm {
         System.arraycopy(x, 0, publicKey, 0, PUBLIC_KEY_SIZE / 2);
         System.arraycopy(y, 0, publicKey, PUBLIC_KEY_SIZE / 2, PUBLIC_KEY_SIZE / 2);
 
-        return new SimpleImmutableEntry(privateKey, publicKey);
+        return new SimpleImmutableEntry(publicKey, privateKey);
     }
 
     public boolean verify(BigInteger pubKey, byte[] signature, byte[] message, boolean hashFirst) {

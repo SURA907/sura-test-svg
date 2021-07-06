@@ -50,12 +50,28 @@ public class SM2WithSM3Test {
     public void genrateKeysTest() {
         SignatureAlgorithm signer = new SM2WithSM3();
         Map.Entry<byte[], byte[]> key = signer.generateKeyPair();
-        BigInteger privateKey = new BigInteger(1, key.getKey());
+        BigInteger privateKey = new BigInteger(1, key.getValue());
         // System.out.println("1 privateKey: " + privateKey);
         BigInteger publicKey = SM2WithSM3.publicKeyFromPrivate(privateKey);
-        BigInteger publicKey1 = new BigInteger(1, key.getValue());
+        BigInteger publicKey1 = new BigInteger(1, key.getKey());
         // System.out.println("publicKey: " + publicKey);
         // System.out.println("publicKey1: " + publicKey1);
         Assert.assertTrue("should be true", publicKey.equals(publicKey1));
+    }
+
+    @Test
+    public void prepareMessageTest() {
+        byte[] message = "test".getBytes(StandardCharsets.UTF_8);
+
+        SignatureAlgorithm signer = new SM2WithSM3();
+        Map.Entry<byte[], byte[]> key = signer.generateKeyPair();
+
+        byte[] preparedMessage = SM2WithSM3.prepareMessage(key.getKey(), message);
+
+        byte[] signBytes = signer.sign(key.getValue(), preparedMessage);
+        SignatureData luyuSignData = SignatureData.parseFrom(signBytes);
+
+        boolean ok = signer.verify(key.getKey(), signBytes, preparedMessage);
+        System.out.println(ok);
     }
 }
