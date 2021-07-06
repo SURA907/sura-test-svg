@@ -3,6 +3,7 @@ package org.luyu.protocol.network;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import org.luyu.protocol.common.Default;
 
 public class Transaction {
     private String path; // Path of the calling resource. eg: payment.chain0.hello
@@ -10,7 +11,8 @@ public class Transaction {
     private String[] args; // Arguments of function. eg: ["Tom", "100"]
     private long nonce; // Nonce for unique
     private String sender; // sender of this transaction
-    private String version; // version of luyu protocol
+
+    private final String version = Default.PROTOCOL_VERSION;; // version of luyu protocol
 
     private byte[] LuyuSign; // Signature by luyu account
 
@@ -75,10 +77,6 @@ public class Transaction {
 
     public String getVersion() {
         return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
     }
 
     @Override

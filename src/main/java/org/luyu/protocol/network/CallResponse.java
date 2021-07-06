@@ -1,6 +1,7 @@
 package org.luyu.protocol.network;
 
 import java.util.Arrays;
+import org.luyu.protocol.common.Default;
 
 public class CallResponse {
     private String[] result; // Resource function's return output
@@ -10,7 +11,7 @@ public class CallResponse {
     private String method; // Transaction method of resource function name. eg: "transfer"
     private String[] args; // Transaction arguments of function. eg: ["Tom", "100"]
 
-    private String version; // version of luyu protocol
+    private final String version = Default.PROTOCOL_VERSION;; // version of luyu protocol
 
     public String[] getResult() {
         return result;
@@ -62,10 +63,6 @@ public class CallResponse {
 
     public String getVersion() {
         return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
     }
 
     @Override

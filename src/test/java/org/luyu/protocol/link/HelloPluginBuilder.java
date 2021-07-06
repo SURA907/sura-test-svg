@@ -3,7 +3,7 @@ package org.luyu.protocol.link;
 import java.util.Map;
 
 @LuyuPlugin("Hello1.0")
-public class HelloPluginBuilder implements PluginBuilder {
+public class HelloPluginBuilder extends PluginBuilder {
     @Override
     public Connection newConnection(Map<String, Object> properties) {
         try {

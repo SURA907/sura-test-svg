@@ -1,6 +1,7 @@
 package org.luyu.protocol.network;
 
 import java.util.Arrays;
+import org.luyu.protocol.common.Default;
 
 public class Receipt {
     private String[] result; // Resource function's return output
@@ -13,7 +14,7 @@ public class Receipt {
     private byte[] transactionBytes; // The original transaction bytes of a certain blockchain
     private long blockNumber; // Block number of this transaction belongs to
 
-    private String version; // version of luyu protocol
+    private final String version = Default.PROTOCOL_VERSION;; // version of luyu protocol
 
     public String[] getResult() {
         return result;
@@ -89,10 +90,6 @@ public class Receipt {
 
     public String getVersion() {
         return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
     }
 
     @Override
