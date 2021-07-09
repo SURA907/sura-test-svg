@@ -36,6 +36,12 @@ public class HelloDriver implements Driver {
     }
 
     @Override
+    public void start() throws RuntimeException {}
+
+    @Override
+    public void stop() throws RuntimeException {}
+
+    @Override
     public void sendTransaction(Account account, Transaction request, ReceiptCallback callback) {
         // Encode transaction
         String txBytesStr = request.getMethod() + "(";

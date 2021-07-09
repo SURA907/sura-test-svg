@@ -10,8 +10,7 @@ public class CallResponse {
     private String path; // Transaction path of the calling resource. eg: payment.chain0.hello
     private String method; // Transaction method of resource function name. eg: "transfer"
     private String[] args; // Transaction arguments of function. eg: ["Tom", "100"]
-
-    private final String version = Default.PROTOCOL_VERSION;; // version of luyu protocol
+    private final String version = Default.PROTOCOL_VERSION; // version of luyu protocol
 
     public String[] getResult() {
         return result;

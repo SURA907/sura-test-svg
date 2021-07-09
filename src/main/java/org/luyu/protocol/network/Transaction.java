@@ -12,7 +12,7 @@ public class Transaction {
     private long nonce; // Nonce for unique
     private String sender; // sender of this transaction
 
-    private final String version = Default.PROTOCOL_VERSION;; // version of luyu protocol
+    private final String version = Default.PROTOCOL_VERSION; // version of luyu protocol
 
     private byte[] LuyuSign; // Signature by luyu account
 

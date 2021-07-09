@@ -51,8 +51,8 @@
   * 密钥管理：托管在机构的Account Manager中
   * 签名算法
     * ECDSA
-      * ECDSAWithSecp256k1
-      * ECDSAWithSecp256r1
+      * ECDSASecp256k1WithSHA256
+      * ECDSASecp256r1WithSHA256
     * 国密
       * SM2WithSM3
     * ...（支持协议更新定义更多算法）

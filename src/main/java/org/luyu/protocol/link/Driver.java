@@ -10,6 +10,20 @@ import org.luyu.protocol.network.Resource;
 import org.luyu.protocol.network.Transaction;
 
 public interface Driver {
+    /**
+     * Start this service
+     *
+     * @throws RuntimeException if failed
+     */
+    void start() throws RuntimeException;
+
+    /**
+     * Stop this service
+     *
+     * @throws RuntimeException if failed
+     */
+    void stop() throws RuntimeException;
+
     interface ReceiptCallback {
         /**
          * Callback to response receipt

@@ -14,7 +14,6 @@ public class Receipt {
     private byte[] transactionBytes; // The original transaction bytes of a certain blockchain
     private long blockNumber; // Block number of this transaction belongs to
 
-    private final String version = Default.PROTOCOL_VERSION;; // version of luyu protocol
 
     public String[] getResult() {
         return result;

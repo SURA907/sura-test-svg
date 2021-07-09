@@ -28,6 +28,12 @@ public class HelloConnection implements Connection {
     }
 
     @Override
+    public void start() throws RuntimeException {}
+
+    @Override
+    public void stop() throws RuntimeException {}
+
+    @Override
     public void asyncSend(String path, int type, byte[] data, Callback callback) {
 
         switch (type) {

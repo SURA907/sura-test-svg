@@ -11,9 +11,7 @@ public class CallRequest {
     private String[] args; // Arguments of function. eg: ["Tom", "100"]
     private long nonce; // Nonce for unique
     private String sender; // sender of this callRequest
-
-    private final String version = Default.PROTOCOL_VERSION;; // version of luyu protocol
-
+    private final String version = Default.PROTOCOL_VERSION; // version of luyu protocol
     private byte[] LuyuSign; // Signature by luyu account
 
     private Map<String, Object> properties = new HashMap<>(); // Ext params

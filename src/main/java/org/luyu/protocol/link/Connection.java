@@ -1,6 +1,20 @@
 package org.luyu.protocol.link;
 
 public interface Connection {
+    /**
+     * Start this service
+     *
+     * @throws RuntimeException if failed
+     */
+    void start() throws RuntimeException;
+
+    /**
+     * Stop this service
+     *
+     * @throws RuntimeException if failed
+     */
+    void stop() throws RuntimeException;
+
     /** Callback of asyncSend() function */
     interface Callback {
         /**
