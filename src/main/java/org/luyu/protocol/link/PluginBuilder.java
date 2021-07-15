@@ -14,7 +14,8 @@ public abstract class PluginBuilder {
     /**
      * Used by router to build connection using properties parsed from config file
      *
-     * @param properties Eg: ip:port of a blockchain
+     * @param properties Object map from config file. Default properties: {"chainPath" :
+     *     "payment.chain1"}, {"chainDir" : "classpath:chains/chain1"}
      * @return
      */
     public abstract Connection newConnection(Map<String, Object> properties);
@@ -23,7 +24,8 @@ public abstract class PluginBuilder {
      * Used by router to build driver using properties parsed from config file
      *
      * @param connection The connection interface for sending binary message to blockchain
-     * @param properties Eg: block header signatures' public key
+     * @param properties Object map from config file. Default properties: {"chainPath" :
+     *     "payment.chain1"}, {"chainDir" : "classpath:chains/chain1"}
      * @return
      */
     public abstract Driver newDriver(Connection connection, Map<String, Object> properties);
