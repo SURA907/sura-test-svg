@@ -13,8 +13,8 @@ apply plugin: 'java'
 //apply plugin: 'war'
 apply plugin: 'jacoco'
 
-group 'com.gitee.luyu-community'
-version '1.0.0-07071-SNAPSHOT'
+group 'link.luyu'
+version '1.0.0-08300-SNAPSHOT'
 
 repositories {
     jcenter()
