@@ -1,11 +1,14 @@
 package link.luyu.protocol.network;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
+// Define encoding order for standard sign bytes
+// eg:
+// {"path":"a.b.c","method":"set","args":["aaa","bbb"],"nonce":1234,"sender":"aabbccdd","version":"1.0.0"}
+@JsonPropertyOrder({"path", "method", "args", "nonce", "sender", "version"})
 public class LuyuSignData {
     private static ObjectMapper objectMapper = new ObjectMapper();
     private String path; // Path of the calling resource. eg: payment.chain0.hello
@@ -13,10 +16,7 @@ public class LuyuSignData {
     private String[] args; // Arguments of function. eg: ["Tom", "100"]
     private long nonce; // Nonce for unique
     private String sender; // sender of this transaction
-
     private String version; // version of luyu protocol
-
-    private Map<String, byte[]> properties = new HashMap<>();
 
     public LuyuSignData() {}
 
@@ -37,7 +37,9 @@ public class LuyuSignData {
     }
 
     public byte[] toBytes() throws Exception {
-        // json encoding
+        // json encoding, should be the same properties order.
+        // eg:
+        // {"path":"a.b.c","method":"set","args":["aaa","bbb"],"nonce":1234,"sender":"aabbccdd","version":"1.0.0"}
         String str = objectMapper.writeValueAsString(this);
         return str.getBytes(StandardCharsets.UTF_8);
     }
@@ -95,14 +97,6 @@ public class LuyuSignData {
         this.version = version;
     }
 
-    public Map<String, byte[]> getProperties() {
-        return properties;
-    }
-
-    public void setProperties(Map<String, byte[]> properties) {
-        this.properties = properties;
-    }
-
     @Override
     public String toString() {
         return "LuyuSignData{"
@@ -121,9 +115,6 @@ public class LuyuSignData {
                 + '\''
                 + ", version='"
                 + version
-                + '\''
-                + ", properties="
-                + properties
                 + '}';
     }
 }
