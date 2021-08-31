@@ -29,9 +29,9 @@ public interface Events {
     }
 
     /**
-     * Get Account by identity
+     * Get Account by luyu account identity
      *
-     * @param identity The identity of original blockchain type. eg: address or public key
+     * @param identity The identity of luyu account
      * @param callback
      */
     void getAccountByIdentity(byte[] identity, KeyCallback callback);
