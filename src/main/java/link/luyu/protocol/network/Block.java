@@ -9,6 +9,7 @@ public class Block {
     private String hash; // Block Hash
     private String[] parentHash; // Block parent hash, support DAG
     private String[] roots; // Block roots array. eg: transaction root, state root or receipt root
+    private String[] transactionHashs; // Original transaction hash array
     private long timestamp; // Block timestamp
     private byte[] bytes; // Original block bytes of a certain blockchain
 
@@ -52,6 +53,14 @@ public class Block {
         this.roots = roots;
     }
 
+    public String[] getTransactionHashs() {
+        return transactionHashs;
+    }
+
+    public void setTransactionHashs(String[] transactionHashs) {
+        this.transactionHashs = transactionHashs;
+    }
+
     public long getTimestamp() {
         return timestamp;
     }
@@ -79,11 +88,14 @@ public class Block {
                 + ", hash='"
                 + hash
                 + '\''
-                + ", parentHash='"
-                + parentHash
-                + '\''
+                + ", parentHash="
+                + Arrays.toString(parentHash)
                 + ", roots="
                 + Arrays.toString(roots)
+                + ", transactionHashs="
+                + Arrays.toString(transactionHashs)
+                + ", timestamp="
+                + timestamp
                 + ", bytes="
                 + Arrays.toString(bytes)
                 + '}';
@@ -96,10 +108,11 @@ public class Block {
         Block block = (Block) o;
         return getNumber() == block.getNumber()
                 && getTimestamp() == block.getTimestamp()
-                && Objects.equals(getChainPath(), block.getChainPath())
-                && Objects.equals(getHash(), block.getHash())
+                && getChainPath().equals(block.getChainPath())
+                && getHash().equals(block.getHash())
                 && Arrays.equals(getParentHash(), block.getParentHash())
                 && Arrays.equals(getRoots(), block.getRoots())
+                && Arrays.equals(getTransactionHashs(), block.getTransactionHashs())
                 && Arrays.equals(getBytes(), block.getBytes());
     }
 
@@ -108,6 +121,7 @@ public class Block {
         int result = Objects.hash(getChainPath(), getNumber(), getHash(), getTimestamp());
         result = 31 * result + Arrays.hashCode(getParentHash());
         result = 31 * result + Arrays.hashCode(getRoots());
+        result = 31 * result + Arrays.hashCode(getTransactionHashs());
         result = 31 * result + Arrays.hashCode(getBytes());
         return result;
     }
