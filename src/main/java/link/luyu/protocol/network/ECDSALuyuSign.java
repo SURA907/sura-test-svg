@@ -19,7 +19,9 @@ public class ECDSALuyuSign implements LuyuSign {
     @Override
     public boolean verify(byte[] signBytes, LuyuSignData data) {
         String recoveredSender = recover(signBytes, data);
-        return data.getSender() == null ? false : data.getSender().equals(recoveredSender);
+        return data.getSender() == null
+                ? false
+                : data.getSender().replaceAll("0x", "").equals(recoveredSender);
     }
 
     @Override

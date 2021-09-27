@@ -3,9 +3,6 @@ package link.luyu.protocol.network;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 @JsonPropertyOrder(alphabetic = true)
 public class LuyuSignData {
@@ -15,27 +12,26 @@ public class LuyuSignData {
     private String[] args; // Arguments of function. eg: ["Tom", "100"]
     private long nonce; // Nonce for unique
     private String sender; // sender of this transaction
-
     private String version; // version of luyu protocol
-
-    private Map<String, byte[]> properties = new HashMap<>();
 
     public LuyuSignData() {}
 
     public LuyuSignData(Transaction tx) {
         setPath(tx.getPath());
         setMethod(tx.getMethod());
-        setArgs(tx.getArgs());
+        setArgs(tx.getArgs() == null ? new String[0] : tx.getArgs());
         setNonce(tx.getNonce());
         setSender(tx.getSender());
+        setVersion(tx.getVersion());
     }
 
     public LuyuSignData(CallRequest request) {
         setPath(request.getPath());
         setMethod(request.getMethod());
-        setArgs(request.getArgs());
+        setArgs(request.getArgs() == null ? new String[0] : request.getArgs());
         setNonce(request.getNonce());
         setSender(request.getSender());
+        setVersion(request.getVersion());
     }
 
     public byte[] toBytes() throws Exception {
@@ -97,35 +93,12 @@ public class LuyuSignData {
         this.version = version;
     }
 
-    public Map<String, byte[]> getProperties() {
-        return properties;
-    }
-
-    public void setProperties(Map<String, byte[]> properties) {
-        this.properties = properties;
-    }
-
     @Override
     public String toString() {
-        return "LuyuSignData{"
-                + "path='"
-                + path
-                + '\''
-                + ", method='"
-                + method
-                + '\''
-                + ", args="
-                + Arrays.toString(args)
-                + ", nonce="
-                + nonce
-                + ", sender='"
-                + sender
-                + '\''
-                + ", version='"
-                + version
-                + '\''
-                + ", properties="
-                + properties
-                + '}';
+        try {
+            return objectMapper.writeValueAsString(this);
+        } catch (Exception e) {
+            return "";
+        }
     }
 }
