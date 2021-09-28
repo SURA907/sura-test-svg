@@ -44,4 +44,22 @@ public interface Account {
      * @param callback
      */
     void verify(byte[] signBytes, byte[] message, VerifyCallback callback);
+
+    /**
+     * Set property for this algorithm account. Plugin can save some extra data of this account if
+     * needed. Notices that the properties are belongs to the keyPair, if default keyPair change,
+     * properties would be changed.
+     *
+     * @param key The key of the value
+     * @param value The value of the key
+     */
+    void setProperty(String key, String value);
+
+    /**
+     * Get property for this algorithm account of a certain key
+     *
+     * @param key The key of the value
+     * @return Return null if value is not existing
+     */
+    String getProperty(String key);
 }
