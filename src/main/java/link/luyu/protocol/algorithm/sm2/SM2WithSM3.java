@@ -77,7 +77,7 @@ public class SM2WithSM3 implements SignatureAlgorithm {
 
     /**
      * The standard SM2 signature need to calculate [hash(Z) || hash(message)] as e in sign. This
-     * function caculate e: [sm3(Z) || sm3(message)] where Z = sm3(entLen || userID || a || b || xg
+     * function calculate e: [sm3(Z) || sm3(message)] where Z = sm3(entLen || userID || a || b || xg
      * || yg || xa || ya)
      *
      * @param pubKey Account.getPubkey()

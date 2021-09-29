@@ -21,6 +21,14 @@ public class MockAccount implements Account {
         callback.onResponse(STATUS.OK, "Success", queryAccountManagerToVerify(signBytes, message));
     }
 
+    @Override
+    public void setProperty(String key, String value) {}
+
+    @Override
+    public String getProperty(String key) {
+        return null;
+    }
+
     private byte[] queryAccountManagerToSign(byte[] message) {
         SignatureAlgorithm algorithm = new MockSignatureAlgorithm();
         return algorithm.sign(new byte[] {}, message);

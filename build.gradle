@@ -14,7 +14,7 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 
 group 'link.luyu'
-version '1.0.0-09280-SNAPSHOT'
+version '1.0.0-09290-SNAPSHOT'
 
 repositories {
     jcenter()

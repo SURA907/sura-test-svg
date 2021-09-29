@@ -3,7 +3,7 @@ package link.luyu.protocol.algorithm;
 import java.util.LinkedList;
 import java.util.List;
 import link.luyu.protocol.algorithm.ecdsa.secp256k1.EcdsaSecp256k1WithSHA256;
-import link.luyu.protocol.algorithm.ecdsa.secp256r1.EcdsaSecp256r1;
+import link.luyu.protocol.algorithm.ecdsa.secp256r1.EcdsaSecp256r1WithSHA256;
 import link.luyu.protocol.algorithm.sm2.SM2WithSM3;
 
 public class SignAlgManager {
@@ -11,7 +11,7 @@ public class SignAlgManager {
         List<String> types = new LinkedList<>();
         types.add(SM2WithSM3.TYPE);
         types.add(EcdsaSecp256k1WithSHA256.TYPE);
-        types.add(EcdsaSecp256r1.TYPE);
+        types.add(EcdsaSecp256r1WithSHA256.TYPE);
         return types;
     }
 
@@ -21,8 +21,8 @@ public class SignAlgManager {
                 return new SM2WithSM3();
             case EcdsaSecp256k1WithSHA256.TYPE:
                 return new EcdsaSecp256k1WithSHA256();
-            case EcdsaSecp256r1.TYPE:
-                return new EcdsaSecp256r1();
+            case EcdsaSecp256r1WithSHA256.TYPE:
+                return new EcdsaSecp256r1WithSHA256();
             default:
                 return null;
         }
