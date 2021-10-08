@@ -59,7 +59,7 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
         byte[] hashedMessage = sha256(message);
 
         // sign message
-        BigInteger intSecKey = new BigInteger(secKey);
+        BigInteger intSecKey = new BigInteger(1, secKey);
         ECDSASigner signer = new ECDSASigner(new HMacDSAKCalculator(new SHA256Digest()));
 
         ECPrivateKeyParameters privKey = new ECPrivateKeyParameters(intSecKey, CURVE);
@@ -72,8 +72,10 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
     @Override
     public boolean verify(byte[] pubKey, byte[] signBytes, byte[] message) {
         byte[] recoverPubKey = recover(message, signBytes);
+        BigInteger publicKeyValue = new BigInteger(1, pubKey);
+        BigInteger recoverPubKeyValue = new BigInteger(1, recoverPubKey);
 
-        return Arrays.equals(recoverPubKey, pubKey);
+        return publicKeyValue.equals(recoverPubKeyValue);
     }
 
     @Override
@@ -180,7 +182,7 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
     }
 
     public static byte[] secKey2PubKey(byte[] secKey) {
-        BigInteger secKeyInt = new BigInteger(secKey);
+        BigInteger secKeyInt = new BigInteger(1, secKey);
         BigInteger pubKeyInt = publicKeyFromSecretKey(secKeyInt);
         return pubKeyInt.toByteArray();
     }
