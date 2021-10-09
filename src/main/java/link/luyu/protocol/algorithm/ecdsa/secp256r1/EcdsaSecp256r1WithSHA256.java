@@ -18,8 +18,8 @@ import java.security.Security;
 import java.security.Signature;
 import java.security.spec.ECGenParameterSpec;
 import java.util.AbstractMap;
+import java.util.Arrays;
 import java.util.Map;
-import javax.xml.bind.DatatypeConverter;
 import link.luyu.protocol.algorithm.SignatureAlgorithm;
 import org.bouncycastle.asn1.ASN1Encodable;
 import org.bouncycastle.asn1.ASN1InputStream;
@@ -201,7 +201,7 @@ public class EcdsaSecp256r1WithSHA256 implements SignatureAlgorithm {
                 throw new CryptoException(
                         format(
                                 "Invalid ECDSA signature. Expected count of 2 but got: %d. Signature is: %s",
-                                count, DatatypeConverter.printHexBinary(signature)));
+                                count, Arrays.toString(signature)));
             }
             return sigs;
         }
