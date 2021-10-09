@@ -178,7 +178,7 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
 
     public static String getAddress(byte[] publicKey) {
         byte[] hash = sha256(publicKey);
-        return Hex.toHexString(hash, hash.length - 20, 20);
+        return "0x" + Hex.toHexString(hash, hash.length - 20, 20);
     }
 
     public static byte[] secKey2PubKey(byte[] secKey) {
