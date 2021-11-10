@@ -148,14 +148,14 @@
 			<text x="6.31" y="272.08" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Connection</text>		</g>
 		<g id="shape555-33" v:mID="555" v:groupContext="shape" transform="translate(196.698,-169.389)">
 			<title>矩形.555</title>
-			<desc>Router Manager</desc>
+			<desc>路由管理器</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="114.654" cy="261.392" width="229.31" height="28.3465"/>
 			<rect x="0" y="247.219" width="229.308" height="28.3465" class="st9"/>
-			<text x="74.7" y="264.99" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Router Manager</text>		</g>
+			<text x="84.65" y="265.39" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>路由管理器</text>		</g>
 		<g id="shape575-36" v:mID="575" v:groupContext="shape" transform="translate(0.25,-155.589)">
 			<title>矩形.575</title>
 			<desc>账户服务 Account Manager</desc>
@@ -279,14 +279,14 @@
 			<text x="6.31" y="272.08" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Connection</text>		</g>
 		<g id="shape590-94" v:mID="590" v:groupContext="shape" transform="translate(501.684,-169.389)">
 			<title>矩形.590</title>
-			<desc>Router Manager</desc>
+			<desc>路由管理器</desc>
 			<v:userDefs>
 				<v:ud v:nameU="visVersion" v:val="VT0(15):26"/>
 			</v:userDefs>
 			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
 			<v:textRect cx="114.654" cy="261.392" width="229.31" height="28.3465"/>
 			<rect x="0" y="247.219" width="229.308" height="28.3465" class="st9"/>
-			<text x="74.7" y="264.99" class="st5" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>Router Manager</text>		</g>
+			<text x="84.65" y="265.39" class="st2" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>路由管理器</text>		</g>
 		<g id="shape591-97" v:mID="591" v:groupContext="shape" v:layerMember="0" transform="translate(609.96,-246.969)">
 			<title>动态连接线.591</title>
 			<path d="M7.09 275.57 L7.09 291.2" class="st13"/>
