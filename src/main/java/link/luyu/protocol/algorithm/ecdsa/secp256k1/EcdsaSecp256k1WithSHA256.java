@@ -91,13 +91,11 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
             // Ethereum does not use encoded public keys like bitcoin - see
             // https://en.bitcoin.it/wiki/Elliptic_Curve_Digital_Signature_Algorithm for details
             // Additionally, as the first bit is a constant prefix (0x04) we ignore this value
-            byte[] publicKeyBytes = publicKey.getQ().getEncoded(false);
-            BigInteger publicKeyValue =
-                    new BigInteger(1, Arrays.copyOfRange(publicKeyBytes, 1, publicKeyBytes.length));
+            byte[] encoded = publicKey.getQ().getEncoded(false);
+            byte[] publicKeyBytes = Arrays.copyOfRange(encoded, 1, encoded.length);
 
             Map.Entry<byte[], byte[]> keyPairBytes =
-                    new AbstractMap.SimpleEntry<>(
-                            publicKeyValue.toByteArray(), privateKeyValue.toByteArray());
+                    new AbstractMap.SimpleEntry<>(publicKeyBytes, privateKeyValue.toByteArray());
             return keyPairBytes;
 
         } catch (Exception e) {
@@ -183,8 +181,14 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
 
     public static byte[] secKey2PubKey(byte[] secKey) {
         BigInteger secKeyInt = new BigInteger(1, secKey);
-        BigInteger pubKeyInt = publicKeyFromSecretKey(secKeyInt);
-        return pubKeyInt.toByteArray();
+        // Notice: not to use publicKeyFromSecretKey(secKeyInt).toByteArray() to get pubBytes
+        // Because in some cases, there are extra prefix 00 with length 65 in
+        // pubKeyInt.toByteArray(), so we may not to use this to get pubKey's bytes
+        ECPoint point = publicPointFromPrivate(secKeyInt);
+        byte[] encoded = point.getEncoded(false);
+
+        byte[] publicKeyBytes = Arrays.copyOfRange(encoded, 1, encoded.length);
+        return publicKeyBytes;
     }
 
     /**
@@ -229,5 +233,20 @@ public class EcdsaSecp256k1WithSHA256 implements SignatureAlgorithm {
             keyPairGenerator.initialize(ecGenParameterSpec);
         }
         return keyPairGenerator.generateKeyPair();
+    }
+
+    public static byte[] generateKeyPairPKCS8Encoded() {
+        try {
+            Security.addProvider(new BouncyCastleProvider());
+
+            KeyPair keyPair = createSecp256k1KeyPair(SECURE_RANDOM);
+
+            BCECPrivateKey privateKey = (BCECPrivateKey) keyPair.getPrivate();
+
+            return privateKey.getEncoded();
+
+        } catch (Exception e) {
+            throw new RuntimeException("generate " + TYPE + " key pair failed, " + e);
+        }
     }
 }
