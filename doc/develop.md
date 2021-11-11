@@ -1,5 +1,10 @@
 # 开发手册
 
+目录
+
+* [开发跨链应用](#开发跨链应用)
+* [开发区块链插件](#开发区块链插件)
+
 ## 开发跨链应用
 
 应用开发有两种技术方案供选择
@@ -15,8 +20,8 @@
 
 **链上发起**
 
-* FISCO BCOS
-* Fabric
+* 从 FISCO BCOS 发起：XXX
+* 从 Fabric 发起：XXX
 
 ## 开发区块链插件
 
@@ -47,12 +52,10 @@
 
 ### 模块描述
 
-* PluginBuilder：插件的初始化类，跨链路由根据此类定义的插件标识对该类进行实例化，并调用其中的new函数。
-* Connection：与区块链的连接类，用于管理与区块链的连接，响应Driver发来的请求，并将该请求上链。
-* Driver：链驱动，按照特定区块链的交易编码规则对交易进行编码，用Account类签名后生成交易二进制，发送给Connection上链。
-* Account：集成账户服务的接口，并将账户服务的签名结果，公钥查询结果等转化为链自身的格式。
-
-各模块的完整抽象定义可参看：[link层代码](../src/main/java/link/luyu/protocol/link)
+* [PluginBuilder](../src/main/java/link/luyu/protocol/link/PluginBuilder.java)：插件的初始化类，跨链路由根据此类定义的插件标识对该类进行实例化，并调用其中的new函数。
+* [Connection](../src/main/java/link/luyu/protocol/link/Connection.java)：与区块链的连接类，用于管理与区块链的连接，响应Driver发来的请求，并将该请求上链。
+* [Driver](../src/main/java/link/luyu/protocol/link/Driver.java)：链驱动，按照特定区块链的交易编码规则对交易进行编码，用Account类签名后生成交易二进制，发送给Connection上链。
+* [Account](../src/main/java/link/luyu/protocol/network/Account.java)：集成账户服务的接口，并将账户服务的签名结果，公钥查询结果等转化为链自身的格式。
 
 ### 关键流程
 
@@ -62,15 +65,15 @@
 
 PluginBuilder 被跨链路由实例化
 
-* 调用newConnection()，传入connection.toml的配置
-  * 链SDK加载，初始化与链的连接
-  * 根据connection中的配置初始化资源列表，（若有）加载接口定义（ABI等）
+1. 调用newConnection()，传入connection.toml的配置
+   * 链SDK加载，初始化与链的连接
+   * 根据connection中的配置初始化资源列表，（若有）加载接口定义（ABI等）
 
-* 调用newDriver()，传入connection实例和driver.toml的配置信息
-  * 加载交易验证逻辑的配置（若有）
-  * 调用connection注册链事件
-    * 注册区块事件，更新区块缓存
-    * 注册资源变更事件，更新资源信息缓存（如ABI等）
+2. 调用newDriver()，传入connection实例和driver.toml的配置信息
+   * 加载交易验证逻辑的配置（若有）
+   * 调用connection注册链事件
+     * 注册区块事件，更新区块缓存
+     * 注册资源变更事件，更新资源信息缓存（如ABI等）
 
 **处理跨链交易阶段**
 
