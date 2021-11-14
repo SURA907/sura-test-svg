@@ -16,11 +16,11 @@
 
 ## 相关文档
 
-* 白皮书
+* [白皮书](./doc/white-paper.pdf)
 
-* 协议描述
+* [协议描述](./doc/description.md)
 
-* 使用手册
+* [使用手册](./doc/manual.md)
 
 * [开发手册](doc/develop.md)
 
