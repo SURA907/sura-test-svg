@@ -105,10 +105,10 @@ PluginBuilder 被跨链路由实例化
 
 #### 1. maven（推荐）
 
-以`gradle`为例
+以`gradle`为例（此处以`1.0.0`版本为例，推荐采用最新版本）
 
 ``` gradle
-dependencies { implementation 'xxx.xxxx:luyu-protocol:1.x.x'}
+dependencies { implementation 'link.luyu:luyu-cross-chain-protocol:1.0.0'}
 ```
 
 #### 2. 本地编译
@@ -128,7 +128,7 @@ luyu-protocol-xxxxxx.jar
 将其拷贝至对应项目的classpath下，并引用此jar包即可，以`gradle`为例
 
 ``` gradle
-dependencies { compile files('lib/luyu-protocol-xxxxxx.jar')}
+dependencies { compile files('lib/luyu-cross-chain-protocol-xxxxxx.jar')}
 ```
 
 
