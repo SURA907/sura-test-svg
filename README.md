@@ -31,7 +31,7 @@
 
 * [白皮书](./doc/white-paper.pdf)
 * [协议描述](./doc/description.md)
-* [使用手册](./doc/manual.md)
+* [使用指引](./doc/manual.md)
 * [开发手册](doc/develop.md)
   * [开发跨链应用](doc/develop.md#开发跨链应用)
   * [开发区块链插件](doc/develop.md#开发区块链插件)
