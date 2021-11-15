@@ -77,28 +77,28 @@
 **定义**
 
 * 写入资源
-  * 操作：sendTransaction
+  * 操作：[sendTransaction](../src/main/java/link/luyu/protocol/application/SDK.java#L11)
   * 参数
-    * 交易（Transaction）：修改可信源数据的请求
-    * 回执（Receipt）：修改可信源数据的结果
+    * 交易（[Transaction](../src/main/java/link/luyu/protocol/network/Transaction.java)）：修改可信源数据的请求
+    * 回执（[Receipt](../src/main/java/link/luyu/protocol/network/Receipt.java)）：修改可信源数据的结果
 * 读取资源
-  * 操作：call
+  * 操作：[call](../src/main/java/link/luyu/protocol/application/SDK.java#L13)
   * 参数
-    * 查询（CallRequest）：查询可信源数据的请求
-    * 返回（CallResponse）：查询可信源数据的结果
+    * 查询（[CallRequest](../src/main/java/link/luyu/protocol/network/CallRequest.java)）：查询可信源数据的请求
+    * 返回（[CallResponse](../src/main/java/link/luyu/protocol/network/CallResponse.java)）：查询可信源数据的结果
 * 查询记录
-  * 操作：getTransactionReceipt
+  * 操作：[getTransactionReceipt](/src/main/java/link/luyu/protocol/application/SDK.java#L15)
   * 参数
-    * 回执（Receipt）：修改可信源数据的结果记录
+    * 回执（[Receipt](../src/main/java/link/luyu/protocol/network/Receipt.java)）：修改可信源数据的结果记录
 
 * 查询区块
-  * 操作：getBlockByHash、getBlockByNumber
+  * 操作：[getBlockByHash](../src/main/java/link/luyu/protocol/application/SDK.java#L17)、[getBlockByNumber](../src/main/java/link/luyu/protocol/application/SDK.java#L19)
   * 参数
-    * 区块（Block）：区块结构的统一抽象
+    * 区块（[Block](../src/main/java/link/luyu/protocol/network/Block.java)）：区块结构的统一抽象
 * 列举资源
-  * 操作：listResources
+  * 操作：[listResources](../src/main/java/link/luyu/protocol/application/SDK.java#L23)
   * 参数
-    * 资源（Resource）：各种可信源的智能合约（链码）等可操作的统一抽象对象
+    * 资源（[Resource](../src/main/java/link/luyu/protocol/network/Resource.java)）：各种可信源的智能合约（链码）等可操作的统一抽象对象
 
 ### 3.4 统一接入协议
 
@@ -106,7 +106,7 @@
 
 **定义**
 
-* 驱动组件（Driver）
+* 驱动组件（[Driver](../src/main/java/link/luyu/protocol/link/Driver.java)）
   * 功能：定义统一的可信源操作抽象接口，各可信源基于此定制化具体实现逻辑，实现统一调用协议与实际可信源调用协议的转化（如交易组装，回执处理，区块解析，资源查询等）。调用连接组件向可信源发送数据。
   * 接口
     * sendTransaction
@@ -115,7 +115,7 @@
     * getBlockByHash、getBlockByNumber
     * listResources
 
-* 连接组件（Connection）
+* 连接组件（[Connection](../src/main/java/link/luyu/protocol/link/Connection.java)）
   * 可信源接入的抽象层，与实际可信源建立连接，将驱动组件的调用转发至可信源。
   * 借助远程接入组件 “`Connection(Remote)`” 实现远程调用。
 
