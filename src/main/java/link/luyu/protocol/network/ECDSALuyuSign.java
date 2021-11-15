@@ -21,7 +21,9 @@ public class ECDSALuyuSign implements LuyuSign {
         String recoveredSender = recover(signBytes, data);
         return data.getSender() == null
                 ? false
-                : data.getSender().replaceAll("0x", "").equals(recoveredSender);
+                : data.getSender()
+                        .replaceAll("0x", "")
+                        .equals(recoveredSender.replaceAll("0x", ""));
     }
 
     @Override
