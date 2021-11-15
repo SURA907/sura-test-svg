@@ -14,7 +14,7 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 
 group 'link.luyu'
-version '1.0.0-SNAPSHOT'
+version '1.0.0'
 
 repositories {
     jcenter()
@@ -148,7 +148,7 @@ publishing {
             pom {
                 name = "LuyuProtocol"
                 description = "Luyu Protocol"
-                url = "https://gitee.com/luyu-community/luyu-protocol"
+                url = "https://gitee.com/luyu-community/luyu-cross-chain-protocol"
                 licenses {
                     license {
                         name = "The Apache License, Version 2.0"
@@ -163,9 +163,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "scm:git:git@://gitee.com:luyu-community/luyu-protocol.git"
-                    developerConnection = "scm:git:ssh://gitee.com:luyu-community/luyu-protocol.git"
-                    url = "https://gitee.com/luyu-community/luyu-protocol"
+                    connection = "scm:git:git@://gitee.com:luyu-community/luyu-cross-chain-protocol.git"
+                    developerConnection = "scm:git:ssh://gitee.com:luyu-community/luyu-cross-chain-protocol.git"
+                    url = "https://gitee.com/luyu-community/luyu-cross-chain-protocol"
                 }
             }
         }
