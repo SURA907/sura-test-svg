@@ -13,7 +13,7 @@
     * [Hyperledger Fabric Plugin](https://gitee.com/luyu-community/fabric-plugin)
     * 。。。
 
-![](D:/code/LuyuProtocol/doc/img/frame.svg)
+![](img/frame.svg)
 
 ## 操作步骤
 
