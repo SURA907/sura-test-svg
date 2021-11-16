@@ -40,13 +40,13 @@
 
 **区块链插件**
 
-* 中钞
+* **中钞**
   * [Brochain Plugin](https://gitee.com/luyu-community/brochain-plugin)
-* FISCO BCOS
+* **FISCO BCOS**
   * 2.0 版本：[FISCO BCOS Plugin](https://gitee.com/luyu-community/fisco-bcos-plugin) 
-* 溪塔
+* **溪塔**
   * [CITA Plugin](https://gitee.com/luyu-community/cita-plugin)
-* Hyperledger Fabric
+* **Hyperledger Fabric**
   * 1.4 版本：[Fabric Plugin](https://gitee.com/luyu-community/fabric-plugin)
 * （ 更多区块链，期待你的贡献！）
 
