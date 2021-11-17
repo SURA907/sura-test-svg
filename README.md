@@ -66,10 +66,14 @@
 
 ## 开源社区
 
-* 技术交流：加入群聊
-* 申请加入：协议工作组
-* 区块链接入：获取技术支持
+* 技术交流
+* 申请加入工作组
+* 获取开发指导
 * idea提交：[RFC（请求意见稿）](https://gitee.com/luyu-community/rfcs)
+
+请添加开源小助手
+
+<img src="doc/img/qr_code.png" style="zoom:50%;" />
 
 ## License
 
