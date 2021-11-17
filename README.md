@@ -73,7 +73,7 @@
 
 请添加小助手
 
-<img src="doc/img/qr_code.png" style="zoom: 25%;" />
+<img src="doc/img/qr_code.png"  />
 
 ## License
 
