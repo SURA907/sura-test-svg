@@ -27,7 +27,7 @@
 
 （更多期待你的加入）
 
-## 相关文档
+## 相关资料
 
 * [白皮书](./doc/white-paper.pdf)
 * [协议描述](./doc/description.md)
@@ -35,6 +35,10 @@
 * [开发手册](doc/develop.md)
   * [开发跨链应用](doc/develop.md#开发跨链应用)
   * [开发区块链插件](doc/develop.md#开发区块链插件)
+* Meetup 视频
+  * Meetup 1：[白皮书解读](https://www.bilibili.com/video/BV1eS4y1Q7Yc?spm_id_from=333.999.0.0)
+  * Meetup 2：[操作指导](https://www.bilibili.com/video/BV1ND4y1c7CA?spm_id_from=333.999.0.0)
+  * Meetup 3：[开发指导](https://www.bilibili.com/video/BV1Wb4y1v79x?spm_id_from=333.999.0.0)
 
 ## 项目链接
 
