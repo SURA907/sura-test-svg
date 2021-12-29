@@ -50,6 +50,8 @@
   * 2.0 版本：[FISCO BCOS Plugin](https://gitee.com/luyu-community/fisco-bcos-plugin) 
 * **溪塔**
   * [CITA Plugin](https://gitee.com/luyu-community/cita-plugin)
+* **工银玺链**
+  * [SealChain Plugin](https://gitee.com/luyu-community/seal-chain-plugin)（开发中）
 * **Hyperledger Fabric**
   * 1.4 版本：[Fabric Plugin](https://gitee.com/luyu-community/fabric-plugin)
 * （ 更多区块链，期待你的贡献！）
