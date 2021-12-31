@@ -21,7 +21,7 @@
 **链上发起**
 
 * [从 FISCO BCOS 发起](https://gitee.com/luyu-community/fisco-bcos-plugin/tree/feature-luyu/solidity)
-* 从 Fabric 发起（开发中）
+* [从 Fabric 发起](https://gitee.com/luyu-community/fabric-plugin/tree/feature-luyu/sdk)
 * （请直接访问链插件项目，查看具体用法）
 
 ## 开发区块链插件
